@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: jope015.mdsd2021.reexam.CMSdsl.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: jope015.mdsd2021.reexam.CMSdsl.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: jope015.mdsd2021.reexam.CMSdsl.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: jope015.mdsd2021.reexam.CMSdsl,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: jope015.mdsd2021.reexam.ide.contentassist.antlr.internal,
+ jope015.mdsd2021.reexam.ide.contentassist.antlr,
+ jope015.mdsd2021.reexam.ide.contentassist.antlr.lexer

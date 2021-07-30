@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.mdsd2021.jope015/reexam/CMSdsl"
+			class = "jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage"
+			genModel = "model/generated/CMSdsl.genmodel" />
+	</extension>
+</plugin>

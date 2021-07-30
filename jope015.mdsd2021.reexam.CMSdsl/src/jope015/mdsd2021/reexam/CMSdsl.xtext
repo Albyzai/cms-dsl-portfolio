@@ -1,0 +1,81 @@
+grammar jope015.mdsd2021.reexam.CMSdsl with org.eclipse.xtext.common.Terminals
+
+generate cMSdsl "http://www.mdsd2021.jope015/reexam/CMSdsl"
+
+
+Project:
+	'project' name=ID ':' BEGIN
+		elements+=PrimaryElement*
+	END
+;
+
+PrimaryElement:
+	DBConfig | Entity
+;
+
+DBConfig:
+	{DBConfig} 
+	type='database' ':' BEGIN
+		config+=DBDecl*
+	END
+;
+
+
+
+DBDecl:
+	{Lib} type='library' ':' value=STRING |
+	{Host} type='hostname' ':' value=STRING |
+	{Port} type='port' ':' value=INT |
+	{Dialect} type='dialect' ':' value=STRING |
+	{User} type='username' ':' value=STRING |
+	{Pass} type='password' ':' value=STRING
+;
+
+Entity:
+	{Entity}
+	'entity' name=ID ':' BEGIN
+		model=EntityModel
+		(service=EntityService)?
+		(ui=EntityUI)?
+	END
+;
+
+
+EntityModel:
+	{EntityModel} fields+=Field*
+;
+
+EntityService:
+	{EntityService}
+	'service' ':'
+;
+
+EntityUI:
+	'ui'
+;
+
+Field:
+	type=DataType name=ID ':' BEGIN
+		properties+=FieldProp*
+	END
+;
+
+
+FieldProp:
+	{Def} type='default' ':' value=STRING |
+	{PropTest} type='test' ':' value=STRING 
+;
+
+
+DataType:
+    {Str} type='string' | 
+    {Dt} type='date'| 
+    {Integ} type='int' | 
+    {Lng} type='long' | 
+    {Bool} type='bool' | 
+    {Flt} type='float'
+;
+
+
+terminal BEGIN: 'synthetic:BEGIN';
+terminal END: 'synthetic:END';
