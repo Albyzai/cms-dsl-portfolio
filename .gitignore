@@ -1,0 +1,29 @@
+#/jope015.mdsd2021.reexam.CMSdsl.ide/
+#/jope015.mdsd2021.reexam.CMSdsl.tests/
+#/jope015.mdsd2021.reexam.CMSdsl.ui.tests/
+#/jope015.mdsd2021.reexam.CMSdsl.ui/
+#/jope015.mdsd2021.reexam.CMSdsl/
+
+
+*.class
+bin/
+*~
+logs.zip
+*.orig
+*.java._trace
+*.smap
+
+# src-gen is excluded on a per project basis
+#src-gen/
+
+xtend-gen/
+emf-gen/
+
+# for Maven builds
+target
+
+# for Gradle builds
+build
+.gradle
+
+.DS_Store
