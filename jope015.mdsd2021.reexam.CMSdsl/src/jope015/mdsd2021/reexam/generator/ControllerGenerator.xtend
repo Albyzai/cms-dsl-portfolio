@@ -4,6 +4,13 @@ import jope015.mdsd2021.reexam.cMSdsl.Entity
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import javax.inject.Inject
 import jope015.mdsd2021.reexam.util.CMSdslUtil
+import jope015.mdsd2021.reexam.cMSdsl.ValidatorUse
+import jope015.mdsd2021.reexam.cMSdsl.DataType
+import jope015.mdsd2021.reexam.cMSdsl.Str
+import jope015.mdsd2021.reexam.cMSdsl.Integ
+import jope015.mdsd2021.reexam.cMSdsl.Bool
+import jope015.mdsd2021.reexam.cMSdsl.Field
+import jope015.mdsd2021.reexam.cMSdsl.ParameterUse
 
 class ControllerGenerator {
 	
@@ -29,6 +36,11 @@ class ControllerGenerator {
 		
 	module.exports.create = (req, res) => {
 		let {«FOR f: e.fields» «f.name»,«ENDFOR» } = req.body
+		«FOR f: e.fields»
+			«FOR v: f.getValidators(e)»
+				«v.compile»
+			«ENDFOR»
+		«ENDFOR»
 		«e.name.toFirstUpper».create({
 			«FOR f: e.fields»
 				«f.name»,
@@ -62,4 +74,42 @@ class ControllerGenerator {
 		router.get('/:id', «e.name.toFirstUpper»Controller.getById);
 		
 		module.exports = router;
-	'''}
+	'''
+	
+	def compile(ValidatorUse usage) {
+		val validator = usage.validator
+		val params = validator.params
+		val args = usage.args
+		
+		val expression = validator.comparison
+		for(var i = 0; i < args.length; i++) {
+			val arg = args.get(i)
+			val param = params.get(i)
+			
+			if(arg.type == param.type) {
+				
+			}
+		}
+	}
+	
+	def compile(DataType type){
+		switch type {
+			Str: '''DataTypes.STRING'''
+			Integ: '''DataTypes.INTEGER'''
+			Bool: '''DataTypes.BOOLEAN'''
+		}
+	}
+	
+	def getValidators(Field f, Entity e) {
+		//	should return validators
+		//	that makes use of the specified field
+		val check = e.members.filter(ValidatorUse)
+		check.filter[ c | c.args.contains(f)]
+	}
+	
+	def dispatch compute(ParameterUse paramUse){
+		paramUse.ref.type 
+	}
+	
+}
+	

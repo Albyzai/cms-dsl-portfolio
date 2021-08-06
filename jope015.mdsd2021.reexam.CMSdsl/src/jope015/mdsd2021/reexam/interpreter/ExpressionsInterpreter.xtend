@@ -18,7 +18,7 @@ class ExpressionsInterpreter {
 	
 	
 	@Inject extension CMSdslUtil
-//	
+	
 //	def dispatch interpret(And and) {
 //		(and.left.interpret as Boolean) && (and.right.interpret as Boolean)
 //	}
@@ -69,7 +69,6 @@ class ExpressionsInterpreter {
 //			Num: e.value
 //			Str: e.value
 //			Bool: Boolean.parseBoolean(e.value)
-////			Not: !(e.expression.interpret as Boolean)
 //			MulDiv: {
 //				val left= e.left.interpret as Integer
 //				val right = e.right.interpret as Integer
