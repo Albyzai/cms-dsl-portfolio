@@ -3,9 +3,16 @@
  */
 package jope015.mdsd2021.reexam
 
+import org.eclipse.xtext.service.SingletonBinding
+import jope015.mdsd2021.reexam.validation.DBConfigValidator
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class CMSdslRuntimeModule extends AbstractCMSdslRuntimeModule {
+
+
+@SingletonBinding(eager=true)
+def bindDBConfigValidator () { DBConfigValidator }
+
 }

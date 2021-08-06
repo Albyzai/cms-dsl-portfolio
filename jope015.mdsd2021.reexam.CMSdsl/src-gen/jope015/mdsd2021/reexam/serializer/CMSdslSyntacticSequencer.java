@@ -11,6 +11,8 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -18,10 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class CMSdslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected CMSdslGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Atomic_LeftParenthesisKeyword_3_0_a;
+	protected AbstractElementAlias match_Atomic_LeftParenthesisKeyword_3_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (CMSdslGrammarAccess) access;
+		match_Atomic_LeftParenthesisKeyword_3_0_a = new TokenAlias(true, true, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_3_0());
+		match_Atomic_LeftParenthesisKeyword_3_0_p = new TokenAlias(true, false, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_3_0());
 	}
 	
 	@Override
@@ -51,8 +57,51 @@ public class CMSdslSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_Atomic_LeftParenthesisKeyword_3_0_a.equals(syntax))
+				emit_Atomic_LeftParenthesisKeyword_3_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Atomic_LeftParenthesisKeyword_3_0_p.equals(syntax))
+				emit_Atomic_LeftParenthesisKeyword_3_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     '('*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) ref=[Parameter|ID]
+	 *     (rule start) (ambiguity) value='false'
+	 *     (rule start) (ambiguity) value='true'
+	 *     (rule start) (ambiguity) value=INT
+	 *     (rule start) (ambiguity) value=STRING
+	 *     (rule start) (ambiguity) {And.left=}
+	 *     (rule start) (ambiguity) {Comparison.left=}
+	 *     (rule start) (ambiguity) {Equality.left=}
+	 *     (rule start) (ambiguity) {Minus.left=}
+	 *     (rule start) (ambiguity) {MulDiv.left=}
+	 *     (rule start) (ambiguity) {Or.left=}
+	 *     (rule start) (ambiguity) {Plus.left=}
+	 */
+	protected void emit_Atomic_LeftParenthesisKeyword_3_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '('+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) {And.left=}
+	 *     (rule start) (ambiguity) {Comparison.left=}
+	 *     (rule start) (ambiguity) {Equality.left=}
+	 *     (rule start) (ambiguity) {Minus.left=}
+	 *     (rule start) (ambiguity) {MulDiv.left=}
+	 *     (rule start) (ambiguity) {Or.left=}
+	 *     (rule start) (ambiguity) {Plus.left=}
+	 */
+	protected void emit_Atomic_LeftParenthesisKeyword_3_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

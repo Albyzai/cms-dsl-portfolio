@@ -9,11 +9,39 @@ package jope015.mdsd2021.reexam.cMSdsl;
  * A representation of the model object '<em><b>Str</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Str#getValue <em>Value</em>}</li>
+ * </ul>
  *
  * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getStr()
  * @model
  * @generated
  */
-public interface Str extends DataType
+public interface Str extends DataType, Expression
 {
+  /**
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
+   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getStr_Value()
+   * @model
+   * @generated
+   */
+  String getValue();
+
+  /**
+   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Str#getValue <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
+   * @generated
+   */
+  void setValue(String value);
+
 } // Str

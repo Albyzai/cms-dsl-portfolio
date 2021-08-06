@@ -110,17 +110,10 @@ public class CMSdslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CMSdslPackage.ENTITY_MODEL:
+      case CMSdslPackage.ENTITY_DECL:
       {
-        EntityModel entityModel = (EntityModel)theEObject;
-        T result = caseEntityModel(entityModel);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CMSdslPackage.ENTITY_SERVICE:
-      {
-        EntityService entityService = (EntityService)theEObject;
-        T result = caseEntityService(entityService);
+        EntityDecl entityDecl = (EntityDecl)theEObject;
+        T result = caseEntityDecl(entityDecl);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,6 +121,29 @@ public class CMSdslSwitch<T> extends Switch<T>
       {
         Field field = (Field)theEObject;
         T result = caseField(field);
+        if (result == null) result = caseEntityDecl(field);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.VALIDATION_CHECK:
+      {
+        ValidationCheck validationCheck = (ValidationCheck)theEObject;
+        T result = caseValidationCheck(validationCheck);
+        if (result == null) result = caseEntityDecl(validationCheck);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.CHECK_BLOCK:
+      {
+        CheckBlock checkBlock = (CheckBlock)theEObject;
+        T result = caseCheckBlock(checkBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.VALIDATION_STATUS:
+      {
+        ValidationStatus validationStatus = (ValidationStatus)theEObject;
+        T result = caseValidationStatus(validationStatus);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -142,6 +158,72 @@ public class CMSdslSwitch<T> extends Switch<T>
       {
         DataType dataType = (DataType)theEObject;
         T result = caseDataType(dataType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.VALIDATOR:
+      {
+        Validator validator = (Validator)theEObject;
+        T result = caseValidator(validator);
+        if (result == null) result = casePrimaryElement(validator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.PARAMETER:
+      {
+        Parameter parameter = (Parameter)theEObject;
+        T result = caseParameter(parameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.PARAMETER_USE:
+      {
+        ParameterUse parameterUse = (ParameterUse)theEObject;
+        T result = caseParameterUse(parameterUse);
+        if (result == null) result = caseExpression(parameterUse);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.VALIDATOR_USE:
+      {
+        ValidatorUse validatorUse = (ValidatorUse)theEObject;
+        T result = caseValidatorUse(validatorUse);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.ARGUMENT:
+      {
+        Argument argument = (Argument)theEObject;
+        T result = caseArgument(argument);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.RELATIONSHIP:
+      {
+        Relationship relationship = (Relationship)theEObject;
+        T result = caseRelationship(relationship);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.RELATIONSHIP_TYPE:
+      {
+        RelationshipType relationshipType = (RelationshipType)theEObject;
+        T result = caseRelationshipType(relationshipType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.EVAL:
+      {
+        Eval eval = (Eval)theEObject;
+        T result = caseEval(eval);
+        if (result == null) result = casePrimaryElement(eval);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -193,6 +275,30 @@ public class CMSdslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CMSdslPackage.ERR:
+      {
+        Err err = (Err)theEObject;
+        T result = caseErr(err);
+        if (result == null) result = caseValidationStatus(err);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.WARN:
+      {
+        Warn warn = (Warn)theEObject;
+        T result = caseWarn(warn);
+        if (result == null) result = caseValidationStatus(warn);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.SUCC:
+      {
+        Succ succ = (Succ)theEObject;
+        T result = caseSucc(succ);
+        if (result == null) result = caseValidationStatus(succ);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CMSdslPackage.DEF:
       {
         Def def = (Def)theEObject;
@@ -214,6 +320,7 @@ public class CMSdslSwitch<T> extends Switch<T>
         Str str = (Str)theEObject;
         T result = caseStr(str);
         if (result == null) result = caseDataType(str);
+        if (result == null) result = caseExpression(str);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -246,6 +353,7 @@ public class CMSdslSwitch<T> extends Switch<T>
         Bool bool = (Bool)theEObject;
         T result = caseBool(bool);
         if (result == null) result = caseDataType(bool);
+        if (result == null) result = caseExpression(bool);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -254,6 +362,102 @@ public class CMSdslSwitch<T> extends Switch<T>
         Flt flt = (Flt)theEObject;
         T result = caseFlt(flt);
         if (result == null) result = caseDataType(flt);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.BELONGS_TO:
+      {
+        BelongsTo belongsTo = (BelongsTo)theEObject;
+        T result = caseBelongsTo(belongsTo);
+        if (result == null) result = caseRelationshipType(belongsTo);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.BELONGS_TO_MANY:
+      {
+        BelongsToMany belongsToMany = (BelongsToMany)theEObject;
+        T result = caseBelongsToMany(belongsToMany);
+        if (result == null) result = caseRelationshipType(belongsToMany);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.HAS_ONE:
+      {
+        HasOne hasOne = (HasOne)theEObject;
+        T result = caseHasOne(hasOne);
+        if (result == null) result = caseRelationshipType(hasOne);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.HAS_MANY:
+      {
+        HasMany hasMany = (HasMany)theEObject;
+        T result = caseHasMany(hasMany);
+        if (result == null) result = caseRelationshipType(hasMany);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.OR:
+      {
+        Or or = (Or)theEObject;
+        T result = caseOr(or);
+        if (result == null) result = caseExpression(or);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.AND:
+      {
+        And and = (And)theEObject;
+        T result = caseAnd(and);
+        if (result == null) result = caseExpression(and);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.EQUALITY:
+      {
+        Equality equality = (Equality)theEObject;
+        T result = caseEquality(equality);
+        if (result == null) result = caseExpression(equality);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.COMPARISON:
+      {
+        Comparison comparison = (Comparison)theEObject;
+        T result = caseComparison(comparison);
+        if (result == null) result = caseExpression(comparison);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.PLUS:
+      {
+        Plus plus = (Plus)theEObject;
+        T result = casePlus(plus);
+        if (result == null) result = caseExpression(plus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.MINUS:
+      {
+        Minus minus = (Minus)theEObject;
+        T result = caseMinus(minus);
+        if (result == null) result = caseExpression(minus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.MUL_DIV:
+      {
+        MulDiv mulDiv = (MulDiv)theEObject;
+        T result = caseMulDiv(mulDiv);
+        if (result == null) result = caseExpression(mulDiv);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.NUM:
+      {
+        Num num = (Num)theEObject;
+        T result = caseNum(num);
+        if (result == null) result = caseExpression(num);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -342,33 +546,17 @@ public class CMSdslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Entity Decl</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entity Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Entity Decl</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEntityModel(EntityModel object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity Service</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entity Service</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEntityService(EntityService object)
+  public T caseEntityDecl(EntityDecl object)
   {
     return null;
   }
@@ -385,6 +573,54 @@ public class CMSdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseField(Field object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Validation Check</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Validation Check</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValidationCheck(ValidationCheck object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Check Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Check Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCheckBlock(CheckBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Validation Status</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Validation Status</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValidationStatus(ValidationStatus object)
   {
     return null;
   }
@@ -417,6 +653,150 @@ public class CMSdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDataType(DataType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Validator</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Validator</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValidator(Validator object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameter(Parameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Use</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Use</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterUse(ParameterUse object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Validator Use</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Validator Use</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValidatorUse(ValidatorUse object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Argument</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Argument</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArgument(Argument object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Relationship</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Relationship</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRelationship(Relationship object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Relationship Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Relationship Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRelationshipType(RelationshipType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Eval</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Eval</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEval(Eval object)
   {
     return null;
   }
@@ -513,6 +893,54 @@ public class CMSdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePass(Pass object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Err</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Err</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseErr(Err object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Warn</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Warn</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWarn(Warn object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Succ</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Succ</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSucc(Succ object)
   {
     return null;
   }
@@ -641,6 +1069,198 @@ public class CMSdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFlt(Flt object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Belongs To</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Belongs To</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBelongsTo(BelongsTo object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Belongs To Many</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Belongs To Many</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBelongsToMany(BelongsToMany object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Has One</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Has One</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHasOne(HasOne object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Has Many</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Has Many</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHasMany(HasMany object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Or</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOr(Or object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>And</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>And</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAnd(And object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Equality</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Equality</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEquality(Equality object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Comparison</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Comparison</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseComparison(Comparison object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Plus</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Plus</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlus(Plus object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Minus</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Minus</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMinus(Minus object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mul Div</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mul Div</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMulDiv(MulDiv object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Num</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Num</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNum(Num object)
   {
     return null;
   }

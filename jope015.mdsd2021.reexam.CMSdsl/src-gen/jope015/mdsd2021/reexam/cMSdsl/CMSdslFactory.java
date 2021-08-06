@@ -69,22 +69,13 @@ public interface CMSdslFactory extends EFactory
   Entity createEntity();
 
   /**
-   * Returns a new object of class '<em>Entity Model</em>'.
+   * Returns a new object of class '<em>Entity Decl</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Model</em>'.
+   * @return a new object of class '<em>Entity Decl</em>'.
    * @generated
    */
-  EntityModel createEntityModel();
-
-  /**
-   * Returns a new object of class '<em>Entity Service</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Service</em>'.
-   * @generated
-   */
-  EntityService createEntityService();
+  EntityDecl createEntityDecl();
 
   /**
    * Returns a new object of class '<em>Field</em>'.
@@ -94,6 +85,33 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   Field createField();
+
+  /**
+   * Returns a new object of class '<em>Validation Check</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Validation Check</em>'.
+   * @generated
+   */
+  ValidationCheck createValidationCheck();
+
+  /**
+   * Returns a new object of class '<em>Check Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Check Block</em>'.
+   * @generated
+   */
+  CheckBlock createCheckBlock();
+
+  /**
+   * Returns a new object of class '<em>Validation Status</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Validation Status</em>'.
+   * @generated
+   */
+  ValidationStatus createValidationStatus();
 
   /**
    * Returns a new object of class '<em>Field Prop</em>'.
@@ -112,6 +130,87 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   DataType createDataType();
+
+  /**
+   * Returns a new object of class '<em>Validator</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Validator</em>'.
+   * @generated
+   */
+  Validator createValidator();
+
+  /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
+
+  /**
+   * Returns a new object of class '<em>Parameter Use</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Use</em>'.
+   * @generated
+   */
+  ParameterUse createParameterUse();
+
+  /**
+   * Returns a new object of class '<em>Validator Use</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Validator Use</em>'.
+   * @generated
+   */
+  ValidatorUse createValidatorUse();
+
+  /**
+   * Returns a new object of class '<em>Argument</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Argument</em>'.
+   * @generated
+   */
+  Argument createArgument();
+
+  /**
+   * Returns a new object of class '<em>Relationship</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Relationship</em>'.
+   * @generated
+   */
+  Relationship createRelationship();
+
+  /**
+   * Returns a new object of class '<em>Relationship Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Relationship Type</em>'.
+   * @generated
+   */
+  RelationshipType createRelationshipType();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Eval</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Eval</em>'.
+   * @generated
+   */
+  Eval createEval();
 
   /**
    * Returns a new object of class '<em>Lib</em>'.
@@ -166,6 +265,33 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   Pass createPass();
+
+  /**
+   * Returns a new object of class '<em>Err</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Err</em>'.
+   * @generated
+   */
+  Err createErr();
+
+  /**
+   * Returns a new object of class '<em>Warn</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Warn</em>'.
+   * @generated
+   */
+  Warn createWarn();
+
+  /**
+   * Returns a new object of class '<em>Succ</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Succ</em>'.
+   * @generated
+   */
+  Succ createSucc();
 
   /**
    * Returns a new object of class '<em>Def</em>'.
@@ -238,6 +364,114 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   Flt createFlt();
+
+  /**
+   * Returns a new object of class '<em>Belongs To</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Belongs To</em>'.
+   * @generated
+   */
+  BelongsTo createBelongsTo();
+
+  /**
+   * Returns a new object of class '<em>Belongs To Many</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Belongs To Many</em>'.
+   * @generated
+   */
+  BelongsToMany createBelongsToMany();
+
+  /**
+   * Returns a new object of class '<em>Has One</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Has One</em>'.
+   * @generated
+   */
+  HasOne createHasOne();
+
+  /**
+   * Returns a new object of class '<em>Has Many</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Has Many</em>'.
+   * @generated
+   */
+  HasMany createHasMany();
+
+  /**
+   * Returns a new object of class '<em>Or</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Or</em>'.
+   * @generated
+   */
+  Or createOr();
+
+  /**
+   * Returns a new object of class '<em>And</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>And</em>'.
+   * @generated
+   */
+  And createAnd();
+
+  /**
+   * Returns a new object of class '<em>Equality</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Equality</em>'.
+   * @generated
+   */
+  Equality createEquality();
+
+  /**
+   * Returns a new object of class '<em>Comparison</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Comparison</em>'.
+   * @generated
+   */
+  Comparison createComparison();
+
+  /**
+   * Returns a new object of class '<em>Plus</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Plus</em>'.
+   * @generated
+   */
+  Plus createPlus();
+
+  /**
+   * Returns a new object of class '<em>Minus</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Minus</em>'.
+   * @generated
+   */
+  Minus createMinus();
+
+  /**
+   * Returns a new object of class '<em>Mul Div</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mul Div</em>'.
+   * @generated
+   */
+  MulDiv createMulDiv();
+
+  /**
+   * Returns a new object of class '<em>Num</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Num</em>'.
+   * @generated
+   */
+  Num createNum();
 
   /**
    * Returns the package supported by this factory.

@@ -7,6 +7,7 @@ import org.eclipse.xtext.validation.Check
 import jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage
 import jope015.mdsd2021.reexam.cMSdsl.Project
 import javax.inject.Inject
+import jope015.mdsd2021.reexam.cMSdsl.Or
 
 /**
  * This class contains custom validation rules. 
@@ -16,6 +17,8 @@ import javax.inject.Inject
 class CMSdslValidator extends AbstractCMSdslValidator {
 	
 	@Inject extension DBConfigValidator
+	@Inject extension EntityValidator
+	@Inject extension ExpressionsValidator
 	
 	public static val INVALID_NAME = 'invalidName'
 
@@ -26,6 +29,10 @@ class CMSdslValidator extends AbstractCMSdslValidator {
 					CMSdslPackage.Literals.PROJECT__NAME,
 					INVALID_NAME)
 		}
+	}
+	
+	def checkCompOperator(Or or) {
+		val isBooleanExp = or.left
 	}
 	
 }

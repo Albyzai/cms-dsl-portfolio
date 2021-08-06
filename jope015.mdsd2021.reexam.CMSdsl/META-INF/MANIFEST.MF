@@ -17,15 +17,16 @@ Require-Bundle: org.eclipse.xtext,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: jope015.mdsd2021.reexam,
- jope015.mdsd2021.reexam.parser.antlr.internal,
- jope015.mdsd2021.reexam.scoping,
- jope015.mdsd2021.reexam.parser.antlr.lexer,
- jope015.mdsd2021.reexam.parser.antlr,
+ jope015.mdsd2021.reexam.cMSdsl,
+ jope015.mdsd2021.reexam.cMSdsl.impl,
  jope015.mdsd2021.reexam.cMSdsl.util,
  jope015.mdsd2021.reexam.generator,
+ jope015.mdsd2021.reexam.parser.antlr,
+ jope015.mdsd2021.reexam.parser.antlr.internal,
+ jope015.mdsd2021.reexam.parser.antlr.lexer,
+ jope015.mdsd2021.reexam.scoping,
  jope015.mdsd2021.reexam.serializer,
  jope015.mdsd2021.reexam.services,
- jope015.mdsd2021.reexam.cMSdsl.impl,
- jope015.mdsd2021.reexam.validation,
- jope015.mdsd2021.reexam.cMSdsl
+ jope015.mdsd2021.reexam.typing,
+ jope015.mdsd2021.reexam.validation
 Import-Package: org.apache.log4j

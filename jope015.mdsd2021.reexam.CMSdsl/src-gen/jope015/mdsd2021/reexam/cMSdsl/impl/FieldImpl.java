@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -32,25 +31,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#getType <em>Type</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#getName <em>Name</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#getType <em>Type</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FieldImpl extends MinimalEObjectImpl.Container implements Field
+public class FieldImpl extends EntityDeclImpl implements Field
 {
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected DataType type;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -70,6 +59,16 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected DataType type;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -100,6 +99,31 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   protected EClass eStaticClass()
   {
     return CMSdslPackage.Literals.FIELD;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.FIELD__NAME, oldName, name));
   }
 
   /**
@@ -158,31 +182,6 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
    * @generated
    */
   @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.FIELD__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EList<FieldProp> getProperties()
   {
     if (properties == null)
@@ -220,10 +219,10 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
-      case CMSdslPackage.FIELD__TYPE:
-        return getType();
       case CMSdslPackage.FIELD__NAME:
         return getName();
+      case CMSdslPackage.FIELD__TYPE:
+        return getType();
       case CMSdslPackage.FIELD__PROPERTIES:
         return getProperties();
     }
@@ -241,11 +240,11 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
-      case CMSdslPackage.FIELD__TYPE:
-        setType((DataType)newValue);
-        return;
       case CMSdslPackage.FIELD__NAME:
         setName((String)newValue);
+        return;
+      case CMSdslPackage.FIELD__TYPE:
+        setType((DataType)newValue);
         return;
       case CMSdslPackage.FIELD__PROPERTIES:
         getProperties().clear();
@@ -265,11 +264,11 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
-      case CMSdslPackage.FIELD__TYPE:
-        setType((DataType)null);
-        return;
       case CMSdslPackage.FIELD__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case CMSdslPackage.FIELD__TYPE:
+        setType((DataType)null);
         return;
       case CMSdslPackage.FIELD__PROPERTIES:
         getProperties().clear();
@@ -288,10 +287,10 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
-      case CMSdslPackage.FIELD__TYPE:
-        return type != null;
       case CMSdslPackage.FIELD__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case CMSdslPackage.FIELD__TYPE:
+        return type != null;
       case CMSdslPackage.FIELD__PROPERTIES:
         return properties != null && !properties.isEmpty();
     }

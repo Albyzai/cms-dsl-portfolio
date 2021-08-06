@@ -10,7 +10,7 @@ Project:
 ;
 
 PrimaryElement:
-	DBConfig | Entity
+	DBConfig | Entity | Validator | Eval
 ;
 
 DBConfig:
@@ -33,37 +33,49 @@ DBDecl:
 
 Entity:
 	{Entity}
-	'entity' name=ID ':' BEGIN
-		model=EntityModel
-		(service=EntityService)?
-		(ui=EntityUI)?
+	'entity' name=ID relationship=Relationship? ':' BEGIN
+		members+=EntityDecl*
 	END
 ;
 
-
-EntityModel:
-	{EntityModel} fields+=Field*
+EntityDecl:
+	Field | ValidationCheck
 ;
 
-EntityService:
-	{EntityService}
-	'service' ':'
-;
 
-EntityUI:
-	'ui'
-;
 
 Field:
-	type=DataType name=ID ':' BEGIN
+	'field' name=ID ':' type=DataType  '=>' BEGIN
 		properties+=FieldProp*
 	END
 ;
 
 
+//ValidationCheck:
+//	'check' (Check | CheckBlock)
+//;
+
+ValidationCheck:
+	'check' validator=ValidatorUse '=>' errrorMsg=STRING 
+;
+
+CheckBlock:
+	validator=ValidatorUse '=>' BEGIN
+		statusCond+=ValidationStatus*
+	END
+;
+
+
+ValidationStatus:
+	{Err} 'error' ':' msg=STRING |
+	{Warn} 'warning' ':' msg=STRING |
+	{Succ} 'success' ':' msg=STRING
+;
+
 FieldProp:
 	{Def} type='default' ':' value=STRING |
 	{PropTest} type='test' ':' value=STRING 
+//	{Check} type='check' value=ValidatorUse
 ;
 
 
@@ -74,6 +86,88 @@ DataType:
     {Lng} type='long' | 
     {Bool} type='bool' | 
     {Flt} type='float'
+;
+
+Validator:
+	'validator' name=ID '(' params+=Parameter (',' params+=Parameter)* ')' '=>' BEGIN
+		comparison=Expression
+	END 
+;
+
+Parameter:
+	name=ID ':' type=DataType
+;
+
+ParameterUse:
+	ref=[Parameter]
+;
+
+
+ValidatorUse:
+	validator=[Validator]  '(' args+=[Field] (',' args+=[Field])* ')'
+;
+
+Argument:
+	{Argument} ref=[Field]
+;
+
+
+Relationship:
+	relationType=RelationshipType entity=[Entity]
+;
+
+RelationshipType:
+	{BelongsTo}		'belongs' 'to' |
+	{BelongsToMany}	'belongs' 'to' 'many' |
+	{HasOne}		'has' 'one' |
+	{HasMany}		'has' 'many'
+;
+//	Expressions
+
+Expression:
+	Or
+;
+
+Eval:
+	{Eval} 'eval' expression=Expression
+;
+
+Or returns Expression:
+	And ({Or.left=current} '||' right=And)*
+;
+
+And returns Expression:
+	Equality ({And.left=current} '&&' right=Equality)*
+;
+
+Equality returns Expression:
+	Comparison ({Equality.left=current} op=( '==' | '!=') right=Comparison)*
+;
+
+Comparison returns Expression:
+	PlusMinus ({Comparison.left=current} op=('>=' | '<=' | '>' | '<') right=PlusMinus)*
+;
+
+PlusMinus returns Expression:
+	MulDiv (({Plus.left=current} '+' | {Minus.left=current} '-') right=MulDiv)*
+;
+
+MulDiv returns Expression:
+	Atomic (({MulDiv.left=current} op=('*'|'/')) right=Atomic)*
+;
+
+//
+//Primary returns Expression:
+//	{Not} '!' expression=Primary |
+//	Atomic
+//;
+
+Atomic returns Expression:
+	{Num} value=INT |
+	{Str} value=STRING |
+	{Bool} value=('true'|'false') |
+	'(' Expression ')' |
+	ParameterUse
 ;
 
 

@@ -11,6 +11,8 @@ package jope015.mdsd2021.reexam.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+Validator : 'validator';
+
 Database : 'database';
 
 Hostname : 'hostname';
@@ -18,6 +20,8 @@ Hostname : 'hostname';
 Password : 'password';
 
 Username : 'username';
+
+Belongs : 'belongs';
 
 Default : 'default';
 
@@ -27,11 +31,21 @@ Library : 'library';
 
 Project : 'project';
 
-Service : 'service';
+Success : 'success';
+
+Warning : 'warning';
 
 Entity : 'entity';
 
 String : 'string';
+
+Check : 'check';
+
+Error : 'error';
+
+False : 'false';
+
+Field : 'field';
 
 Float : 'float';
 
@@ -39,17 +53,59 @@ Bool : 'bool';
 
 Date : 'date';
 
+Eval : 'eval';
+
 Long : 'long';
+
+Many : 'many';
 
 Port : 'port';
 
 Test : 'test';
 
+True : 'true';
+
+Has : 'has';
+
 Int : 'int';
 
-Ui : 'ui';
+One : 'one';
+
+ExclamationMarkEqualsSign : '!=';
+
+AmpersandAmpersand : '&&';
+
+LessThanSignEqualsSign : '<=';
+
+EqualsSignEqualsSign : '==';
+
+EqualsSignGreaterThanSign : '=>';
+
+GreaterThanSignEqualsSign : '>=';
+
+To : 'to';
+
+VerticalLineVerticalLine : '||';
+
+LeftParenthesis : '(';
+
+RightParenthesis : ')';
+
+Asterisk : '*';
+
+PlusSign : '+';
+
+Comma : ',';
+
+HyphenMinus : '-';
+
+Solidus : '/';
 
 Colon : ':';
+
+LessThanSign : '<';
+
+GreaterThanSign : '>';
 
 fragment RULE_BEGIN : ;
 

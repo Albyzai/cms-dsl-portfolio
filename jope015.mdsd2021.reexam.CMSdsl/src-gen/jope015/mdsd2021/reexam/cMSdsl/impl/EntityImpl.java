@@ -3,18 +3,25 @@
  */
 package jope015.mdsd2021.reexam.cMSdsl.impl;
 
+import java.util.Collection;
+
 import jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage;
 import jope015.mdsd2021.reexam.cMSdsl.Entity;
-import jope015.mdsd2021.reexam.cMSdsl.EntityModel;
-import jope015.mdsd2021.reexam.cMSdsl.EntityService;
+import jope015.mdsd2021.reexam.cMSdsl.EntityDecl;
+import jope015.mdsd2021.reexam.cMSdsl.Relationship;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,9 +32,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getName <em>Name</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getModel <em>Model</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getService <em>Service</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getUi <em>Ui</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getRelationship <em>Relationship</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,44 +61,24 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getModel() <em>Model</em>}' containment reference.
+   * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModel()
+   * @see #getRelationship()
    * @generated
    * @ordered
    */
-  protected EntityModel model;
+  protected Relationship relationship;
 
   /**
-   * The cached value of the '{@link #getService() <em>Service</em>}' containment reference.
+   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getService()
+   * @see #getMembers()
    * @generated
    * @ordered
    */
-  protected EntityService service;
-
-  /**
-   * The default value of the '{@link #getUi() <em>Ui</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getUi()
-   * @generated
-   * @ordered
-   */
-  protected static final String UI_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getUi() <em>Ui</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getUi()
-   * @generated
-   * @ordered
-   */
-  protected String ui = UI_EDEFAULT;
+  protected EList<EntityDecl> members;
 
   /**
    * <!-- begin-user-doc -->
@@ -146,9 +132,9 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
    * @generated
    */
   @Override
-  public EntityModel getModel()
+  public Relationship getRelationship()
   {
-    return model;
+    return relationship;
   }
 
   /**
@@ -156,13 +142,13 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetModel(EntityModel newModel, NotificationChain msgs)
+  public NotificationChain basicSetRelationship(Relationship newRelationship, NotificationChain msgs)
   {
-    EntityModel oldModel = model;
-    model = newModel;
+    Relationship oldRelationship = relationship;
+    relationship = newRelationship;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__MODEL, oldModel, newModel);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__RELATIONSHIP, oldRelationship, newRelationship);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -174,20 +160,20 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
    * @generated
    */
   @Override
-  public void setModel(EntityModel newModel)
+  public void setRelationship(Relationship newRelationship)
   {
-    if (newModel != model)
+    if (newRelationship != relationship)
     {
       NotificationChain msgs = null;
-      if (model != null)
-        msgs = ((InternalEObject)model).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__MODEL, null, msgs);
-      if (newModel != null)
-        msgs = ((InternalEObject)newModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__MODEL, null, msgs);
-      msgs = basicSetModel(newModel, msgs);
+      if (relationship != null)
+        msgs = ((InternalEObject)relationship).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__RELATIONSHIP, null, msgs);
+      if (newRelationship != null)
+        msgs = ((InternalEObject)newRelationship).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__RELATIONSHIP, null, msgs);
+      msgs = basicSetRelationship(newRelationship, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__MODEL, newModel, newModel));
+      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__RELATIONSHIP, newRelationship, newRelationship));
   }
 
   /**
@@ -196,73 +182,13 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
    * @generated
    */
   @Override
-  public EntityService getService()
+  public EList<EntityDecl> getMembers()
   {
-    return service;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetService(EntityService newService, NotificationChain msgs)
-  {
-    EntityService oldService = service;
-    service = newService;
-    if (eNotificationRequired())
+    if (members == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__SERVICE, oldService, newService);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      members = new EObjectContainmentEList<EntityDecl>(EntityDecl.class, this, CMSdslPackage.ENTITY__MEMBERS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setService(EntityService newService)
-  {
-    if (newService != service)
-    {
-      NotificationChain msgs = null;
-      if (service != null)
-        msgs = ((InternalEObject)service).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__SERVICE, null, msgs);
-      if (newService != null)
-        msgs = ((InternalEObject)newService).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__SERVICE, null, msgs);
-      msgs = basicSetService(newService, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__SERVICE, newService, newService));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getUi()
-  {
-    return ui;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setUi(String newUi)
-  {
-    String oldUi = ui;
-    ui = newUi;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__UI, oldUi, ui));
+    return members;
   }
 
   /**
@@ -275,10 +201,10 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
   {
     switch (featureID)
     {
-      case CMSdslPackage.ENTITY__MODEL:
-        return basicSetModel(null, msgs);
-      case CMSdslPackage.ENTITY__SERVICE:
-        return basicSetService(null, msgs);
+      case CMSdslPackage.ENTITY__RELATIONSHIP:
+        return basicSetRelationship(null, msgs);
+      case CMSdslPackage.ENTITY__MEMBERS:
+        return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -295,12 +221,10 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
     {
       case CMSdslPackage.ENTITY__NAME:
         return getName();
-      case CMSdslPackage.ENTITY__MODEL:
-        return getModel();
-      case CMSdslPackage.ENTITY__SERVICE:
-        return getService();
-      case CMSdslPackage.ENTITY__UI:
-        return getUi();
+      case CMSdslPackage.ENTITY__RELATIONSHIP:
+        return getRelationship();
+      case CMSdslPackage.ENTITY__MEMBERS:
+        return getMembers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -310,6 +234,7 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -318,14 +243,12 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
       case CMSdslPackage.ENTITY__NAME:
         setName((String)newValue);
         return;
-      case CMSdslPackage.ENTITY__MODEL:
-        setModel((EntityModel)newValue);
+      case CMSdslPackage.ENTITY__RELATIONSHIP:
+        setRelationship((Relationship)newValue);
         return;
-      case CMSdslPackage.ENTITY__SERVICE:
-        setService((EntityService)newValue);
-        return;
-      case CMSdslPackage.ENTITY__UI:
-        setUi((String)newValue);
+      case CMSdslPackage.ENTITY__MEMBERS:
+        getMembers().clear();
+        getMembers().addAll((Collection<? extends EntityDecl>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -344,14 +267,11 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
       case CMSdslPackage.ENTITY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case CMSdslPackage.ENTITY__MODEL:
-        setModel((EntityModel)null);
+      case CMSdslPackage.ENTITY__RELATIONSHIP:
+        setRelationship((Relationship)null);
         return;
-      case CMSdslPackage.ENTITY__SERVICE:
-        setService((EntityService)null);
-        return;
-      case CMSdslPackage.ENTITY__UI:
-        setUi(UI_EDEFAULT);
+      case CMSdslPackage.ENTITY__MEMBERS:
+        getMembers().clear();
         return;
     }
     super.eUnset(featureID);
@@ -369,12 +289,10 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
     {
       case CMSdslPackage.ENTITY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case CMSdslPackage.ENTITY__MODEL:
-        return model != null;
-      case CMSdslPackage.ENTITY__SERVICE:
-        return service != null;
-      case CMSdslPackage.ENTITY__UI:
-        return UI_EDEFAULT == null ? ui != null : !UI_EDEFAULT.equals(ui);
+      case CMSdslPackage.ENTITY__RELATIONSHIP:
+        return relationship != null;
+      case CMSdslPackage.ENTITY__MEMBERS:
+        return members != null && !members.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -392,8 +310,6 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", ui: ");
-    result.append(ui);
     result.append(')');
     return result.toString();
   }

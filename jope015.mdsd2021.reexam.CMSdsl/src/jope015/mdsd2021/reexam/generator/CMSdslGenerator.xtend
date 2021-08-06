@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
 import org.eclipse.emf.ecore.util.EcoreUtil
 import jope015.mdsd2021.reexam.cMSdsl.Project
+import javax.inject.Inject
 
 /**
  * Generates code from your model files on save.
@@ -18,10 +19,14 @@ import jope015.mdsd2021.reexam.cMSdsl.Project
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class CMSdslGenerator extends AbstractGenerator {
-
+	@Inject extension ServerGenerator
+	@Inject extension ClientGenerator
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val model = resource.allContents.filter(Project).next
 		model.display
+		model.generateServer(fsa)
+		model.generateClient(fsa)
+		
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
 //				.filter(Greeting)

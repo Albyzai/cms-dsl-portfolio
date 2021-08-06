@@ -5,8 +5,6 @@ package jope015.mdsd2021.reexam.cMSdsl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Field</b></em>'.
@@ -16,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#getType <em>Type</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#getName <em>Name</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#getType <em>Type</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#getProperties <em>Properties</em>}</li>
  * </ul>
  *
@@ -25,30 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Field extends EObject
+public interface Field extends EntityDecl
 {
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(DataType)
-   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getField_Type()
-   * @model containment="true"
-   * @generated
-   */
-  DataType getType();
-
-  /**
-   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Field#getType <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
-   * @generated
-   */
-  void setType(DataType value);
-
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -70,6 +46,28 @@ public interface Field extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(DataType)
+   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getField_Type()
+   * @model containment="true"
+   * @generated
+   */
+  DataType getType();
+
+  /**
+   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Field#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(DataType value);
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.

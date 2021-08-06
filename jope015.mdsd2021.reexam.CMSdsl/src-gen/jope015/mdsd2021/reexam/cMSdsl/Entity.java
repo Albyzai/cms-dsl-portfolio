@@ -3,6 +3,7 @@
  */
 package jope015.mdsd2021.reexam.cMSdsl;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,9 +15,8 @@ package jope015.mdsd2021.reexam.cMSdsl;
  * </p>
  * <ul>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getName <em>Name</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getModel <em>Model</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getService <em>Service</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getUi <em>Ui</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getRelationship <em>Relationship</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity()
@@ -48,69 +48,37 @@ public interface Entity extends PrimaryElement
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Model</b></em>' containment reference.
+   * Returns the value of the '<em><b>Relationship</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Model</em>' containment reference.
-   * @see #setModel(EntityModel)
-   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity_Model()
+   * @return the value of the '<em>Relationship</em>' containment reference.
+   * @see #setRelationship(Relationship)
+   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity_Relationship()
    * @model containment="true"
    * @generated
    */
-  EntityModel getModel();
+  Relationship getRelationship();
 
   /**
-   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getModel <em>Model</em>}' containment reference.
+   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getRelationship <em>Relationship</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Model</em>' containment reference.
-   * @see #getModel()
+   * @param value the new value of the '<em>Relationship</em>' containment reference.
+   * @see #getRelationship()
    * @generated
    */
-  void setModel(EntityModel value);
+  void setRelationship(Relationship value);
 
   /**
-   * Returns the value of the '<em><b>Service</b></em>' containment reference.
+   * Returns the value of the '<em><b>Members</b></em>' containment reference list.
+   * The list contents are of type {@link jope015.mdsd2021.reexam.cMSdsl.EntityDecl}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Service</em>' containment reference.
-   * @see #setService(EntityService)
-   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity_Service()
+   * @return the value of the '<em>Members</em>' containment reference list.
+   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity_Members()
    * @model containment="true"
    * @generated
    */
-  EntityService getService();
-
-  /**
-   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getService <em>Service</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Service</em>' containment reference.
-   * @see #getService()
-   * @generated
-   */
-  void setService(EntityService value);
-
-  /**
-   * Returns the value of the '<em><b>Ui</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ui</em>' attribute.
-   * @see #setUi(String)
-   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity_Ui()
-   * @model
-   * @generated
-   */
-  String getUi();
-
-  /**
-   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getUi <em>Ui</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ui</em>' attribute.
-   * @see #getUi()
-   * @generated
-   */
-  void setUi(String value);
+  EList<EntityDecl> getMembers();
 
 } // Entity
