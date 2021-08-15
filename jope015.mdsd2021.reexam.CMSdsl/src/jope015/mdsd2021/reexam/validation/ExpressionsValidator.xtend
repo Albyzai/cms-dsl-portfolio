@@ -11,7 +11,6 @@ import jope015.mdsd2021.reexam.cMSdsl.Plus
 import jope015.mdsd2021.reexam.cMSdsl.Comparison
 import jope015.mdsd2021.reexam.cMSdsl.Equality
 import jope015.mdsd2021.reexam.cMSdsl.Minus
-import jope015.mdsd2021.reexam.cMSdsl.MulDiv
 import jope015.mdsd2021.reexam.cMSdsl.Or
 import jope015.mdsd2021.reexam.cMSdsl.And
 import jope015.mdsd2021.reexam.cMSdsl.Validator
@@ -57,6 +56,7 @@ class ExpressionsValidator extends AbstractCMSdslValidator {
 		val left = getTypeAndCheckNotNull(c.left, CMSdslPackage.Literals.COMPARISON__LEFT)
 		val right = getTypeAndCheckNotNull(c.right, CMSdslPackage.Literals.COMPARISON__RIGHT)
 		val isComparable = left.isNumberType && right.isNumberType // maybe add support for comparing number to string
+		//	try to look through recursively c.left etc
 		System.out.println('isComparable: ' + isComparable)
 		
 		if(!isComparable) error('cannot compare ' + left + ' to ' + right + ' with ' + c.op , CMSdslPackage.eINSTANCE.comparison_Op)

@@ -24,8 +24,9 @@ class CMSdslGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val model = resource.allContents.filter(Project).next
 		model.display
-		model.generateServer(fsa)
 		model.generateClient(fsa)
+		model.generateServer(fsa)
+		
 		
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents

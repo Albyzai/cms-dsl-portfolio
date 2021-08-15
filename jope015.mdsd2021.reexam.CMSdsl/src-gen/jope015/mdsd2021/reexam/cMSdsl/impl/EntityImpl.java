@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getName <em>Name</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getRelationship <em>Relationship</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getRelations <em>Relations</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.EntityImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
@@ -61,14 +61,14 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' containment reference.
+   * The cached value of the '{@link #getRelations() <em>Relations</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRelationship()
+   * @see #getRelations()
    * @generated
    * @ordered
    */
-  protected Relationship relationship;
+  protected EList<Relationship> relations;
 
   /**
    * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
@@ -132,48 +132,13 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
    * @generated
    */
   @Override
-  public Relationship getRelationship()
+  public EList<Relationship> getRelations()
   {
-    return relationship;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRelationship(Relationship newRelationship, NotificationChain msgs)
-  {
-    Relationship oldRelationship = relationship;
-    relationship = newRelationship;
-    if (eNotificationRequired())
+    if (relations == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__RELATIONSHIP, oldRelationship, newRelationship);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      relations = new EObjectContainmentEList<Relationship>(Relationship.class, this, CMSdslPackage.ENTITY__RELATIONS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setRelationship(Relationship newRelationship)
-  {
-    if (newRelationship != relationship)
-    {
-      NotificationChain msgs = null;
-      if (relationship != null)
-        msgs = ((InternalEObject)relationship).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__RELATIONSHIP, null, msgs);
-      if (newRelationship != null)
-        msgs = ((InternalEObject)newRelationship).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CMSdslPackage.ENTITY__RELATIONSHIP, null, msgs);
-      msgs = basicSetRelationship(newRelationship, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.ENTITY__RELATIONSHIP, newRelationship, newRelationship));
+    return relations;
   }
 
   /**
@@ -201,8 +166,8 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
   {
     switch (featureID)
     {
-      case CMSdslPackage.ENTITY__RELATIONSHIP:
-        return basicSetRelationship(null, msgs);
+      case CMSdslPackage.ENTITY__RELATIONS:
+        return ((InternalEList<?>)getRelations()).basicRemove(otherEnd, msgs);
       case CMSdslPackage.ENTITY__MEMBERS:
         return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
     }
@@ -221,8 +186,8 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
     {
       case CMSdslPackage.ENTITY__NAME:
         return getName();
-      case CMSdslPackage.ENTITY__RELATIONSHIP:
-        return getRelationship();
+      case CMSdslPackage.ENTITY__RELATIONS:
+        return getRelations();
       case CMSdslPackage.ENTITY__MEMBERS:
         return getMembers();
     }
@@ -243,8 +208,9 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
       case CMSdslPackage.ENTITY__NAME:
         setName((String)newValue);
         return;
-      case CMSdslPackage.ENTITY__RELATIONSHIP:
-        setRelationship((Relationship)newValue);
+      case CMSdslPackage.ENTITY__RELATIONS:
+        getRelations().clear();
+        getRelations().addAll((Collection<? extends Relationship>)newValue);
         return;
       case CMSdslPackage.ENTITY__MEMBERS:
         getMembers().clear();
@@ -267,8 +233,8 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
       case CMSdslPackage.ENTITY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case CMSdslPackage.ENTITY__RELATIONSHIP:
-        setRelationship((Relationship)null);
+      case CMSdslPackage.ENTITY__RELATIONS:
+        getRelations().clear();
         return;
       case CMSdslPackage.ENTITY__MEMBERS:
         getMembers().clear();
@@ -289,8 +255,8 @@ public class EntityImpl extends PrimaryElementImpl implements Entity
     {
       case CMSdslPackage.ENTITY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case CMSdslPackage.ENTITY__RELATIONSHIP:
-        return relationship != null;
+      case CMSdslPackage.ENTITY__RELATIONS:
+        return relations != null && !relations.isEmpty();
       case CMSdslPackage.ENTITY__MEMBERS:
         return members != null && !members.isEmpty();
     }

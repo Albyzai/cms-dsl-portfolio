@@ -14,8 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#getName <em>Name</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#getType <em>Type</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#isDontShow <em>Dont Show</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Field#getProperties <em>Properties</em>}</li>
  * </ul>
  *
@@ -23,51 +22,29 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Field extends EntityDecl
+public interface Field extends EntityDecl, ParamOrArg
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Dont Show</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getField_Name()
+   * @return the value of the '<em>Dont Show</em>' attribute.
+   * @see #setDontShow(boolean)
+   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getField_DontShow()
    * @model
    * @generated
    */
-  String getName();
+  boolean isDontShow();
 
   /**
-   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Field#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Field#isDontShow <em>Dont Show</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Dont Show</em>' attribute.
+   * @see #isDontShow()
    * @generated
    */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(DataType)
-   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getField_Type()
-   * @model containment="true"
-   * @generated
-   */
-  DataType getType();
-
-  /**
-   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Field#getType <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
-   * @generated
-   */
-  void setType(DataType value);
+  void setDontShow(boolean value);
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.

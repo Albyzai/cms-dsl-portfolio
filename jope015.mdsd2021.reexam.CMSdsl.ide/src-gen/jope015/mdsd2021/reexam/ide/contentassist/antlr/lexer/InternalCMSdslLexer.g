@@ -11,6 +11,8 @@ package jope015.mdsd2021.reexam.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+InputType : 'inputType';
+
 Validator : 'validator';
 
 Database : 'database';
@@ -18,6 +20,8 @@ Database : 'database';
 Hostname : 'hostname';
 
 Password : 'password';
+
+Textarea : 'textarea';
 
 Username : 'username';
 
@@ -37,9 +41,13 @@ Warning : 'warning';
 
 Entity : 'entity';
 
+Number : 'number';
+
 String : 'string';
 
 Check : 'check';
+
+Email : 'email';
 
 Error : 'error';
 
@@ -55,6 +63,8 @@ Date : 'date';
 
 Eval : 'eval';
 
+Hide : 'hide';
+
 Long : 'long';
 
 Many : 'many';
@@ -63,7 +73,11 @@ Port : 'port';
 
 Test : 'test';
 
+Text : 'text';
+
 True : 'true';
+
+And : 'and';
 
 Has : 'has';
 

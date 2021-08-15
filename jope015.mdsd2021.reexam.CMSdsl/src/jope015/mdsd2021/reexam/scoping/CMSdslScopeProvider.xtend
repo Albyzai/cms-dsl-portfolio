@@ -7,16 +7,15 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import jope015.mdsd2021.reexam.cMSdsl.Field
 import jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage.Literals
-import jope015.mdsd2021.reexam.cMSdsl.Argument
 import org.eclipse.xtext.EcoreUtil2
 import jope015.mdsd2021.reexam.cMSdsl.Entity
 import java.util.ArrayList
-import jope015.mdsd2021.reexam.cMSdsl.ParameterUse
 import org.eclipse.xtext.scoping.Scopes
 import jope015.mdsd2021.reexam.cMSdsl.ValidatorUse
 import jope015.mdsd2021.reexam.cMSdsl.Validator
 import jope015.mdsd2021.reexam.cMSdsl.Parameter
 import jope015.mdsd2021.reexam.cMSdsl.ValidationCheck
+import jope015.mdsd2021.reexam.cMSdsl.ParamOrArgUse
 
 /**
  * This class contains custom scoping description.
@@ -61,7 +60,7 @@ class CMSdslScopeProvider extends AbstractCMSdslScopeProvider {
 ////			return Scopes.scopeFor(candidates)
 //		}
 		
-		if(context instanceof ParameterUse && reference==Literals.PARAMETER_USE__REF) {
+		if(context instanceof ParamOrArgUse && reference==Literals.PARAM_OR_ARG_USE__REF) {
 			
 			//	implement commented out code, if entity base class is implemented
 			// val seen = new HashSet<Entity>

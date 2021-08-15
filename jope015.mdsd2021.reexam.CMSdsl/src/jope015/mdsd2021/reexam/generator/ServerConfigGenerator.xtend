@@ -25,17 +25,17 @@ class ServerConfigGenerator {
 			{
 				  "development": {
 				  	«FOR decl: dbConf.config»
-				  		«decl.compile»,
+				  		«decl.compile»«IF dbConf.config.last !== decl»,«ENDIF»
 				  	«ENDFOR»
 				  },
 				  "test": {
 				    «FOR decl: dbConf.config»
-				    	«decl.compile»,
+				    	«decl.compile»«IF dbConf.config.last !== decl»,«ENDIF»
 				    «ENDFOR»
 				  },
 				  "production": {
 				    «FOR decl: dbConf.config»
-				    	«decl.compile»,
+				    	«decl.compile»«IF dbConf.config.last !== decl»,«ENDIF»
 				    «ENDFOR»
 				  }
 			}
@@ -43,11 +43,11 @@ class ServerConfigGenerator {
 		
 	'''
 		
-	def dispatch compile(Lib lib)'''"«lib.type.toString»" : "«lib.value»'''
+	def dispatch compile(Lib lib)'''"«lib.type.toString»" : "«lib.value»"'''
 	
 	def dispatch compile(Host host)'''"«host.type.toString»": "«host.value»"'''
 	
-	def dispatch compile(Port port)'''"«port.type.toString»": "«port.value»'''
+	def dispatch compile(Port port)'''"«port.type.toString»": «port.value»'''
 	
 	def dispatch compile(Dialect dial)'''"«dial.type.toString»": "«dial.value»"'''
 	

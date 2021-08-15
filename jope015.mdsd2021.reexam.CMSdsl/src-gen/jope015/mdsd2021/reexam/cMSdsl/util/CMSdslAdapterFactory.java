@@ -116,6 +116,11 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
         return createValidationCheckAdapter();
       }
       @Override
+      public Adapter caseValidatorUse(ValidatorUse object)
+      {
+        return createValidatorUseAdapter();
+      }
+      @Override
       public Adapter caseCheckBlock(CheckBlock object)
       {
         return createCheckBlockAdapter();
@@ -129,6 +134,11 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFieldProp(FieldProp object)
       {
         return createFieldPropAdapter();
+      }
+      @Override
+      public Adapter caseInputType(InputType object)
+      {
+        return createInputTypeAdapter();
       }
       @Override
       public Adapter caseDataType(DataType object)
@@ -146,19 +156,14 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
         return createParameterAdapter();
       }
       @Override
-      public Adapter caseParameterUse(ParameterUse object)
+      public Adapter caseParamOrArg(ParamOrArg object)
       {
-        return createParameterUseAdapter();
+        return createParamOrArgAdapter();
       }
       @Override
-      public Adapter caseValidatorUse(ValidatorUse object)
+      public Adapter caseParamOrArgUse(ParamOrArgUse object)
       {
-        return createValidatorUseAdapter();
-      }
-      @Override
-      public Adapter caseArgument(Argument object)
-      {
-        return createArgumentAdapter();
+        return createParamOrArgUseAdapter();
       }
       @Override
       public Adapter caseRelationship(Relationship object)
@@ -234,6 +239,41 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
       public Adapter casePropTest(PropTest object)
       {
         return createPropTestAdapter();
+      }
+      @Override
+      public Adapter caseInputField(InputField object)
+      {
+        return createInputFieldAdapter();
+      }
+      @Override
+      public Adapter caseInpMail(InpMail object)
+      {
+        return createInpMailAdapter();
+      }
+      @Override
+      public Adapter caseInpDate(InpDate object)
+      {
+        return createInpDateAdapter();
+      }
+      @Override
+      public Adapter caseInpNum(InpNum object)
+      {
+        return createInpNumAdapter();
+      }
+      @Override
+      public Adapter caseInpPass(InpPass object)
+      {
+        return createInpPassAdapter();
+      }
+      @Override
+      public Adapter caseInpText(InpText object)
+      {
+        return createInpTextAdapter();
+      }
+      @Override
+      public Adapter caseInpTextArea(InpTextArea object)
+      {
+        return createInpTextAreaAdapter();
       }
       @Override
       public Adapter caseStr(Str object)
@@ -316,9 +356,14 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
         return createMinusAdapter();
       }
       @Override
-      public Adapter caseMulDiv(MulDiv object)
+      public Adapter caseMul(Mul object)
       {
-        return createMulDivAdapter();
+        return createMulAdapter();
+      }
+      @Override
+      public Adapter caseDiv(Div object)
+      {
+        return createDivAdapter();
       }
       @Override
       public Adapter caseNum(Num object)
@@ -468,6 +513,21 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidatorUse <em>Validator Use</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.ValidatorUse
+   * @generated
+   */
+  public Adapter createValidatorUseAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.CheckBlock <em>Check Block</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -508,6 +568,21 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFieldPropAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InputType <em>Input Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InputType
+   * @generated
+   */
+  public Adapter createInputTypeAdapter()
   {
     return null;
   }
@@ -558,46 +633,31 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ParameterUse <em>Parameter Use</em>}'.
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ParamOrArg <em>Param Or Arg</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.ParameterUse
+   * @see jope015.mdsd2021.reexam.cMSdsl.ParamOrArg
    * @generated
    */
-  public Adapter createParameterUseAdapter()
+  public Adapter createParamOrArgAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidatorUse <em>Validator Use</em>}'.
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ParamOrArgUse <em>Param Or Arg Use</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.ValidatorUse
+   * @see jope015.mdsd2021.reexam.cMSdsl.ParamOrArgUse
    * @generated
    */
-  public Adapter createValidatorUseAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Argument <em>Argument</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Argument
-   * @generated
-   */
-  public Adapter createArgumentAdapter()
+  public Adapter createParamOrArgUseAdapter()
   {
     return null;
   }
@@ -823,6 +883,111 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPropTestAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InputField <em>Input Field</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InputField
+   * @generated
+   */
+  public Adapter createInputFieldAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InpMail <em>Inp Mail</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InpMail
+   * @generated
+   */
+  public Adapter createInpMailAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InpDate <em>Inp Date</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InpDate
+   * @generated
+   */
+  public Adapter createInpDateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InpNum <em>Inp Num</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InpNum
+   * @generated
+   */
+  public Adapter createInpNumAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InpPass <em>Inp Pass</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InpPass
+   * @generated
+   */
+  public Adapter createInpPassAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InpText <em>Inp Text</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InpText
+   * @generated
+   */
+  public Adapter createInpTextAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.InpTextArea <em>Inp Text Area</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.InpTextArea
+   * @generated
+   */
+  public Adapter createInpTextAreaAdapter()
   {
     return null;
   }
@@ -1068,16 +1233,31 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.MulDiv <em>Mul Div</em>}'.
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Mul <em>Mul</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.MulDiv
+   * @see jope015.mdsd2021.reexam.cMSdsl.Mul
    * @generated
    */
-  public Adapter createMulDivAdapter()
+  public Adapter createMulAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Div <em>Div</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.Div
+   * @generated
+   */
+  public Adapter createDivAdapter()
   {
     return null;
   }

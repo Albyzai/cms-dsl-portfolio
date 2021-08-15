@@ -33,7 +33,7 @@ DBDecl:
 
 Entity:
 	{Entity}
-	'entity' name=ID relationship=Relationship? ':' BEGIN
+	'entity' name=ID (relations+=Relationship ('and' relations+=Relationship)*)? ':' BEGIN
 		members+=EntityDecl*
 	END
 ;
@@ -45,9 +45,9 @@ EntityDecl:
 
 
 Field:
-	'field' name=ID ':' type=DataType  '=>' BEGIN
+	(dontShow?='hide')? 'field' name=ID ':' type=DataType  ('=>' BEGIN
 		properties+=FieldProp*
-	END
+	END)?
 ;
 
 
@@ -57,6 +57,10 @@ Field:
 
 ValidationCheck:
 	'check' validator=ValidatorUse '=>' errrorMsg=STRING 
+;
+
+ValidatorUse:
+	{ValidatorUse} validator=[Validator]  '(' args+=[Field] (',' args+=[Field])* ')'
 ;
 
 CheckBlock:
@@ -74,8 +78,18 @@ ValidationStatus:
 
 FieldProp:
 	{Def} type='default' ':' value=STRING |
-	{PropTest} type='test' ':' value=STRING 
+	{PropTest} type='test' ':' value=STRING |
+	{InputField} type='inputType' ':' value=InputType
 //	{Check} type='check' value=ValidatorUse
+;
+
+InputType:
+	{InpMail} type='email' |
+	{InpDate} type='date' |
+	{InpNum} type='number' |
+	{InpPass} type='password' |
+	{InpText} type='text' |
+	{InpTextArea} type='textarea'
 ;
 
 
@@ -98,18 +112,28 @@ Parameter:
 	name=ID ':' type=DataType
 ;
 
-ParameterUse:
-	ref=[Parameter]
+ParamOrArg:
+	Parameter | Field
 ;
 
-
-ValidatorUse:
-	validator=[Validator]  '(' args+=[Field] (',' args+=[Field])* ')'
+ParamOrArgUse:
+	ref=[ParamOrArg]
 ;
 
-Argument:
-	{Argument} ref=[Field]
-;
+//ParameterUse:
+//	{ParameterUse} ref=[Parameter|Field]
+//;
+//
+//
+//
+//ArgumentUse:
+//	ref=[Field]
+//;
+
+
+
+
+
 
 
 Relationship:
@@ -153,21 +177,20 @@ PlusMinus returns Expression:
 ;
 
 MulDiv returns Expression:
-	Atomic (({MulDiv.left=current} op=('*'|'/')) right=Atomic)*
+	Primary (({Mul.left=current} '*' | {Div.left=current} '/') right=Primary)*
 ;
 
-//
-//Primary returns Expression:
-//	{Not} '!' expression=Primary |
-//	Atomic
-//;
+
+Primary returns Expression:
+	'(' Expression ')' |
+	Atomic
+;
 
 Atomic returns Expression:
 	{Num} value=INT |
 	{Str} value=STRING |
 	{Bool} value=('true'|'false') |
-	'(' Expression ')' |
-	ParameterUse
+	ParamOrArgUse
 ;
 
 

@@ -6,7 +6,6 @@ package jope015.mdsd2021.reexam.serializer;
 import com.google.inject.Inject;
 import java.util.Set;
 import jope015.mdsd2021.reexam.cMSdsl.And;
-import jope015.mdsd2021.reexam.cMSdsl.Argument;
 import jope015.mdsd2021.reexam.cMSdsl.BelongsTo;
 import jope015.mdsd2021.reexam.cMSdsl.BelongsToMany;
 import jope015.mdsd2021.reexam.cMSdsl.Bool;
@@ -16,6 +15,7 @@ import jope015.mdsd2021.reexam.cMSdsl.Comparison;
 import jope015.mdsd2021.reexam.cMSdsl.DBConfig;
 import jope015.mdsd2021.reexam.cMSdsl.Def;
 import jope015.mdsd2021.reexam.cMSdsl.Dialect;
+import jope015.mdsd2021.reexam.cMSdsl.Div;
 import jope015.mdsd2021.reexam.cMSdsl.Dt;
 import jope015.mdsd2021.reexam.cMSdsl.Entity;
 import jope015.mdsd2021.reexam.cMSdsl.Equality;
@@ -26,14 +26,21 @@ import jope015.mdsd2021.reexam.cMSdsl.Flt;
 import jope015.mdsd2021.reexam.cMSdsl.HasMany;
 import jope015.mdsd2021.reexam.cMSdsl.HasOne;
 import jope015.mdsd2021.reexam.cMSdsl.Host;
+import jope015.mdsd2021.reexam.cMSdsl.InpDate;
+import jope015.mdsd2021.reexam.cMSdsl.InpMail;
+import jope015.mdsd2021.reexam.cMSdsl.InpNum;
+import jope015.mdsd2021.reexam.cMSdsl.InpPass;
+import jope015.mdsd2021.reexam.cMSdsl.InpText;
+import jope015.mdsd2021.reexam.cMSdsl.InpTextArea;
+import jope015.mdsd2021.reexam.cMSdsl.InputField;
 import jope015.mdsd2021.reexam.cMSdsl.Integ;
 import jope015.mdsd2021.reexam.cMSdsl.Lib;
 import jope015.mdsd2021.reexam.cMSdsl.Lng;
 import jope015.mdsd2021.reexam.cMSdsl.Minus;
-import jope015.mdsd2021.reexam.cMSdsl.MulDiv;
+import jope015.mdsd2021.reexam.cMSdsl.Mul;
 import jope015.mdsd2021.reexam.cMSdsl.Num;
 import jope015.mdsd2021.reexam.cMSdsl.Or;
-import jope015.mdsd2021.reexam.cMSdsl.ParameterUse;
+import jope015.mdsd2021.reexam.cMSdsl.ParamOrArgUse;
 import jope015.mdsd2021.reexam.cMSdsl.Pass;
 import jope015.mdsd2021.reexam.cMSdsl.Plus;
 import jope015.mdsd2021.reexam.cMSdsl.Port;
@@ -75,9 +82,6 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case CMSdslPackage.AND:
 				sequence_And(context, (And) semanticObject); 
 				return; 
-			case CMSdslPackage.ARGUMENT:
-				sequence_Argument(context, (Argument) semanticObject); 
-				return; 
 			case CMSdslPackage.BELONGS_TO:
 				sequence_RelationshipType(context, (BelongsTo) semanticObject); 
 				return; 
@@ -98,7 +102,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 						|| action == grammarAccess.getPlusMinusAccess().getPlusLeftAction_1_0_0_0()
 						|| action == grammarAccess.getPlusMinusAccess().getMinusLeftAction_1_0_1_0()
 						|| rule == grammarAccess.getMulDivRule()
-						|| action == grammarAccess.getMulDivAccess().getMulDivLeftAction_1_0_0()
+						|| action == grammarAccess.getMulDivAccess().getMulLeftAction_1_0_0_0()
+						|| action == grammarAccess.getMulDivAccess().getDivLeftAction_1_0_1_0()
+						|| rule == grammarAccess.getPrimaryRule()
 						|| rule == grammarAccess.getAtomicRule()) {
 					sequence_Atomic(context, (Bool) semanticObject); 
 					return; 
@@ -122,6 +128,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case CMSdslPackage.DIALECT:
 				sequence_DBDecl(context, (Dialect) semanticObject); 
+				return; 
+			case CMSdslPackage.DIV:
+				sequence_MulDiv(context, (Div) semanticObject); 
 				return; 
 			case CMSdslPackage.DT:
 				sequence_DataType(context, (Dt) semanticObject); 
@@ -153,6 +162,27 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case CMSdslPackage.HOST:
 				sequence_DBDecl(context, (Host) semanticObject); 
 				return; 
+			case CMSdslPackage.INP_DATE:
+				sequence_InputType(context, (InpDate) semanticObject); 
+				return; 
+			case CMSdslPackage.INP_MAIL:
+				sequence_InputType(context, (InpMail) semanticObject); 
+				return; 
+			case CMSdslPackage.INP_NUM:
+				sequence_InputType(context, (InpNum) semanticObject); 
+				return; 
+			case CMSdslPackage.INP_PASS:
+				sequence_InputType(context, (InpPass) semanticObject); 
+				return; 
+			case CMSdslPackage.INP_TEXT:
+				sequence_InputType(context, (InpText) semanticObject); 
+				return; 
+			case CMSdslPackage.INP_TEXT_AREA:
+				sequence_InputType(context, (InpTextArea) semanticObject); 
+				return; 
+			case CMSdslPackage.INPUT_FIELD:
+				sequence_FieldProp(context, (InputField) semanticObject); 
+				return; 
 			case CMSdslPackage.INTEG:
 				sequence_DataType(context, (Integ) semanticObject); 
 				return; 
@@ -165,8 +195,8 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case CMSdslPackage.MINUS:
 				sequence_PlusMinus(context, (Minus) semanticObject); 
 				return; 
-			case CMSdslPackage.MUL_DIV:
-				sequence_MulDiv(context, (MulDiv) semanticObject); 
+			case CMSdslPackage.MUL:
+				sequence_MulDiv(context, (Mul) semanticObject); 
 				return; 
 			case CMSdslPackage.NUM:
 				sequence_Atomic(context, (Num) semanticObject); 
@@ -174,11 +204,11 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case CMSdslPackage.OR:
 				sequence_Or(context, (Or) semanticObject); 
 				return; 
+			case CMSdslPackage.PARAM_OR_ARG_USE:
+				sequence_ParamOrArgUse(context, (ParamOrArgUse) semanticObject); 
+				return; 
 			case CMSdslPackage.PARAMETER:
 				sequence_Parameter(context, (jope015.mdsd2021.reexam.cMSdsl.Parameter) semanticObject); 
-				return; 
-			case CMSdslPackage.PARAMETER_USE:
-				sequence_ParameterUse(context, (ParameterUse) semanticObject); 
 				return; 
 			case CMSdslPackage.PASS:
 				sequence_DBDecl(context, (Pass) semanticObject); 
@@ -212,7 +242,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 						|| action == grammarAccess.getPlusMinusAccess().getPlusLeftAction_1_0_0_0()
 						|| action == grammarAccess.getPlusMinusAccess().getMinusLeftAction_1_0_1_0()
 						|| rule == grammarAccess.getMulDivRule()
-						|| action == grammarAccess.getMulDivAccess().getMulDivLeftAction_1_0_0()
+						|| action == grammarAccess.getMulDivAccess().getMulLeftAction_1_0_0_0()
+						|| action == grammarAccess.getMulDivAccess().getDivLeftAction_1_0_1_0()
+						|| rule == grammarAccess.getPrimaryRule()
 						|| rule == grammarAccess.getAtomicRule()) {
 					sequence_Atomic(context, (Str) semanticObject); 
 					return; 
@@ -260,8 +292,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns And
 	 *     PlusMinus.Minus_1_0_1_0 returns And
 	 *     MulDiv returns And
-	 *     MulDiv.MulDiv_1_0_0 returns And
-	 *     Atomic returns And
+	 *     MulDiv.Mul_1_0_0_0 returns And
+	 *     MulDiv.Div_1_0_1_0 returns And
+	 *     Primary returns And
 	 *
 	 * Constraint:
 	 *     (left=And_And_1_0 right=Equality)
@@ -282,24 +315,6 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Argument returns Argument
-	 *
-	 * Constraint:
-	 *     ref=[Field|ID]
-	 */
-	protected void sequence_Argument(ISerializationContext context, Argument semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.ARGUMENT__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.ARGUMENT__REF));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getArgumentAccess().getRefFieldIDTerminalRuleCall_1_0_1(), semanticObject.eGet(CMSdslPackage.Literals.ARGUMENT__REF, false));
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Expression returns Bool
 	 *     Or returns Bool
 	 *     Or.Or_1_0 returns Bool
@@ -313,7 +328,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Bool
 	 *     PlusMinus.Minus_1_0_1_0 returns Bool
 	 *     MulDiv returns Bool
-	 *     MulDiv.MulDiv_1_0_0 returns Bool
+	 *     MulDiv.Mul_1_0_0_0 returns Bool
+	 *     MulDiv.Div_1_0_1_0 returns Bool
+	 *     Primary returns Bool
 	 *     Atomic returns Bool
 	 *
 	 * Constraint:
@@ -339,7 +356,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Num
 	 *     PlusMinus.Minus_1_0_1_0 returns Num
 	 *     MulDiv returns Num
-	 *     MulDiv.MulDiv_1_0_0 returns Num
+	 *     MulDiv.Mul_1_0_0_0 returns Num
+	 *     MulDiv.Div_1_0_1_0 returns Num
+	 *     Primary returns Num
 	 *     Atomic returns Num
 	 *
 	 * Constraint:
@@ -371,7 +390,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Str
 	 *     PlusMinus.Minus_1_0_1_0 returns Str
 	 *     MulDiv returns Str
-	 *     MulDiv.MulDiv_1_0_0 returns Str
+	 *     MulDiv.Mul_1_0_0_0 returns Str
+	 *     MulDiv.Div_1_0_1_0 returns Str
+	 *     Primary returns Str
 	 *     Atomic returns Str
 	 *
 	 * Constraint:
@@ -415,8 +436,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Comparison
 	 *     PlusMinus.Minus_1_0_1_0 returns Comparison
 	 *     MulDiv returns Comparison
-	 *     MulDiv.MulDiv_1_0_0 returns Comparison
-	 *     Atomic returns Comparison
+	 *     MulDiv.Mul_1_0_0_0 returns Comparison
+	 *     MulDiv.Div_1_0_1_0 returns Comparison
+	 *     Primary returns Comparison
 	 *
 	 * Constraint:
 	 *     (left=Comparison_Comparison_1_0 (op='>=' | op='<=' | op='>' | op='<') right=PlusMinus)
@@ -679,7 +701,7 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Entity returns Entity
 	 *
 	 * Constraint:
-	 *     (name=ID relationship=Relationship? members+=EntityDecl*)
+	 *     (name=ID (relations+=Relationship relations+=Relationship*)? members+=EntityDecl*)
 	 */
 	protected void sequence_Entity(ISerializationContext context, Entity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -701,8 +723,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Equality
 	 *     PlusMinus.Minus_1_0_1_0 returns Equality
 	 *     MulDiv returns Equality
-	 *     MulDiv.MulDiv_1_0_0 returns Equality
-	 *     Atomic returns Equality
+	 *     MulDiv.Mul_1_0_0_0 returns Equality
+	 *     MulDiv.Div_1_0_1_0 returns Equality
+	 *     Primary returns Equality
 	 *
 	 * Constraint:
 	 *     (left=Equality_Equality_1_0 (op='==' | op='!=') right=Comparison)
@@ -742,12 +765,33 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE));
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__VALUE));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.DEF__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.DEF__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFieldPropAccess().getTypeDefaultKeyword_0_1_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getFieldPropAccess().getValueSTRINGTerminalRuleCall_0_3_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FieldProp returns InputField
+	 *
+	 * Constraint:
+	 *     (type='inputType' value=InputType)
+	 */
+	protected void sequence_FieldProp(ISerializationContext context, InputField semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.INPUT_FIELD__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.INPUT_FIELD__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFieldPropAccess().getTypeInputTypeKeyword_2_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getFieldPropAccess().getValueInputTypeParserRuleCall_2_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -763,8 +807,8 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE));
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__VALUE));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.PROP_TEST__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.PROP_TEST__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFieldPropAccess().getTypeTestKeyword_1_1_0(), semanticObject.getType());
@@ -777,9 +821,10 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 * Contexts:
 	 *     EntityDecl returns Field
 	 *     Field returns Field
+	 *     ParamOrArg returns Field
 	 *
 	 * Constraint:
-	 *     (name=ID type=DataType properties+=FieldProp*)
+	 *     (dontShow?='hide'? name=ID type=DataType properties+=FieldProp*)
 	 */
 	protected void sequence_Field(ISerializationContext context, Field semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -788,27 +833,181 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Expression returns MulDiv
-	 *     Or returns MulDiv
-	 *     Or.Or_1_0 returns MulDiv
-	 *     And returns MulDiv
-	 *     And.And_1_0 returns MulDiv
-	 *     Equality returns MulDiv
-	 *     Equality.Equality_1_0 returns MulDiv
-	 *     Comparison returns MulDiv
-	 *     Comparison.Comparison_1_0 returns MulDiv
-	 *     PlusMinus returns MulDiv
-	 *     PlusMinus.Plus_1_0_0_0 returns MulDiv
-	 *     PlusMinus.Minus_1_0_1_0 returns MulDiv
-	 *     MulDiv returns MulDiv
-	 *     MulDiv.MulDiv_1_0_0 returns MulDiv
-	 *     Atomic returns MulDiv
+	 *     InputType returns InpDate
 	 *
 	 * Constraint:
-	 *     (left=MulDiv_MulDiv_1_0_0 (op='*' | op='/') right=Atomic)
+	 *     type='date'
 	 */
-	protected void sequence_MulDiv(ISerializationContext context, MulDiv semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_InputType(ISerializationContext context, InpDate semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInputTypeAccess().getTypeDateKeyword_1_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InputType returns InpMail
+	 *
+	 * Constraint:
+	 *     type='email'
+	 */
+	protected void sequence_InputType(ISerializationContext context, InpMail semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInputTypeAccess().getTypeEmailKeyword_0_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InputType returns InpNum
+	 *
+	 * Constraint:
+	 *     type='number'
+	 */
+	protected void sequence_InputType(ISerializationContext context, InpNum semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInputTypeAccess().getTypeNumberKeyword_2_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InputType returns InpPass
+	 *
+	 * Constraint:
+	 *     type='password'
+	 */
+	protected void sequence_InputType(ISerializationContext context, InpPass semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInputTypeAccess().getTypePasswordKeyword_3_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InputType returns InpText
+	 *
+	 * Constraint:
+	 *     type='text'
+	 */
+	protected void sequence_InputType(ISerializationContext context, InpText semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInputTypeAccess().getTypeTextKeyword_4_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InputType returns InpTextArea
+	 *
+	 * Constraint:
+	 *     type='textarea'
+	 */
+	protected void sequence_InputType(ISerializationContext context, InpTextArea semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.INPUT_TYPE__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInputTypeAccess().getTypeTextareaKeyword_5_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns Div
+	 *     Or returns Div
+	 *     Or.Or_1_0 returns Div
+	 *     And returns Div
+	 *     And.And_1_0 returns Div
+	 *     Equality returns Div
+	 *     Equality.Equality_1_0 returns Div
+	 *     Comparison returns Div
+	 *     Comparison.Comparison_1_0 returns Div
+	 *     PlusMinus returns Div
+	 *     PlusMinus.Plus_1_0_0_0 returns Div
+	 *     PlusMinus.Minus_1_0_1_0 returns Div
+	 *     MulDiv returns Div
+	 *     MulDiv.Mul_1_0_0_0 returns Div
+	 *     MulDiv.Div_1_0_1_0 returns Div
+	 *     Primary returns Div
+	 *
+	 * Constraint:
+	 *     (left=MulDiv_Div_1_0_1_0 right=Primary)
+	 */
+	protected void sequence_MulDiv(ISerializationContext context, Div semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.DIV__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.DIV__LEFT));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.DIV__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.DIV__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMulDivAccess().getDivLeftAction_1_0_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getMulDivAccess().getRightPrimaryParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns Mul
+	 *     Or returns Mul
+	 *     Or.Or_1_0 returns Mul
+	 *     And returns Mul
+	 *     And.And_1_0 returns Mul
+	 *     Equality returns Mul
+	 *     Equality.Equality_1_0 returns Mul
+	 *     Comparison returns Mul
+	 *     Comparison.Comparison_1_0 returns Mul
+	 *     PlusMinus returns Mul
+	 *     PlusMinus.Plus_1_0_0_0 returns Mul
+	 *     PlusMinus.Minus_1_0_1_0 returns Mul
+	 *     MulDiv returns Mul
+	 *     MulDiv.Mul_1_0_0_0 returns Mul
+	 *     MulDiv.Div_1_0_1_0 returns Mul
+	 *     Primary returns Mul
+	 *
+	 * Constraint:
+	 *     (left=MulDiv_Mul_1_0_0_0 right=Primary)
+	 */
+	protected void sequence_MulDiv(ISerializationContext context, Mul semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.MUL__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.MUL__LEFT));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.MUL__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.MUL__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMulDivAccess().getMulLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getMulDivAccess().getRightPrimaryParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
@@ -827,8 +1026,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Or
 	 *     PlusMinus.Minus_1_0_1_0 returns Or
 	 *     MulDiv returns Or
-	 *     MulDiv.MulDiv_1_0_0 returns Or
-	 *     Atomic returns Or
+	 *     MulDiv.Mul_1_0_0_0 returns Or
+	 *     MulDiv.Div_1_0_1_0 returns Or
+	 *     Primary returns Or
 	 *
 	 * Constraint:
 	 *     (left=Or_Or_1_0 right=And)
@@ -849,33 +1049,35 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     ParameterUse returns ParameterUse
-	 *     Expression returns ParameterUse
-	 *     Or returns ParameterUse
-	 *     Or.Or_1_0 returns ParameterUse
-	 *     And returns ParameterUse
-	 *     And.And_1_0 returns ParameterUse
-	 *     Equality returns ParameterUse
-	 *     Equality.Equality_1_0 returns ParameterUse
-	 *     Comparison returns ParameterUse
-	 *     Comparison.Comparison_1_0 returns ParameterUse
-	 *     PlusMinus returns ParameterUse
-	 *     PlusMinus.Plus_1_0_0_0 returns ParameterUse
-	 *     PlusMinus.Minus_1_0_1_0 returns ParameterUse
-	 *     MulDiv returns ParameterUse
-	 *     MulDiv.MulDiv_1_0_0 returns ParameterUse
-	 *     Atomic returns ParameterUse
+	 *     ParamOrArgUse returns ParamOrArgUse
+	 *     Expression returns ParamOrArgUse
+	 *     Or returns ParamOrArgUse
+	 *     Or.Or_1_0 returns ParamOrArgUse
+	 *     And returns ParamOrArgUse
+	 *     And.And_1_0 returns ParamOrArgUse
+	 *     Equality returns ParamOrArgUse
+	 *     Equality.Equality_1_0 returns ParamOrArgUse
+	 *     Comparison returns ParamOrArgUse
+	 *     Comparison.Comparison_1_0 returns ParamOrArgUse
+	 *     PlusMinus returns ParamOrArgUse
+	 *     PlusMinus.Plus_1_0_0_0 returns ParamOrArgUse
+	 *     PlusMinus.Minus_1_0_1_0 returns ParamOrArgUse
+	 *     MulDiv returns ParamOrArgUse
+	 *     MulDiv.Mul_1_0_0_0 returns ParamOrArgUse
+	 *     MulDiv.Div_1_0_1_0 returns ParamOrArgUse
+	 *     Primary returns ParamOrArgUse
+	 *     Atomic returns ParamOrArgUse
 	 *
 	 * Constraint:
-	 *     ref=[Parameter|ID]
+	 *     ref=[ParamOrArg|ID]
 	 */
-	protected void sequence_ParameterUse(ISerializationContext context, ParameterUse semanticObject) {
+	protected void sequence_ParamOrArgUse(ISerializationContext context, ParamOrArgUse semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.PARAMETER_USE__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.PARAMETER_USE__REF));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.PARAM_OR_ARG_USE__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.PARAM_OR_ARG_USE__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParameterUseAccess().getRefParameterIDTerminalRuleCall_0_1(), semanticObject.eGet(CMSdslPackage.Literals.PARAMETER_USE__REF, false));
+		feeder.accept(grammarAccess.getParamOrArgUseAccess().getRefParamOrArgIDTerminalRuleCall_0_1(), semanticObject.eGet(CMSdslPackage.Literals.PARAM_OR_ARG_USE__REF, false));
 		feeder.finish();
 	}
 	
@@ -883,16 +1085,17 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	/**
 	 * Contexts:
 	 *     Parameter returns Parameter
+	 *     ParamOrArg returns Parameter
 	 *
 	 * Constraint:
 	 *     (name=ID type=DataType)
 	 */
 	protected void sequence_Parameter(ISerializationContext context, jope015.mdsd2021.reexam.cMSdsl.Parameter semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.PARAMETER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.PARAMETER__NAME));
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.PARAMETER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.PARAMETER__TYPE));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.PARAM_OR_ARG__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.PARAM_OR_ARG__NAME));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.PARAM_OR_ARG__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.PARAM_OR_ARG__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
@@ -916,8 +1119,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Minus
 	 *     PlusMinus.Minus_1_0_1_0 returns Minus
 	 *     MulDiv returns Minus
-	 *     MulDiv.MulDiv_1_0_0 returns Minus
-	 *     Atomic returns Minus
+	 *     MulDiv.Mul_1_0_0_0 returns Minus
+	 *     MulDiv.Div_1_0_1_0 returns Minus
+	 *     Primary returns Minus
 	 *
 	 * Constraint:
 	 *     (left=PlusMinus_Minus_1_0_1_0 right=MulDiv)
@@ -951,8 +1155,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     PlusMinus.Plus_1_0_0_0 returns Plus
 	 *     PlusMinus.Minus_1_0_1_0 returns Plus
 	 *     MulDiv returns Plus
-	 *     MulDiv.MulDiv_1_0_0 returns Plus
-	 *     Atomic returns Plus
+	 *     MulDiv.Mul_1_0_0_0 returns Plus
+	 *     MulDiv.Div_1_0_1_0 returns Plus
+	 *     Primary returns Plus
 	 *
 	 * Constraint:
 	 *     (left=PlusMinus_Plus_1_0_0_0 right=MulDiv)

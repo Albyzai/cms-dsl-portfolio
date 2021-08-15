@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldPropImpl#getType <em>Type</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldPropImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,26 +47,6 @@ public class FieldPropImpl extends MinimalEObjectImpl.Container implements Field
    * @ordered
    */
   protected String type = TYPE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,39 +100,12 @@ public class FieldPropImpl extends MinimalEObjectImpl.Container implements Field
    * @generated
    */
   @Override
-  public String getValue()
-  {
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setValue(String newValue)
-  {
-    String oldValue = value;
-    value = newValue;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.FIELD_PROP__VALUE, oldValue, value));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case CMSdslPackage.FIELD_PROP__TYPE:
         return getType();
-      case CMSdslPackage.FIELD_PROP__VALUE:
-        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -170,9 +122,6 @@ public class FieldPropImpl extends MinimalEObjectImpl.Container implements Field
     {
       case CMSdslPackage.FIELD_PROP__TYPE:
         setType((String)newValue);
-        return;
-      case CMSdslPackage.FIELD_PROP__VALUE:
-        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -191,9 +140,6 @@ public class FieldPropImpl extends MinimalEObjectImpl.Container implements Field
       case CMSdslPackage.FIELD_PROP__TYPE:
         setType(TYPE_EDEFAULT);
         return;
-      case CMSdslPackage.FIELD_PROP__VALUE:
-        setValue(VALUE_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -210,8 +156,6 @@ public class FieldPropImpl extends MinimalEObjectImpl.Container implements Field
     {
       case CMSdslPackage.FIELD_PROP__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-      case CMSdslPackage.FIELD_PROP__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -229,8 +173,6 @@ public class FieldPropImpl extends MinimalEObjectImpl.Container implements Field
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (type: ");
     result.append(type);
-    result.append(", value: ");
-    result.append(value);
     result.append(')');
     return result.toString();
   }

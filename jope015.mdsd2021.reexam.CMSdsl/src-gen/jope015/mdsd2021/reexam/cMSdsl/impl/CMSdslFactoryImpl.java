@@ -73,15 +73,16 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
       case CMSdslPackage.ENTITY_DECL: return createEntityDecl();
       case CMSdslPackage.FIELD: return createField();
       case CMSdslPackage.VALIDATION_CHECK: return createValidationCheck();
+      case CMSdslPackage.VALIDATOR_USE: return createValidatorUse();
       case CMSdslPackage.CHECK_BLOCK: return createCheckBlock();
       case CMSdslPackage.VALIDATION_STATUS: return createValidationStatus();
       case CMSdslPackage.FIELD_PROP: return createFieldProp();
+      case CMSdslPackage.INPUT_TYPE: return createInputType();
       case CMSdslPackage.DATA_TYPE: return createDataType();
       case CMSdslPackage.VALIDATOR: return createValidator();
       case CMSdslPackage.PARAMETER: return createParameter();
-      case CMSdslPackage.PARAMETER_USE: return createParameterUse();
-      case CMSdslPackage.VALIDATOR_USE: return createValidatorUse();
-      case CMSdslPackage.ARGUMENT: return createArgument();
+      case CMSdslPackage.PARAM_OR_ARG: return createParamOrArg();
+      case CMSdslPackage.PARAM_OR_ARG_USE: return createParamOrArgUse();
       case CMSdslPackage.RELATIONSHIP: return createRelationship();
       case CMSdslPackage.RELATIONSHIP_TYPE: return createRelationshipType();
       case CMSdslPackage.EXPRESSION: return createExpression();
@@ -97,6 +98,13 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
       case CMSdslPackage.SUCC: return createSucc();
       case CMSdslPackage.DEF: return createDef();
       case CMSdslPackage.PROP_TEST: return createPropTest();
+      case CMSdslPackage.INPUT_FIELD: return createInputField();
+      case CMSdslPackage.INP_MAIL: return createInpMail();
+      case CMSdslPackage.INP_DATE: return createInpDate();
+      case CMSdslPackage.INP_NUM: return createInpNum();
+      case CMSdslPackage.INP_PASS: return createInpPass();
+      case CMSdslPackage.INP_TEXT: return createInpText();
+      case CMSdslPackage.INP_TEXT_AREA: return createInpTextArea();
       case CMSdslPackage.STR: return createStr();
       case CMSdslPackage.DT: return createDt();
       case CMSdslPackage.INTEG: return createInteg();
@@ -113,7 +121,8 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
       case CMSdslPackage.COMPARISON: return createComparison();
       case CMSdslPackage.PLUS: return createPlus();
       case CMSdslPackage.MINUS: return createMinus();
-      case CMSdslPackage.MUL_DIV: return createMulDiv();
+      case CMSdslPackage.MUL: return createMul();
+      case CMSdslPackage.DIV: return createDiv();
       case CMSdslPackage.NUM: return createNum();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -222,6 +231,18 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
+  public ValidatorUse createValidatorUse()
+  {
+    ValidatorUseImpl validatorUse = new ValidatorUseImpl();
+    return validatorUse;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public CheckBlock createCheckBlock()
   {
     CheckBlockImpl checkBlock = new CheckBlockImpl();
@@ -250,6 +271,18 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
   {
     FieldPropImpl fieldProp = new FieldPropImpl();
     return fieldProp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InputType createInputType()
+  {
+    InputTypeImpl inputType = new InputTypeImpl();
+    return inputType;
   }
 
   /**
@@ -294,10 +327,10 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
-  public ParameterUse createParameterUse()
+  public ParamOrArg createParamOrArg()
   {
-    ParameterUseImpl parameterUse = new ParameterUseImpl();
-    return parameterUse;
+    ParamOrArgImpl paramOrArg = new ParamOrArgImpl();
+    return paramOrArg;
   }
 
   /**
@@ -306,22 +339,10 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
-  public ValidatorUse createValidatorUse()
+  public ParamOrArgUse createParamOrArgUse()
   {
-    ValidatorUseImpl validatorUse = new ValidatorUseImpl();
-    return validatorUse;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Argument createArgument()
-  {
-    ArgumentImpl argument = new ArgumentImpl();
-    return argument;
+    ParamOrArgUseImpl paramOrArgUse = new ParamOrArgUseImpl();
+    return paramOrArgUse;
   }
 
   /**
@@ -502,6 +523,90 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
   {
     PropTestImpl propTest = new PropTestImpl();
     return propTest;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InputField createInputField()
+  {
+    InputFieldImpl inputField = new InputFieldImpl();
+    return inputField;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InpMail createInpMail()
+  {
+    InpMailImpl inpMail = new InpMailImpl();
+    return inpMail;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InpDate createInpDate()
+  {
+    InpDateImpl inpDate = new InpDateImpl();
+    return inpDate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InpNum createInpNum()
+  {
+    InpNumImpl inpNum = new InpNumImpl();
+    return inpNum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InpPass createInpPass()
+  {
+    InpPassImpl inpPass = new InpPassImpl();
+    return inpPass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InpText createInpText()
+  {
+    InpTextImpl inpText = new InpTextImpl();
+    return inpText;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InpTextArea createInpTextArea()
+  {
+    InpTextAreaImpl inpTextArea = new InpTextAreaImpl();
+    return inpTextArea;
   }
 
   /**
@@ -702,10 +807,22 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
-  public MulDiv createMulDiv()
+  public Mul createMul()
   {
-    MulDivImpl mulDiv = new MulDivImpl();
-    return mulDiv;
+    MulImpl mul = new MulImpl();
+    return mul;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Div createDiv()
+  {
+    DivImpl div = new DivImpl();
+    return div;
   }
 
   /**

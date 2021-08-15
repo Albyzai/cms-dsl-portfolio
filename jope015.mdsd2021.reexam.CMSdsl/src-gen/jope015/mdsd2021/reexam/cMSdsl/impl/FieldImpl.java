@@ -9,6 +9,7 @@ import jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage;
 import jope015.mdsd2021.reexam.cMSdsl.DataType;
 import jope015.mdsd2021.reexam.cMSdsl.Field;
 import jope015.mdsd2021.reexam.cMSdsl.FieldProp;
+import jope015.mdsd2021.reexam.cMSdsl.ParamOrArg;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#getName <em>Name</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#getType <em>Type</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#isDontShow <em>Dont Show</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
@@ -69,6 +71,26 @@ public class FieldImpl extends EntityDeclImpl implements Field
    * @ordered
    */
   protected DataType type;
+
+  /**
+   * The default value of the '{@link #isDontShow() <em>Dont Show</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDontShow()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean DONT_SHOW_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isDontShow() <em>Dont Show</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDontShow()
+   * @generated
+   * @ordered
+   */
+  protected boolean dontShow = DONT_SHOW_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -182,6 +204,31 @@ public class FieldImpl extends EntityDeclImpl implements Field
    * @generated
    */
   @Override
+  public boolean isDontShow()
+  {
+    return dontShow;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDontShow(boolean newDontShow)
+  {
+    boolean oldDontShow = dontShow;
+    dontShow = newDontShow;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CMSdslPackage.FIELD__DONT_SHOW, oldDontShow, dontShow));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<FieldProp> getProperties()
   {
     if (properties == null)
@@ -223,6 +270,8 @@ public class FieldImpl extends EntityDeclImpl implements Field
         return getName();
       case CMSdslPackage.FIELD__TYPE:
         return getType();
+      case CMSdslPackage.FIELD__DONT_SHOW:
+        return isDontShow();
       case CMSdslPackage.FIELD__PROPERTIES:
         return getProperties();
     }
@@ -245,6 +294,9 @@ public class FieldImpl extends EntityDeclImpl implements Field
         return;
       case CMSdslPackage.FIELD__TYPE:
         setType((DataType)newValue);
+        return;
+      case CMSdslPackage.FIELD__DONT_SHOW:
+        setDontShow((Boolean)newValue);
         return;
       case CMSdslPackage.FIELD__PROPERTIES:
         getProperties().clear();
@@ -270,6 +322,9 @@ public class FieldImpl extends EntityDeclImpl implements Field
       case CMSdslPackage.FIELD__TYPE:
         setType((DataType)null);
         return;
+      case CMSdslPackage.FIELD__DONT_SHOW:
+        setDontShow(DONT_SHOW_EDEFAULT);
+        return;
       case CMSdslPackage.FIELD__PROPERTIES:
         getProperties().clear();
         return;
@@ -291,10 +346,52 @@ public class FieldImpl extends EntityDeclImpl implements Field
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case CMSdslPackage.FIELD__TYPE:
         return type != null;
+      case CMSdslPackage.FIELD__DONT_SHOW:
+        return dontShow != DONT_SHOW_EDEFAULT;
       case CMSdslPackage.FIELD__PROPERTIES:
         return properties != null && !properties.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == ParamOrArg.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case CMSdslPackage.FIELD__NAME: return CMSdslPackage.PARAM_OR_ARG__NAME;
+        case CMSdslPackage.FIELD__TYPE: return CMSdslPackage.PARAM_OR_ARG__TYPE;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == ParamOrArg.class)
+    {
+      switch (baseFeatureID)
+      {
+        case CMSdslPackage.PARAM_OR_ARG__NAME: return CMSdslPackage.FIELD__NAME;
+        case CMSdslPackage.PARAM_OR_ARG__TYPE: return CMSdslPackage.FIELD__TYPE;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**
@@ -310,6 +407,8 @@ public class FieldImpl extends EntityDeclImpl implements Field
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", dontShow: ");
+    result.append(dontShow);
     result.append(')');
     return result.toString();
   }

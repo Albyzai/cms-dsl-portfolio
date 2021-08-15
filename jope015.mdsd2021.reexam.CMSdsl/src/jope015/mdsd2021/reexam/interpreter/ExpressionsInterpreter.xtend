@@ -6,7 +6,6 @@ import jope015.mdsd2021.reexam.cMSdsl.Str
 import jope015.mdsd2021.reexam.cMSdsl.Bool
 import jope015.mdsd2021.reexam.cMSdsl.And
 import jope015.mdsd2021.reexam.cMSdsl.Or
-import jope015.mdsd2021.reexam.cMSdsl.MulDiv
 import jope015.mdsd2021.reexam.cMSdsl.Plus
 import jope015.mdsd2021.reexam.cMSdsl.Minus
 import jope015.mdsd2021.reexam.cMSdsl.Comparison
@@ -62,7 +61,8 @@ class ExpressionsInterpreter {
 //		if(muldDiv.op =='*') left* right
 //		else left / right
 //	}
-	
+
+
 	
 //	def dispatch interpret (Expression e){
 //		switch(e) {

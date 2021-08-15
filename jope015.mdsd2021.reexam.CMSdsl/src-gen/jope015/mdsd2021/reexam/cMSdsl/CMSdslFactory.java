@@ -96,6 +96,15 @@ public interface CMSdslFactory extends EFactory
   ValidationCheck createValidationCheck();
 
   /**
+   * Returns a new object of class '<em>Validator Use</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Validator Use</em>'.
+   * @generated
+   */
+  ValidatorUse createValidatorUse();
+
+  /**
    * Returns a new object of class '<em>Check Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,6 +130,15 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   FieldProp createFieldProp();
+
+  /**
+   * Returns a new object of class '<em>Input Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Input Type</em>'.
+   * @generated
+   */
+  InputType createInputType();
 
   /**
    * Returns a new object of class '<em>Data Type</em>'.
@@ -150,31 +168,22 @@ public interface CMSdslFactory extends EFactory
   Parameter createParameter();
 
   /**
-   * Returns a new object of class '<em>Parameter Use</em>'.
+   * Returns a new object of class '<em>Param Or Arg</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter Use</em>'.
+   * @return a new object of class '<em>Param Or Arg</em>'.
    * @generated
    */
-  ParameterUse createParameterUse();
+  ParamOrArg createParamOrArg();
 
   /**
-   * Returns a new object of class '<em>Validator Use</em>'.
+   * Returns a new object of class '<em>Param Or Arg Use</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Validator Use</em>'.
+   * @return a new object of class '<em>Param Or Arg Use</em>'.
    * @generated
    */
-  ValidatorUse createValidatorUse();
-
-  /**
-   * Returns a new object of class '<em>Argument</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Argument</em>'.
-   * @generated
-   */
-  Argument createArgument();
+  ParamOrArgUse createParamOrArgUse();
 
   /**
    * Returns a new object of class '<em>Relationship</em>'.
@@ -310,6 +319,69 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   PropTest createPropTest();
+
+  /**
+   * Returns a new object of class '<em>Input Field</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Input Field</em>'.
+   * @generated
+   */
+  InputField createInputField();
+
+  /**
+   * Returns a new object of class '<em>Inp Mail</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Inp Mail</em>'.
+   * @generated
+   */
+  InpMail createInpMail();
+
+  /**
+   * Returns a new object of class '<em>Inp Date</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Inp Date</em>'.
+   * @generated
+   */
+  InpDate createInpDate();
+
+  /**
+   * Returns a new object of class '<em>Inp Num</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Inp Num</em>'.
+   * @generated
+   */
+  InpNum createInpNum();
+
+  /**
+   * Returns a new object of class '<em>Inp Pass</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Inp Pass</em>'.
+   * @generated
+   */
+  InpPass createInpPass();
+
+  /**
+   * Returns a new object of class '<em>Inp Text</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Inp Text</em>'.
+   * @generated
+   */
+  InpText createInpText();
+
+  /**
+   * Returns a new object of class '<em>Inp Text Area</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Inp Text Area</em>'.
+   * @generated
+   */
+  InpTextArea createInpTextArea();
 
   /**
    * Returns a new object of class '<em>Str</em>'.
@@ -456,13 +528,22 @@ public interface CMSdslFactory extends EFactory
   Minus createMinus();
 
   /**
-   * Returns a new object of class '<em>Mul Div</em>'.
+   * Returns a new object of class '<em>Mul</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Mul Div</em>'.
+   * @return a new object of class '<em>Mul</em>'.
    * @generated
    */
-  MulDiv createMulDiv();
+  Mul createMul();
+
+  /**
+   * Returns a new object of class '<em>Div</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Div</em>'.
+   * @generated
+   */
+  Div createDiv();
 
   /**
    * Returns a new object of class '<em>Num</em>'.

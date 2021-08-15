@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getName <em>Name</em>}</li>
- *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getRelationship <em>Relationship</em>}</li>
+ *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getRelations <em>Relations</em>}</li>
  *   <li>{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getMembers <em>Members</em>}</li>
  * </ul>
  *
@@ -48,26 +48,16 @@ public interface Entity extends PrimaryElement
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Relationship</b></em>' containment reference.
+   * Returns the value of the '<em><b>Relations</b></em>' containment reference list.
+   * The list contents are of type {@link jope015.mdsd2021.reexam.cMSdsl.Relationship}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Relationship</em>' containment reference.
-   * @see #setRelationship(Relationship)
-   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity_Relationship()
+   * @return the value of the '<em>Relations</em>' containment reference list.
+   * @see jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage#getEntity_Relations()
    * @model containment="true"
    * @generated
    */
-  Relationship getRelationship();
-
-  /**
-   * Sets the value of the '{@link jope015.mdsd2021.reexam.cMSdsl.Entity#getRelationship <em>Relationship</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Relationship</em>' containment reference.
-   * @see #getRelationship()
-   * @generated
-   */
-  void setRelationship(Relationship value);
+  EList<Relationship> getRelations();
 
   /**
    * Returns the value of the '<em><b>Members</b></em>' containment reference list.

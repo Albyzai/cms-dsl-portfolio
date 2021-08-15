@@ -17,16 +17,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//PrimaryElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" eType="#//Relationship"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
+        eType="#//Relationship" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
         eType="#//EntityDecl" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityDecl"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Field" eSuperTypes="#//EntityDecl">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//DataType"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Field" eSuperTypes="#//EntityDecl #//ParamOrArg">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dontShow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//FieldProp" containment="true"/>
   </eClassifiers>
@@ -34,6 +32,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="validator" eType="#//ValidatorUse"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="errrorMsg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidatorUse">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validator" eType="#//Validator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" unique="false" upperBound="-1"
+        eType="#//Field"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="validator" eType="#//ValidatorUse"
@@ -46,7 +49,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldProp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -58,21 +63,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="comparison" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//ParamOrArg"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamOrArg">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//DataType"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterUse" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Parameter"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ValidatorUse">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="validator" eType="#//Validator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="args" unique="false" upperBound="-1"
-        eType="#//Field"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Argument">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Field"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamOrArgUse" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//ParamOrArg"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Relationship">
     <eStructuralFeatures xsi:type="ecore:EReference" name="relationType" eType="#//RelationshipType"
@@ -106,8 +104,22 @@
   <eClassifiers xsi:type="ecore:EClass" name="Err" eSuperTypes="#//ValidationStatus"/>
   <eClassifiers xsi:type="ecore:EClass" name="Warn" eSuperTypes="#//ValidationStatus"/>
   <eClassifiers xsi:type="ecore:EClass" name="Succ" eSuperTypes="#//ValidationStatus"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Def" eSuperTypes="#//FieldProp"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PropTest" eSuperTypes="#//FieldProp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Def" eSuperTypes="#//FieldProp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropTest" eSuperTypes="#//FieldProp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputField" eSuperTypes="#//FieldProp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//InputType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InpMail" eSuperTypes="#//InputType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InpDate" eSuperTypes="#//InputType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InpNum" eSuperTypes="#//InputType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InpPass" eSuperTypes="#//InputType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InpText" eSuperTypes="#//InputType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InpTextArea" eSuperTypes="#//InputType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Str" eSuperTypes="#//DataType #//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -160,10 +172,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MulDiv" eSuperTypes="#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="Mul" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Div" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
         containment="true"/>
   </eClassifiers>

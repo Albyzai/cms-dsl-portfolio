@@ -11,6 +11,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -20,14 +21,16 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class CMSdslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected CMSdslGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Atomic_LeftParenthesisKeyword_3_0_a;
-	protected AbstractElementAlias match_Atomic_LeftParenthesisKeyword_3_0_p;
+	protected AbstractElementAlias match_Field___EqualsSignGreaterThanSignKeyword_5_0_BEGINTerminalRuleCall_5_1_ENDTerminalRuleCall_5_3__q;
+	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_0_0_a;
+	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_0_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (CMSdslGrammarAccess) access;
-		match_Atomic_LeftParenthesisKeyword_3_0_a = new TokenAlias(true, true, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_3_0());
-		match_Atomic_LeftParenthesisKeyword_3_0_p = new TokenAlias(true, false, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_3_0());
+		match_Field___EqualsSignGreaterThanSignKeyword_5_0_BEGINTerminalRuleCall_5_1_ENDTerminalRuleCall_5_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFieldAccess().getEqualsSignGreaterThanSignKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getFieldAccess().getBEGINTerminalRuleCall_5_1()), new TokenAlias(false, false, grammarAccess.getFieldAccess().getENDTerminalRuleCall_5_3()));
+		match_Primary_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
+		match_Primary_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
 	}
 	
 	@Override
@@ -57,33 +60,47 @@ public class CMSdslSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Atomic_LeftParenthesisKeyword_3_0_a.equals(syntax))
-				emit_Atomic_LeftParenthesisKeyword_3_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Atomic_LeftParenthesisKeyword_3_0_p.equals(syntax))
-				emit_Atomic_LeftParenthesisKeyword_3_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Field___EqualsSignGreaterThanSignKeyword_5_0_BEGINTerminalRuleCall_5_1_ENDTerminalRuleCall_5_3__q.equals(syntax))
+				emit_Field___EqualsSignGreaterThanSignKeyword_5_0_BEGINTerminalRuleCall_5_1_ENDTerminalRuleCall_5_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Primary_LeftParenthesisKeyword_0_0_a.equals(syntax))
+				emit_Primary_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Primary_LeftParenthesisKeyword_0_0_p.equals(syntax))
+				emit_Primary_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Ambiguous syntax:
+	 *     ('=>' BEGIN END)?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     type=DataType (ambiguity) (rule end)
+	 */
+	protected void emit_Field___EqualsSignGreaterThanSignKeyword_5_0_BEGINTerminalRuleCall_5_1_ENDTerminalRuleCall_5_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) ref=[Parameter|ID]
+	 *     (rule start) (ambiguity) ref=[ParamOrArg|ID]
 	 *     (rule start) (ambiguity) value='false'
 	 *     (rule start) (ambiguity) value='true'
 	 *     (rule start) (ambiguity) value=INT
 	 *     (rule start) (ambiguity) value=STRING
 	 *     (rule start) (ambiguity) {And.left=}
 	 *     (rule start) (ambiguity) {Comparison.left=}
+	 *     (rule start) (ambiguity) {Div.left=}
 	 *     (rule start) (ambiguity) {Equality.left=}
 	 *     (rule start) (ambiguity) {Minus.left=}
-	 *     (rule start) (ambiguity) {MulDiv.left=}
+	 *     (rule start) (ambiguity) {Mul.left=}
 	 *     (rule start) (ambiguity) {Or.left=}
 	 *     (rule start) (ambiguity) {Plus.left=}
 	 */
-	protected void emit_Atomic_LeftParenthesisKeyword_3_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Primary_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -94,13 +111,14 @@ public class CMSdslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) {And.left=}
 	 *     (rule start) (ambiguity) {Comparison.left=}
+	 *     (rule start) (ambiguity) {Div.left=}
 	 *     (rule start) (ambiguity) {Equality.left=}
 	 *     (rule start) (ambiguity) {Minus.left=}
-	 *     (rule start) (ambiguity) {MulDiv.left=}
+	 *     (rule start) (ambiguity) {Mul.left=}
 	 *     (rule start) (ambiguity) {Or.left=}
 	 *     (rule start) (ambiguity) {Plus.left=}
 	 */
-	protected void emit_Atomic_LeftParenthesisKeyword_3_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Primary_LeftParenthesisKeyword_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
