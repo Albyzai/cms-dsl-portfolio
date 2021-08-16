@@ -7,22 +7,22 @@ import jope015.mdsd2021.reexam.cMSdsl.And;
 import jope015.mdsd2021.reexam.cMSdsl.BelongsTo;
 import jope015.mdsd2021.reexam.cMSdsl.BelongsToMany;
 import jope015.mdsd2021.reexam.cMSdsl.Bool;
+import jope015.mdsd2021.reexam.cMSdsl.BoolType;
 import jope015.mdsd2021.reexam.cMSdsl.CMSdslFactory;
 import jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage;
-import jope015.mdsd2021.reexam.cMSdsl.CheckBlock;
 import jope015.mdsd2021.reexam.cMSdsl.Comparison;
 import jope015.mdsd2021.reexam.cMSdsl.DBConfig;
 import jope015.mdsd2021.reexam.cMSdsl.DBDecl;
 import jope015.mdsd2021.reexam.cMSdsl.DataType;
 import jope015.mdsd2021.reexam.cMSdsl.Def;
+import jope015.mdsd2021.reexam.cMSdsl.DefaultValue;
 import jope015.mdsd2021.reexam.cMSdsl.Dialect;
+import jope015.mdsd2021.reexam.cMSdsl.DisplayAs;
 import jope015.mdsd2021.reexam.cMSdsl.Div;
 import jope015.mdsd2021.reexam.cMSdsl.Dt;
 import jope015.mdsd2021.reexam.cMSdsl.Entity;
 import jope015.mdsd2021.reexam.cMSdsl.EntityDecl;
 import jope015.mdsd2021.reexam.cMSdsl.Equality;
-import jope015.mdsd2021.reexam.cMSdsl.Err;
-import jope015.mdsd2021.reexam.cMSdsl.Eval;
 import jope015.mdsd2021.reexam.cMSdsl.Expression;
 import jope015.mdsd2021.reexam.cMSdsl.Field;
 import jope015.mdsd2021.reexam.cMSdsl.FieldProp;
@@ -43,7 +43,9 @@ import jope015.mdsd2021.reexam.cMSdsl.Lib;
 import jope015.mdsd2021.reexam.cMSdsl.Lng;
 import jope015.mdsd2021.reexam.cMSdsl.Minus;
 import jope015.mdsd2021.reexam.cMSdsl.Mul;
+import jope015.mdsd2021.reexam.cMSdsl.Nullable;
 import jope015.mdsd2021.reexam.cMSdsl.Num;
+import jope015.mdsd2021.reexam.cMSdsl.NumType;
 import jope015.mdsd2021.reexam.cMSdsl.Or;
 import jope015.mdsd2021.reexam.cMSdsl.ParamOrArg;
 import jope015.mdsd2021.reexam.cMSdsl.ParamOrArgUse;
@@ -57,13 +59,13 @@ import jope015.mdsd2021.reexam.cMSdsl.PropTest;
 import jope015.mdsd2021.reexam.cMSdsl.Relationship;
 import jope015.mdsd2021.reexam.cMSdsl.RelationshipType;
 import jope015.mdsd2021.reexam.cMSdsl.Str;
-import jope015.mdsd2021.reexam.cMSdsl.Succ;
+import jope015.mdsd2021.reexam.cMSdsl.StringType;
+import jope015.mdsd2021.reexam.cMSdsl.Unique;
 import jope015.mdsd2021.reexam.cMSdsl.User;
 import jope015.mdsd2021.reexam.cMSdsl.ValidationCheck;
-import jope015.mdsd2021.reexam.cMSdsl.ValidationStatus;
+import jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation;
 import jope015.mdsd2021.reexam.cMSdsl.Validator;
 import jope015.mdsd2021.reexam.cMSdsl.ValidatorUse;
-import jope015.mdsd2021.reexam.cMSdsl.Warn;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -141,6 +143,13 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass validationCheckLocationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass validatorUseEClass = null;
 
   /**
@@ -148,21 +157,14 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass checkBlockEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass validationStatusEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass fieldPropEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass defaultValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -232,13 +234,6 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass evalEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass libEClass = null;
 
   /**
@@ -281,27 +276,6 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass errEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass warnEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass succEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass defEClass = null;
 
   /**
@@ -317,6 +291,48 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * @generated
    */
   private EClass inputFieldEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass displayAsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nullableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass uniqueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass boolTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -760,7 +776,7 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * @generated
    */
   @Override
-  public EReference getValidationCheck_Validator()
+  public EReference getValidationCheck_Locations()
   {
     return (EReference)validationCheckEClass.getEStructuralFeatures().get(0);
   }
@@ -771,9 +787,42 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * @generated
    */
   @Override
+  public EReference getValidationCheck_Validator()
+  {
+    return (EReference)validationCheckEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getValidationCheck_ErrrorMsg()
   {
-    return (EAttribute)validationCheckEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)validationCheckEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getValidationCheckLocation()
+  {
+    return validationCheckLocationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getValidationCheckLocation_Location()
+  {
+    return (EAttribute)validationCheckLocationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -815,61 +864,6 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * @generated
    */
   @Override
-  public EClass getCheckBlock()
-  {
-    return checkBlockEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCheckBlock_Validator()
-  {
-    return (EReference)checkBlockEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCheckBlock_StatusCond()
-  {
-    return (EReference)checkBlockEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getValidationStatus()
-  {
-    return validationStatusEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getValidationStatus_Msg()
-  {
-    return (EAttribute)validationStatusEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getFieldProp()
   {
     return fieldPropEClass;
@@ -884,6 +878,17 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
   public EAttribute getFieldProp_Type()
   {
     return (EAttribute)fieldPropEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDefaultValue()
+  {
+    return defaultValueEClass;
   }
 
   /**
@@ -1101,28 +1106,6 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * @generated
    */
   @Override
-  public EClass getEval()
-  {
-    return evalEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getEval_Expression()
-  {
-    return (EReference)evalEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getLib()
   {
     return libEClass;
@@ -1255,39 +1238,6 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * @generated
    */
   @Override
-  public EClass getErr()
-  {
-    return errEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getWarn()
-  {
-    return warnEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getSucc()
-  {
-    return succEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getDef()
   {
     return defEClass;
@@ -1299,9 +1249,9 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
    * @generated
    */
   @Override
-  public EAttribute getDef_Value()
+  public EReference getDef_Value()
   {
-    return (EAttribute)defEClass.getEStructuralFeatures().get(0);
+    return (EReference)defEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1346,6 +1296,105 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
   public EReference getInputField_Value()
   {
     return (EReference)inputFieldEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDisplayAs()
+  {
+    return displayAsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDisplayAs_Value()
+  {
+    return (EAttribute)displayAsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNullable()
+  {
+    return nullableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNullable_Value()
+  {
+    return (EAttribute)nullableEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getUnique()
+  {
+    return uniqueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getUnique_Value()
+  {
+    return (EAttribute)uniqueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNumType()
+  {
+    return numTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStringType()
+  {
+    return stringTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBoolType()
+  {
+    return boolTypeEClass;
   }
 
   /**
@@ -1910,22 +1959,21 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
     createEReference(fieldEClass, FIELD__PROPERTIES);
 
     validationCheckEClass = createEClass(VALIDATION_CHECK);
+    createEReference(validationCheckEClass, VALIDATION_CHECK__LOCATIONS);
     createEReference(validationCheckEClass, VALIDATION_CHECK__VALIDATOR);
     createEAttribute(validationCheckEClass, VALIDATION_CHECK__ERRROR_MSG);
+
+    validationCheckLocationEClass = createEClass(VALIDATION_CHECK_LOCATION);
+    createEAttribute(validationCheckLocationEClass, VALIDATION_CHECK_LOCATION__LOCATION);
 
     validatorUseEClass = createEClass(VALIDATOR_USE);
     createEReference(validatorUseEClass, VALIDATOR_USE__VALIDATOR);
     createEReference(validatorUseEClass, VALIDATOR_USE__ARGS);
 
-    checkBlockEClass = createEClass(CHECK_BLOCK);
-    createEReference(checkBlockEClass, CHECK_BLOCK__VALIDATOR);
-    createEReference(checkBlockEClass, CHECK_BLOCK__STATUS_COND);
-
-    validationStatusEClass = createEClass(VALIDATION_STATUS);
-    createEAttribute(validationStatusEClass, VALIDATION_STATUS__MSG);
-
     fieldPropEClass = createEClass(FIELD_PROP);
     createEAttribute(fieldPropEClass, FIELD_PROP__TYPE);
+
+    defaultValueEClass = createEClass(DEFAULT_VALUE);
 
     inputTypeEClass = createEClass(INPUT_TYPE);
     createEAttribute(inputTypeEClass, INPUT_TYPE__TYPE);
@@ -1955,9 +2003,6 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
 
     expressionEClass = createEClass(EXPRESSION);
 
-    evalEClass = createEClass(EVAL);
-    createEReference(evalEClass, EVAL__EXPRESSION);
-
     libEClass = createEClass(LIB);
     createEAttribute(libEClass, LIB__VALUE);
 
@@ -1976,20 +2021,29 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
     passEClass = createEClass(PASS);
     createEAttribute(passEClass, PASS__VALUE);
 
-    errEClass = createEClass(ERR);
-
-    warnEClass = createEClass(WARN);
-
-    succEClass = createEClass(SUCC);
-
     defEClass = createEClass(DEF);
-    createEAttribute(defEClass, DEF__VALUE);
+    createEReference(defEClass, DEF__VALUE);
 
     propTestEClass = createEClass(PROP_TEST);
     createEAttribute(propTestEClass, PROP_TEST__VALUE);
 
     inputFieldEClass = createEClass(INPUT_FIELD);
     createEReference(inputFieldEClass, INPUT_FIELD__VALUE);
+
+    displayAsEClass = createEClass(DISPLAY_AS);
+    createEAttribute(displayAsEClass, DISPLAY_AS__VALUE);
+
+    nullableEClass = createEClass(NULLABLE);
+    createEAttribute(nullableEClass, NULLABLE__VALUE);
+
+    uniqueEClass = createEClass(UNIQUE);
+    createEAttribute(uniqueEClass, UNIQUE__VALUE);
+
+    numTypeEClass = createEClass(NUM_TYPE);
+
+    stringTypeEClass = createEClass(STRING_TYPE);
+
+    boolTypeEClass = createEClass(BOOL_TYPE);
 
     inpMailEClass = createEClass(INP_MAIL);
 
@@ -2100,19 +2154,21 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
     validatorEClass.getESuperTypes().add(this.getPrimaryElement());
     parameterEClass.getESuperTypes().add(this.getParamOrArg());
     paramOrArgUseEClass.getESuperTypes().add(this.getExpression());
-    evalEClass.getESuperTypes().add(this.getPrimaryElement());
     libEClass.getESuperTypes().add(this.getDBDecl());
     hostEClass.getESuperTypes().add(this.getDBDecl());
     portEClass.getESuperTypes().add(this.getDBDecl());
     dialectEClass.getESuperTypes().add(this.getDBDecl());
     userEClass.getESuperTypes().add(this.getDBDecl());
     passEClass.getESuperTypes().add(this.getDBDecl());
-    errEClass.getESuperTypes().add(this.getValidationStatus());
-    warnEClass.getESuperTypes().add(this.getValidationStatus());
-    succEClass.getESuperTypes().add(this.getValidationStatus());
     defEClass.getESuperTypes().add(this.getFieldProp());
     propTestEClass.getESuperTypes().add(this.getFieldProp());
     inputFieldEClass.getESuperTypes().add(this.getFieldProp());
+    displayAsEClass.getESuperTypes().add(this.getFieldProp());
+    nullableEClass.getESuperTypes().add(this.getFieldProp());
+    uniqueEClass.getESuperTypes().add(this.getFieldProp());
+    numTypeEClass.getESuperTypes().add(this.getDefaultValue());
+    stringTypeEClass.getESuperTypes().add(this.getDefaultValue());
+    boolTypeEClass.getESuperTypes().add(this.getDefaultValue());
     inpMailEClass.getESuperTypes().add(this.getInputType());
     inpDateEClass.getESuperTypes().add(this.getInputType());
     inpNumEClass.getESuperTypes().add(this.getInputType());
@@ -2167,22 +2223,21 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
     initEReference(getField_Properties(), this.getFieldProp(), null, "properties", null, 0, -1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(validationCheckEClass, ValidationCheck.class, "ValidationCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getValidationCheck_Locations(), this.getValidationCheckLocation(), null, "locations", null, 0, -1, ValidationCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getValidationCheck_Validator(), this.getValidatorUse(), null, "validator", null, 0, 1, ValidationCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getValidationCheck_ErrrorMsg(), ecorePackage.getEString(), "errrorMsg", null, 0, 1, ValidationCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(validationCheckLocationEClass, ValidationCheckLocation.class, "ValidationCheckLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getValidationCheckLocation_Location(), ecorePackage.getEString(), "location", null, 0, 1, ValidationCheckLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(validatorUseEClass, ValidatorUse.class, "ValidatorUse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getValidatorUse_Validator(), this.getValidator(), null, "validator", null, 0, 1, ValidatorUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getValidatorUse_Args(), this.getField(), null, "args", null, 0, -1, ValidatorUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(checkBlockEClass, CheckBlock.class, "CheckBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCheckBlock_Validator(), this.getValidatorUse(), null, "validator", null, 0, 1, CheckBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCheckBlock_StatusCond(), this.getValidationStatus(), null, "statusCond", null, 0, -1, CheckBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(validationStatusEClass, ValidationStatus.class, "ValidationStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getValidationStatus_Msg(), ecorePackage.getEString(), "msg", null, 0, 1, ValidationStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(fieldPropEClass, FieldProp.class, "FieldProp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFieldProp_Type(), ecorePackage.getEString(), "type", null, 0, 1, FieldProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(defaultValueEClass, DefaultValue.class, "DefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(inputTypeEClass, InputType.class, "InputType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInputType_Type(), ecorePackage.getEString(), "type", null, 0, 1, InputType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2212,9 +2267,6 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(evalEClass, Eval.class, "Eval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEval_Expression(), this.getExpression(), null, "expression", null, 0, 1, Eval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(libEClass, Lib.class, "Lib", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLib_Value(), ecorePackage.getEString(), "value", null, 0, 1, Lib.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2233,20 +2285,29 @@ public class CMSdslPackageImpl extends EPackageImpl implements CMSdslPackage
     initEClass(passEClass, Pass.class, "Pass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPass_Value(), ecorePackage.getEString(), "value", null, 0, 1, Pass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(errEClass, Err.class, "Err", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(warnEClass, Warn.class, "Warn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(succEClass, Succ.class, "Succ", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(defEClass, Def.class, "Def", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDef_Value(), ecorePackage.getEString(), "value", null, 0, 1, Def.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDef_Value(), this.getExpression(), null, "value", null, 0, 1, Def.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propTestEClass, PropTest.class, "PropTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPropTest_Value(), ecorePackage.getEString(), "value", null, 0, 1, PropTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(inputFieldEClass, InputField.class, "InputField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getInputField_Value(), this.getInputType(), null, "value", null, 0, 1, InputField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(displayAsEClass, DisplayAs.class, "DisplayAs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDisplayAs_Value(), ecorePackage.getEString(), "value", null, 0, 1, DisplayAs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(nullableEClass, Nullable.class, "Nullable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNullable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Nullable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(uniqueEClass, Unique.class, "Unique", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUnique_Value(), ecorePackage.getEString(), "value", null, 0, 1, Unique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numTypeEClass, NumType.class, "NumType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(stringTypeEClass, StringType.class, "StringType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(boolTypeEClass, BoolType.class, "BoolType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(inpMailEClass, InpMail.class, "InpMail", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

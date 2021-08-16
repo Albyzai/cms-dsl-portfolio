@@ -16,7 +16,10 @@ import jope015.mdsd2021.reexam.cMSdsl.Str
 import jope015.mdsd2021.reexam.cMSdsl.Integ
 import jope015.mdsd2021.reexam.cMSdsl.Bool
 import jope015.mdsd2021.reexam.cMSdsl.Dt
-import org.eclipse.xtext.EcoreUtil2
+import jope015.mdsd2021.reexam.cMSdsl.FieldProp
+import jope015.mdsd2021.reexam.cMSdsl.Unique
+import jope015.mdsd2021.reexam.cMSdsl.Nullable
+
 class ModelGenerator {
 	
 	@Inject extension CMSdslUtil
@@ -62,7 +65,7 @@ class ModelGenerator {
 			  	   defaultValue: () => uuidV4()
 			  	 },
 			  	 «FOR f: e.fields»
-			  	 	«f.compile»«IF e.fields.last !== f»,«ENDIF»
+			  	 	«f.compile»
 			  	 «ENDFOR»
 			  }, {
 			    sequelize,
@@ -143,25 +146,31 @@ class ModelGenerator {
 		}
 	}
 	
-	//TODO: add functionality for more field options	
-	def compile(Field f)'''«f.name»: «f.type.compile»'''
+	def compileTypeValidation(DataType type){
 	
-//		def dispatch compile(Field f)
-//		'''
-//		«f.name»: {
-//			«FOR p: f.properties»
-//				«p.compile»,
-//			«ENDFOR»
-//«««			«FOR p: f.property»
-//«««				«p.compile»,
-//«««			«ENDFOR»
-//«««			«IF f.constraints !== null»
-//«««				«FOR c: f.constraints.constraints»
-//«««					«c.compile»,
-//«««				«ENDFOR»
-//«««			«ENDIF»
-//			
-//		},
-//		'''
-//	
+		switch type {
+			Dt: '''validate: { isDate: true }'''
+			Integ: '''validate: { isInt: true }'''	
+		}	
+	}
+	
+	def compile(Field f)
+		'''
+		«f.name»: {
+			type: «f.type.compile»,
+			«f.type.compileTypeValidation»
+			«FOR p: f.properties.filter[ p | p instanceof Unique || p instanceof Nullable]»
+			«p.compileServerProp»,
+			«ENDFOR»
+		},
+		
+		'''
+	
+	def compileServerProp(FieldProp prop){
+		switch prop {
+			Unique: '''unique: «prop.value»'''
+			Nullable: '''allowNull: «prop.value»'''
+		}
+	}
+
 }

@@ -96,6 +96,15 @@ public interface CMSdslFactory extends EFactory
   ValidationCheck createValidationCheck();
 
   /**
+   * Returns a new object of class '<em>Validation Check Location</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Validation Check Location</em>'.
+   * @generated
+   */
+  ValidationCheckLocation createValidationCheckLocation();
+
+  /**
    * Returns a new object of class '<em>Validator Use</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -105,24 +114,6 @@ public interface CMSdslFactory extends EFactory
   ValidatorUse createValidatorUse();
 
   /**
-   * Returns a new object of class '<em>Check Block</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Check Block</em>'.
-   * @generated
-   */
-  CheckBlock createCheckBlock();
-
-  /**
-   * Returns a new object of class '<em>Validation Status</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Validation Status</em>'.
-   * @generated
-   */
-  ValidationStatus createValidationStatus();
-
-  /**
    * Returns a new object of class '<em>Field Prop</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,6 +121,15 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   FieldProp createFieldProp();
+
+  /**
+   * Returns a new object of class '<em>Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Default Value</em>'.
+   * @generated
+   */
+  DefaultValue createDefaultValue();
 
   /**
    * Returns a new object of class '<em>Input Type</em>'.
@@ -213,15 +213,6 @@ public interface CMSdslFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Eval</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Eval</em>'.
-   * @generated
-   */
-  Eval createEval();
-
-  /**
    * Returns a new object of class '<em>Lib</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -276,33 +267,6 @@ public interface CMSdslFactory extends EFactory
   Pass createPass();
 
   /**
-   * Returns a new object of class '<em>Err</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Err</em>'.
-   * @generated
-   */
-  Err createErr();
-
-  /**
-   * Returns a new object of class '<em>Warn</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Warn</em>'.
-   * @generated
-   */
-  Warn createWarn();
-
-  /**
-   * Returns a new object of class '<em>Succ</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Succ</em>'.
-   * @generated
-   */
-  Succ createSucc();
-
-  /**
    * Returns a new object of class '<em>Def</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -328,6 +292,60 @@ public interface CMSdslFactory extends EFactory
    * @generated
    */
   InputField createInputField();
+
+  /**
+   * Returns a new object of class '<em>Display As</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Display As</em>'.
+   * @generated
+   */
+  DisplayAs createDisplayAs();
+
+  /**
+   * Returns a new object of class '<em>Nullable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Nullable</em>'.
+   * @generated
+   */
+  Nullable createNullable();
+
+  /**
+   * Returns a new object of class '<em>Unique</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unique</em>'.
+   * @generated
+   */
+  Unique createUnique();
+
+  /**
+   * Returns a new object of class '<em>Num Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Num Type</em>'.
+   * @generated
+   */
+  NumType createNumType();
+
+  /**
+   * Returns a new object of class '<em>String Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Type</em>'.
+   * @generated
+   */
+  StringType createStringType();
+
+  /**
+   * Returns a new object of class '<em>Bool Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bool Type</em>'.
+   * @generated
+   */
+  BoolType createBoolType();
 
   /**
    * Returns a new object of class '<em>Inp Mail</em>'.

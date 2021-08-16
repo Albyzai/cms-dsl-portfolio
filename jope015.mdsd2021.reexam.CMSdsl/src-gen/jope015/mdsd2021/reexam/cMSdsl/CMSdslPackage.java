@@ -309,13 +309,22 @@ public interface CMSdslPackage extends EPackage
   int VALIDATION_CHECK = 7;
 
   /**
+   * The feature id for the '<em><b>Locations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALIDATION_CHECK__LOCATIONS = ENTITY_DECL_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Validator</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VALIDATION_CHECK__VALIDATOR = ENTITY_DECL_FEATURE_COUNT + 0;
+  int VALIDATION_CHECK__VALIDATOR = ENTITY_DECL_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Errror Msg</b></em>' attribute.
@@ -324,7 +333,7 @@ public interface CMSdslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VALIDATION_CHECK__ERRROR_MSG = ENTITY_DECL_FEATURE_COUNT + 1;
+  int VALIDATION_CHECK__ERRROR_MSG = ENTITY_DECL_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Validation Check</em>' class.
@@ -333,7 +342,35 @@ public interface CMSdslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VALIDATION_CHECK_FEATURE_COUNT = ENTITY_DECL_FEATURE_COUNT + 2;
+  int VALIDATION_CHECK_FEATURE_COUNT = ENTITY_DECL_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ValidationCheckLocationImpl <em>Validation Check Location</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.ValidationCheckLocationImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getValidationCheckLocation()
+   * @generated
+   */
+  int VALIDATION_CHECK_LOCATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALIDATION_CHECK_LOCATION__LOCATION = 0;
+
+  /**
+   * The number of structural features of the '<em>Validation Check Location</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALIDATION_CHECK_LOCATION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ValidatorUseImpl <em>Validator Use</em>}' class.
@@ -343,7 +380,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getValidatorUse()
    * @generated
    */
-  int VALIDATOR_USE = 8;
+  int VALIDATOR_USE = 9;
 
   /**
    * The feature id for the '<em><b>Validator</b></em>' reference.
@@ -373,71 +410,6 @@ public interface CMSdslPackage extends EPackage
   int VALIDATOR_USE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.CheckBlockImpl <em>Check Block</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CheckBlockImpl
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getCheckBlock()
-   * @generated
-   */
-  int CHECK_BLOCK = 9;
-
-  /**
-   * The feature id for the '<em><b>Validator</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECK_BLOCK__VALIDATOR = 0;
-
-  /**
-   * The feature id for the '<em><b>Status Cond</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECK_BLOCK__STATUS_COND = 1;
-
-  /**
-   * The number of structural features of the '<em>Check Block</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECK_BLOCK_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ValidationStatusImpl <em>Validation Status</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.ValidationStatusImpl
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getValidationStatus()
-   * @generated
-   */
-  int VALIDATION_STATUS = 10;
-
-  /**
-   * The feature id for the '<em><b>Msg</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALIDATION_STATUS__MSG = 0;
-
-  /**
-   * The number of structural features of the '<em>Validation Status</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALIDATION_STATUS_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldPropImpl <em>Field Prop</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -445,7 +417,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getFieldProp()
    * @generated
    */
-  int FIELD_PROP = 11;
+  int FIELD_PROP = 10;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -464,6 +436,25 @@ public interface CMSdslPackage extends EPackage
    * @ordered
    */
   int FIELD_PROP_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.DefaultValueImpl <em>Default Value</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.DefaultValueImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDefaultValue()
+   * @generated
+   */
+  int DEFAULT_VALUE = 11;
+
+  /**
+   * The number of structural features of the '<em>Default Value</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEFAULT_VALUE_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.InputTypeImpl <em>Input Type</em>}' class.
@@ -745,34 +736,6 @@ public interface CMSdslPackage extends EPackage
   int RELATIONSHIP_TYPE_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.EvalImpl <em>Eval</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.EvalImpl
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getEval()
-   * @generated
-   */
-  int EVAL = 21;
-
-  /**
-   * The feature id for the '<em><b>Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVAL__EXPRESSION = PRIMARY_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Eval</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EVAL_FEATURE_COUNT = PRIMARY_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.LibImpl <em>Lib</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -780,7 +743,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getLib()
    * @generated
    */
-  int LIB = 22;
+  int LIB = 21;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -817,7 +780,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getHost()
    * @generated
    */
-  int HOST = 23;
+  int HOST = 22;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -854,7 +817,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getPort()
    * @generated
    */
-  int PORT = 24;
+  int PORT = 23;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -891,7 +854,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDialect()
    * @generated
    */
-  int DIALECT = 25;
+  int DIALECT = 24;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -928,7 +891,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getUser()
    * @generated
    */
-  int USER = 26;
+  int USER = 25;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -965,7 +928,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getPass()
    * @generated
    */
-  int PASS = 27;
+  int PASS = 26;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -995,90 +958,6 @@ public interface CMSdslPackage extends EPackage
   int PASS_FEATURE_COUNT = DB_DECL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ErrImpl <em>Err</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.ErrImpl
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getErr()
-   * @generated
-   */
-  int ERR = 28;
-
-  /**
-   * The feature id for the '<em><b>Msg</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERR__MSG = VALIDATION_STATUS__MSG;
-
-  /**
-   * The number of structural features of the '<em>Err</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERR_FEATURE_COUNT = VALIDATION_STATUS_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.WarnImpl <em>Warn</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.WarnImpl
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getWarn()
-   * @generated
-   */
-  int WARN = 29;
-
-  /**
-   * The feature id for the '<em><b>Msg</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WARN__MSG = VALIDATION_STATUS__MSG;
-
-  /**
-   * The number of structural features of the '<em>Warn</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WARN_FEATURE_COUNT = VALIDATION_STATUS_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.SuccImpl <em>Succ</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.SuccImpl
-   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getSucc()
-   * @generated
-   */
-  int SUCC = 30;
-
-  /**
-   * The feature id for the '<em><b>Msg</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUCC__MSG = VALIDATION_STATUS__MSG;
-
-  /**
-   * The number of structural features of the '<em>Succ</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUCC_FEATURE_COUNT = VALIDATION_STATUS_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.DefImpl <em>Def</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1086,7 +965,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDef()
    * @generated
    */
-  int DEF = 31;
+  int DEF = 27;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1098,7 +977,7 @@ public interface CMSdslPackage extends EPackage
   int DEF__TYPE = FIELD_PROP__TYPE;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1123,7 +1002,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getPropTest()
    * @generated
    */
-  int PROP_TEST = 32;
+  int PROP_TEST = 28;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1160,7 +1039,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInputField()
    * @generated
    */
-  int INPUT_FIELD = 33;
+  int INPUT_FIELD = 29;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1190,6 +1069,174 @@ public interface CMSdslPackage extends EPackage
   int INPUT_FIELD_FEATURE_COUNT = FIELD_PROP_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.DisplayAsImpl <em>Display As</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.DisplayAsImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDisplayAs()
+   * @generated
+   */
+  int DISPLAY_AS = 30;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DISPLAY_AS__TYPE = FIELD_PROP__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DISPLAY_AS__VALUE = FIELD_PROP_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Display As</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DISPLAY_AS_FEATURE_COUNT = FIELD_PROP_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.NullableImpl <em>Nullable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.NullableImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getNullable()
+   * @generated
+   */
+  int NULLABLE = 31;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULLABLE__TYPE = FIELD_PROP__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULLABLE__VALUE = FIELD_PROP_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Nullable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULLABLE_FEATURE_COUNT = FIELD_PROP_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.UniqueImpl <em>Unique</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.UniqueImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getUnique()
+   * @generated
+   */
+  int UNIQUE = 32;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIQUE__TYPE = FIELD_PROP__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIQUE__VALUE = FIELD_PROP_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Unique</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIQUE_FEATURE_COUNT = FIELD_PROP_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.NumTypeImpl <em>Num Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.NumTypeImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getNumType()
+   * @generated
+   */
+  int NUM_TYPE = 33;
+
+  /**
+   * The number of structural features of the '<em>Num Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUM_TYPE_FEATURE_COUNT = DEFAULT_VALUE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.StringTypeImpl <em>String Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.StringTypeImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getStringType()
+   * @generated
+   */
+  int STRING_TYPE = 34;
+
+  /**
+   * The number of structural features of the '<em>String Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_TYPE_FEATURE_COUNT = DEFAULT_VALUE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.BoolTypeImpl <em>Bool Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.BoolTypeImpl
+   * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getBoolType()
+   * @generated
+   */
+  int BOOL_TYPE = 35;
+
+  /**
+   * The number of structural features of the '<em>Bool Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOL_TYPE_FEATURE_COUNT = DEFAULT_VALUE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.InpMailImpl <em>Inp Mail</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1197,7 +1244,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInpMail()
    * @generated
    */
-  int INP_MAIL = 34;
+  int INP_MAIL = 36;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1225,7 +1272,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInpDate()
    * @generated
    */
-  int INP_DATE = 35;
+  int INP_DATE = 37;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1253,7 +1300,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInpNum()
    * @generated
    */
-  int INP_NUM = 36;
+  int INP_NUM = 38;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1281,7 +1328,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInpPass()
    * @generated
    */
-  int INP_PASS = 37;
+  int INP_PASS = 39;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1309,7 +1356,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInpText()
    * @generated
    */
-  int INP_TEXT = 38;
+  int INP_TEXT = 40;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1337,7 +1384,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInpTextArea()
    * @generated
    */
-  int INP_TEXT_AREA = 39;
+  int INP_TEXT_AREA = 41;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1365,7 +1412,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getStr()
    * @generated
    */
-  int STR = 40;
+  int STR = 42;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1402,7 +1449,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDt()
    * @generated
    */
-  int DT = 41;
+  int DT = 43;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1430,7 +1477,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getInteg()
    * @generated
    */
-  int INTEG = 42;
+  int INTEG = 44;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1458,7 +1505,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getLng()
    * @generated
    */
-  int LNG = 43;
+  int LNG = 45;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1486,7 +1533,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getBool()
    * @generated
    */
-  int BOOL = 44;
+  int BOOL = 46;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1523,7 +1570,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getFlt()
    * @generated
    */
-  int FLT = 45;
+  int FLT = 47;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1551,7 +1598,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getBelongsTo()
    * @generated
    */
-  int BELONGS_TO = 46;
+  int BELONGS_TO = 48;
 
   /**
    * The number of structural features of the '<em>Belongs To</em>' class.
@@ -1570,7 +1617,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getBelongsToMany()
    * @generated
    */
-  int BELONGS_TO_MANY = 47;
+  int BELONGS_TO_MANY = 49;
 
   /**
    * The number of structural features of the '<em>Belongs To Many</em>' class.
@@ -1589,7 +1636,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getHasOne()
    * @generated
    */
-  int HAS_ONE = 48;
+  int HAS_ONE = 50;
 
   /**
    * The number of structural features of the '<em>Has One</em>' class.
@@ -1608,7 +1655,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getHasMany()
    * @generated
    */
-  int HAS_MANY = 49;
+  int HAS_MANY = 51;
 
   /**
    * The number of structural features of the '<em>Has Many</em>' class.
@@ -1627,7 +1674,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getOr()
    * @generated
    */
-  int OR = 50;
+  int OR = 52;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1664,7 +1711,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getAnd()
    * @generated
    */
-  int AND = 51;
+  int AND = 53;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1701,7 +1748,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getEquality()
    * @generated
    */
-  int EQUALITY = 52;
+  int EQUALITY = 54;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1747,7 +1794,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getComparison()
    * @generated
    */
-  int COMPARISON = 53;
+  int COMPARISON = 55;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1793,7 +1840,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 54;
+  int PLUS = 56;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1830,7 +1877,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 55;
+  int MINUS = 57;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1867,7 +1914,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getMul()
    * @generated
    */
-  int MUL = 56;
+  int MUL = 58;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1904,7 +1951,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDiv()
    * @generated
    */
-  int DIV = 57;
+  int DIV = 59;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1941,7 +1988,7 @@ public interface CMSdslPackage extends EPackage
    * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getNum()
    * @generated
    */
-  int NUM = 58;
+  int NUM = 60;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2153,6 +2200,17 @@ public interface CMSdslPackage extends EPackage
   EClass getValidationCheck();
 
   /**
+   * Returns the meta object for the containment reference list '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationCheck#getLocations <em>Locations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Locations</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.ValidationCheck#getLocations()
+   * @see #getValidationCheck()
+   * @generated
+   */
+  EReference getValidationCheck_Locations();
+
+  /**
    * Returns the meta object for the containment reference '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationCheck#getValidator <em>Validator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2173,6 +2231,27 @@ public interface CMSdslPackage extends EPackage
    * @generated
    */
   EAttribute getValidationCheck_ErrrorMsg();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation <em>Validation Check Location</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Validation Check Location</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation
+   * @generated
+   */
+  EClass getValidationCheckLocation();
+
+  /**
+   * Returns the meta object for the attribute '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation#getLocation <em>Location</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Location</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation#getLocation()
+   * @see #getValidationCheckLocation()
+   * @generated
+   */
+  EAttribute getValidationCheckLocation_Location();
 
   /**
    * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidatorUse <em>Validator Use</em>}'.
@@ -2207,59 +2286,6 @@ public interface CMSdslPackage extends EPackage
   EReference getValidatorUse_Args();
 
   /**
-   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.CheckBlock <em>Check Block</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Check Block</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.CheckBlock
-   * @generated
-   */
-  EClass getCheckBlock();
-
-  /**
-   * Returns the meta object for the containment reference '{@link jope015.mdsd2021.reexam.cMSdsl.CheckBlock#getValidator <em>Validator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Validator</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.CheckBlock#getValidator()
-   * @see #getCheckBlock()
-   * @generated
-   */
-  EReference getCheckBlock_Validator();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link jope015.mdsd2021.reexam.cMSdsl.CheckBlock#getStatusCond <em>Status Cond</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Status Cond</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.CheckBlock#getStatusCond()
-   * @see #getCheckBlock()
-   * @generated
-   */
-  EReference getCheckBlock_StatusCond();
-
-  /**
-   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationStatus <em>Validation Status</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Validation Status</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.ValidationStatus
-   * @generated
-   */
-  EClass getValidationStatus();
-
-  /**
-   * Returns the meta object for the attribute '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationStatus#getMsg <em>Msg</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Msg</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.ValidationStatus#getMsg()
-   * @see #getValidationStatus()
-   * @generated
-   */
-  EAttribute getValidationStatus_Msg();
-
-  /**
    * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.FieldProp <em>Field Prop</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2279,6 +2305,16 @@ public interface CMSdslPackage extends EPackage
    * @generated
    */
   EAttribute getFieldProp_Type();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.DefaultValue <em>Default Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Default Value</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.DefaultValue
+   * @generated
+   */
+  EClass getDefaultValue();
 
   /**
    * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.InputType <em>Input Type</em>}'.
@@ -2481,27 +2517,6 @@ public interface CMSdslPackage extends EPackage
   EClass getExpression();
 
   /**
-   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Eval <em>Eval</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Eval</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Eval
-   * @generated
-   */
-  EClass getEval();
-
-  /**
-   * Returns the meta object for the containment reference '{@link jope015.mdsd2021.reexam.cMSdsl.Eval#getExpression <em>Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Eval#getExpression()
-   * @see #getEval()
-   * @generated
-   */
-  EReference getEval_Expression();
-
-  /**
    * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Lib <em>Lib</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2628,36 +2643,6 @@ public interface CMSdslPackage extends EPackage
   EAttribute getPass_Value();
 
   /**
-   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Err <em>Err</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Err</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Err
-   * @generated
-   */
-  EClass getErr();
-
-  /**
-   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Warn <em>Warn</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Warn</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Warn
-   * @generated
-   */
-  EClass getWarn();
-
-  /**
-   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Succ <em>Succ</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Succ</em>'.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Succ
-   * @generated
-   */
-  EClass getSucc();
-
-  /**
    * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Def <em>Def</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2668,15 +2653,15 @@ public interface CMSdslPackage extends EPackage
   EClass getDef();
 
   /**
-   * Returns the meta object for the attribute '{@link jope015.mdsd2021.reexam.cMSdsl.Def#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link jope015.mdsd2021.reexam.cMSdsl.Def#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
+   * @return the meta object for the containment reference '<em>Value</em>'.
    * @see jope015.mdsd2021.reexam.cMSdsl.Def#getValue()
    * @see #getDef()
    * @generated
    */
-  EAttribute getDef_Value();
+  EReference getDef_Value();
 
   /**
    * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.PropTest <em>Prop Test</em>}'.
@@ -2719,6 +2704,99 @@ public interface CMSdslPackage extends EPackage
    * @generated
    */
   EReference getInputField_Value();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.DisplayAs <em>Display As</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Display As</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.DisplayAs
+   * @generated
+   */
+  EClass getDisplayAs();
+
+  /**
+   * Returns the meta object for the attribute '{@link jope015.mdsd2021.reexam.cMSdsl.DisplayAs#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.DisplayAs#getValue()
+   * @see #getDisplayAs()
+   * @generated
+   */
+  EAttribute getDisplayAs_Value();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Nullable <em>Nullable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Nullable</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.Nullable
+   * @generated
+   */
+  EClass getNullable();
+
+  /**
+   * Returns the meta object for the attribute '{@link jope015.mdsd2021.reexam.cMSdsl.Nullable#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.Nullable#getValue()
+   * @see #getNullable()
+   * @generated
+   */
+  EAttribute getNullable_Value();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.Unique <em>Unique</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Unique</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.Unique
+   * @generated
+   */
+  EClass getUnique();
+
+  /**
+   * Returns the meta object for the attribute '{@link jope015.mdsd2021.reexam.cMSdsl.Unique#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.Unique#getValue()
+   * @see #getUnique()
+   * @generated
+   */
+  EAttribute getUnique_Value();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.NumType <em>Num Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Num Type</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.NumType
+   * @generated
+   */
+  EClass getNumType();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.StringType <em>String Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Type</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.StringType
+   * @generated
+   */
+  EClass getStringType();
+
+  /**
+   * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.BoolType <em>Bool Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bool Type</em>'.
+   * @see jope015.mdsd2021.reexam.cMSdsl.BoolType
+   * @generated
+   */
+  EClass getBoolType();
 
   /**
    * Returns the meta object for class '{@link jope015.mdsd2021.reexam.cMSdsl.InpMail <em>Inp Mail</em>}'.
@@ -3385,6 +3463,14 @@ public interface CMSdslPackage extends EPackage
     EClass VALIDATION_CHECK = eINSTANCE.getValidationCheck();
 
     /**
+     * The meta object literal for the '<em><b>Locations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VALIDATION_CHECK__LOCATIONS = eINSTANCE.getValidationCheck_Locations();
+
+    /**
      * The meta object literal for the '<em><b>Validator</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3399,6 +3485,24 @@ public interface CMSdslPackage extends EPackage
      * @generated
      */
     EAttribute VALIDATION_CHECK__ERRROR_MSG = eINSTANCE.getValidationCheck_ErrrorMsg();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ValidationCheckLocationImpl <em>Validation Check Location</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.ValidationCheckLocationImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getValidationCheckLocation()
+     * @generated
+     */
+    EClass VALIDATION_CHECK_LOCATION = eINSTANCE.getValidationCheckLocation();
+
+    /**
+     * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALIDATION_CHECK_LOCATION__LOCATION = eINSTANCE.getValidationCheckLocation_Location();
 
     /**
      * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ValidatorUseImpl <em>Validator Use</em>}' class.
@@ -3427,50 +3531,6 @@ public interface CMSdslPackage extends EPackage
     EReference VALIDATOR_USE__ARGS = eINSTANCE.getValidatorUse_Args();
 
     /**
-     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.CheckBlockImpl <em>Check Block</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CheckBlockImpl
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getCheckBlock()
-     * @generated
-     */
-    EClass CHECK_BLOCK = eINSTANCE.getCheckBlock();
-
-    /**
-     * The meta object literal for the '<em><b>Validator</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CHECK_BLOCK__VALIDATOR = eINSTANCE.getCheckBlock_Validator();
-
-    /**
-     * The meta object literal for the '<em><b>Status Cond</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CHECK_BLOCK__STATUS_COND = eINSTANCE.getCheckBlock_StatusCond();
-
-    /**
-     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ValidationStatusImpl <em>Validation Status</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.ValidationStatusImpl
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getValidationStatus()
-     * @generated
-     */
-    EClass VALIDATION_STATUS = eINSTANCE.getValidationStatus();
-
-    /**
-     * The meta object literal for the '<em><b>Msg</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VALIDATION_STATUS__MSG = eINSTANCE.getValidationStatus_Msg();
-
-    /**
      * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.FieldPropImpl <em>Field Prop</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3487,6 +3547,16 @@ public interface CMSdslPackage extends EPackage
      * @generated
      */
     EAttribute FIELD_PROP__TYPE = eINSTANCE.getFieldProp_Type();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.DefaultValueImpl <em>Default Value</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.DefaultValueImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDefaultValue()
+     * @generated
+     */
+    EClass DEFAULT_VALUE = eINSTANCE.getDefaultValue();
 
     /**
      * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.InputTypeImpl <em>Input Type</em>}' class.
@@ -3659,24 +3729,6 @@ public interface CMSdslPackage extends EPackage
     EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
-     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.EvalImpl <em>Eval</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.EvalImpl
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getEval()
-     * @generated
-     */
-    EClass EVAL = eINSTANCE.getEval();
-
-    /**
-     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EVAL__EXPRESSION = eINSTANCE.getEval_Expression();
-
-    /**
      * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.LibImpl <em>Lib</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3785,36 +3837,6 @@ public interface CMSdslPackage extends EPackage
     EAttribute PASS__VALUE = eINSTANCE.getPass_Value();
 
     /**
-     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.ErrImpl <em>Err</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.ErrImpl
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getErr()
-     * @generated
-     */
-    EClass ERR = eINSTANCE.getErr();
-
-    /**
-     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.WarnImpl <em>Warn</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.WarnImpl
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getWarn()
-     * @generated
-     */
-    EClass WARN = eINSTANCE.getWarn();
-
-    /**
-     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.SuccImpl <em>Succ</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.SuccImpl
-     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getSucc()
-     * @generated
-     */
-    EClass SUCC = eINSTANCE.getSucc();
-
-    /**
      * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.DefImpl <em>Def</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3825,12 +3847,12 @@ public interface CMSdslPackage extends EPackage
     EClass DEF = eINSTANCE.getDef();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DEF__VALUE = eINSTANCE.getDef_Value();
+    EReference DEF__VALUE = eINSTANCE.getDef_Value();
 
     /**
      * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.PropTestImpl <em>Prop Test</em>}' class.
@@ -3867,6 +3889,90 @@ public interface CMSdslPackage extends EPackage
      * @generated
      */
     EReference INPUT_FIELD__VALUE = eINSTANCE.getInputField_Value();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.DisplayAsImpl <em>Display As</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.DisplayAsImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getDisplayAs()
+     * @generated
+     */
+    EClass DISPLAY_AS = eINSTANCE.getDisplayAs();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DISPLAY_AS__VALUE = eINSTANCE.getDisplayAs_Value();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.NullableImpl <em>Nullable</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.NullableImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getNullable()
+     * @generated
+     */
+    EClass NULLABLE = eINSTANCE.getNullable();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NULLABLE__VALUE = eINSTANCE.getNullable_Value();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.UniqueImpl <em>Unique</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.UniqueImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getUnique()
+     * @generated
+     */
+    EClass UNIQUE = eINSTANCE.getUnique();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UNIQUE__VALUE = eINSTANCE.getUnique_Value();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.NumTypeImpl <em>Num Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.NumTypeImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getNumType()
+     * @generated
+     */
+    EClass NUM_TYPE = eINSTANCE.getNumType();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.StringTypeImpl <em>String Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.StringTypeImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getStringType()
+     * @generated
+     */
+    EClass STRING_TYPE = eINSTANCE.getStringType();
+
+    /**
+     * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.BoolTypeImpl <em>Bool Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.BoolTypeImpl
+     * @see jope015.mdsd2021.reexam.cMSdsl.impl.CMSdslPackageImpl#getBoolType()
+     * @generated
+     */
+    EClass BOOL_TYPE = eINSTANCE.getBoolType();
 
     /**
      * The meta object literal for the '{@link jope015.mdsd2021.reexam.cMSdsl.impl.InpMailImpl <em>Inp Mail</em>}' class.

@@ -134,6 +134,13 @@ public class CMSdslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CMSdslPackage.VALIDATION_CHECK_LOCATION:
+      {
+        ValidationCheckLocation validationCheckLocation = (ValidationCheckLocation)theEObject;
+        T result = caseValidationCheckLocation(validationCheckLocation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CMSdslPackage.VALIDATOR_USE:
       {
         ValidatorUse validatorUse = (ValidatorUse)theEObject;
@@ -141,24 +148,17 @@ public class CMSdslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CMSdslPackage.CHECK_BLOCK:
-      {
-        CheckBlock checkBlock = (CheckBlock)theEObject;
-        T result = caseCheckBlock(checkBlock);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CMSdslPackage.VALIDATION_STATUS:
-      {
-        ValidationStatus validationStatus = (ValidationStatus)theEObject;
-        T result = caseValidationStatus(validationStatus);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CMSdslPackage.FIELD_PROP:
       {
         FieldProp fieldProp = (FieldProp)theEObject;
         T result = caseFieldProp(fieldProp);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.DEFAULT_VALUE:
+      {
+        DefaultValue defaultValue = (DefaultValue)theEObject;
+        T result = caseDefaultValue(defaultValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -228,14 +228,6 @@ public class CMSdslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CMSdslPackage.EVAL:
-      {
-        Eval eval = (Eval)theEObject;
-        T result = caseEval(eval);
-        if (result == null) result = casePrimaryElement(eval);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CMSdslPackage.LIB:
       {
         Lib lib = (Lib)theEObject;
@@ -284,30 +276,6 @@ public class CMSdslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CMSdslPackage.ERR:
-      {
-        Err err = (Err)theEObject;
-        T result = caseErr(err);
-        if (result == null) result = caseValidationStatus(err);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CMSdslPackage.WARN:
-      {
-        Warn warn = (Warn)theEObject;
-        T result = caseWarn(warn);
-        if (result == null) result = caseValidationStatus(warn);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CMSdslPackage.SUCC:
-      {
-        Succ succ = (Succ)theEObject;
-        T result = caseSucc(succ);
-        if (result == null) result = caseValidationStatus(succ);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CMSdslPackage.DEF:
       {
         Def def = (Def)theEObject;
@@ -329,6 +297,54 @@ public class CMSdslSwitch<T> extends Switch<T>
         InputField inputField = (InputField)theEObject;
         T result = caseInputField(inputField);
         if (result == null) result = caseFieldProp(inputField);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.DISPLAY_AS:
+      {
+        DisplayAs displayAs = (DisplayAs)theEObject;
+        T result = caseDisplayAs(displayAs);
+        if (result == null) result = caseFieldProp(displayAs);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.NULLABLE:
+      {
+        Nullable nullable = (Nullable)theEObject;
+        T result = caseNullable(nullable);
+        if (result == null) result = caseFieldProp(nullable);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.UNIQUE:
+      {
+        Unique unique = (Unique)theEObject;
+        T result = caseUnique(unique);
+        if (result == null) result = caseFieldProp(unique);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.NUM_TYPE:
+      {
+        NumType numType = (NumType)theEObject;
+        T result = caseNumType(numType);
+        if (result == null) result = caseDefaultValue(numType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.STRING_TYPE:
+      {
+        StringType stringType = (StringType)theEObject;
+        T result = caseStringType(stringType);
+        if (result == null) result = caseDefaultValue(stringType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CMSdslPackage.BOOL_TYPE:
+      {
+        BoolType boolType = (BoolType)theEObject;
+        T result = caseBoolType(boolType);
+        if (result == null) result = caseDefaultValue(boolType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -667,6 +683,22 @@ public class CMSdslSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Validation Check Location</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Validation Check Location</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValidationCheckLocation(ValidationCheckLocation object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Validator Use</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -683,38 +715,6 @@ public class CMSdslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Check Block</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Check Block</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCheckBlock(CheckBlock object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Validation Status</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Validation Status</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValidationStatus(ValidationStatus object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Field Prop</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -726,6 +726,22 @@ public class CMSdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFieldProp(FieldProp object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Default Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDefaultValue(DefaultValue object)
   {
     return null;
   }
@@ -875,22 +891,6 @@ public class CMSdslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Eval</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Eval</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEval(Eval object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Lib</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -987,54 +987,6 @@ public class CMSdslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Err</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Err</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseErr(Err object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Warn</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Warn</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWarn(Warn object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Succ</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Succ</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSucc(Succ object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Def</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1078,6 +1030,102 @@ public class CMSdslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseInputField(InputField object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Display As</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Display As</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDisplayAs(DisplayAs object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Nullable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Nullable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNullable(Nullable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Unique</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unique</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUnique(Unique object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Num Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Num Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumType(NumType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringType(StringType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Bool Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bool Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBoolType(BoolType object)
   {
     return null;
   }

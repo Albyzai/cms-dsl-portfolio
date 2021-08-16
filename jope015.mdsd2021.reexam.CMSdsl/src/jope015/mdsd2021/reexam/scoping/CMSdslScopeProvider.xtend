@@ -5,16 +5,12 @@ package jope015.mdsd2021.reexam.scoping
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
-import jope015.mdsd2021.reexam.cMSdsl.Field
 import jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage.Literals
 import org.eclipse.xtext.EcoreUtil2
-import jope015.mdsd2021.reexam.cMSdsl.Entity
 import java.util.ArrayList
 import org.eclipse.xtext.scoping.Scopes
-import jope015.mdsd2021.reexam.cMSdsl.ValidatorUse
 import jope015.mdsd2021.reexam.cMSdsl.Validator
 import jope015.mdsd2021.reexam.cMSdsl.Parameter
-import jope015.mdsd2021.reexam.cMSdsl.ValidationCheck
 import jope015.mdsd2021.reexam.cMSdsl.ParamOrArgUse
 
 /**
@@ -61,9 +57,7 @@ class CMSdslScopeProvider extends AbstractCMSdslScopeProvider {
 //		}
 		
 		if(context instanceof ParamOrArgUse && reference==Literals.PARAM_OR_ARG_USE__REF) {
-			
-			//	implement commented out code, if entity base class is implemented
-			// val seen = new HashSet<Entity>
+
 			var validator = EcoreUtil2.getContainerOfType(context, Validator)
 			
 			val candidates = new ArrayList<Parameter>

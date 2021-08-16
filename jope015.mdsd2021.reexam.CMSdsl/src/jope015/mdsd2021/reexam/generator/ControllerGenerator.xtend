@@ -4,13 +4,7 @@ import jope015.mdsd2021.reexam.cMSdsl.Entity
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import javax.inject.Inject
 import jope015.mdsd2021.reexam.util.CMSdslUtil
-import jope015.mdsd2021.reexam.cMSdsl.ValidationCheck
 import jope015.mdsd2021.reexam.cMSdsl.Relationship
-import jope015.mdsd2021.reexam.cMSdsl.BelongsTo
-import jope015.mdsd2021.reexam.cMSdsl.BelongsToMany
-import jope015.mdsd2021.reexam.cMSdsl.HasOne
-import jope015.mdsd2021.reexam.cMSdsl.HasMany
-
 class ControllerGenerator {
 	
 	@Inject extension CMSdslUtil
@@ -28,7 +22,7 @@ class ControllerGenerator {
 	private def compileController(Entity e)
 		'''
 		const { «e.name.toFirstUpper» «IF !e.relations.isEmpty», «ENDIF»«FOR r: e.relations»«r.entity.name.toFirstUpper» «IF e.relations.last !== r», «ENDIF»«ENDFOR» } = require('../models');
-		«IF !e.members.filter(ValidationCheck).isEmpty»
+		«IF !e.getValidationChecksFor('server').isEmpty»
 		const { validate } = require('../validators/«e.name.toFirstLower».validator')
 		«ENDIF»
 		
@@ -41,7 +35,7 @@ class ControllerGenerator {
 		module.exports.create = (req, res) => {
 			let {«FOR f: e.fields» «f.name»,«ENDFOR» } = req.body
 			
-		«IF !e.members.filter(ValidationCheck).isEmpty»
+		«IF !e.getValidationChecksFor('server').isEmpty»
 			const errors = validate(req.body)
 			if (errors.length > 0) {
 				res.status(422).json({errors: errors})

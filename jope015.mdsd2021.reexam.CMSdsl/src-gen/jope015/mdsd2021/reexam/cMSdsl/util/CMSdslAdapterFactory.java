@@ -116,24 +116,24 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
         return createValidationCheckAdapter();
       }
       @Override
+      public Adapter caseValidationCheckLocation(ValidationCheckLocation object)
+      {
+        return createValidationCheckLocationAdapter();
+      }
+      @Override
       public Adapter caseValidatorUse(ValidatorUse object)
       {
         return createValidatorUseAdapter();
       }
       @Override
-      public Adapter caseCheckBlock(CheckBlock object)
-      {
-        return createCheckBlockAdapter();
-      }
-      @Override
-      public Adapter caseValidationStatus(ValidationStatus object)
-      {
-        return createValidationStatusAdapter();
-      }
-      @Override
       public Adapter caseFieldProp(FieldProp object)
       {
         return createFieldPropAdapter();
+      }
+      @Override
+      public Adapter caseDefaultValue(DefaultValue object)
+      {
+        return createDefaultValueAdapter();
       }
       @Override
       public Adapter caseInputType(InputType object)
@@ -181,11 +181,6 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
-      public Adapter caseEval(Eval object)
-      {
-        return createEvalAdapter();
-      }
-      @Override
       public Adapter caseLib(Lib object)
       {
         return createLibAdapter();
@@ -216,21 +211,6 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
         return createPassAdapter();
       }
       @Override
-      public Adapter caseErr(Err object)
-      {
-        return createErrAdapter();
-      }
-      @Override
-      public Adapter caseWarn(Warn object)
-      {
-        return createWarnAdapter();
-      }
-      @Override
-      public Adapter caseSucc(Succ object)
-      {
-        return createSuccAdapter();
-      }
-      @Override
       public Adapter caseDef(Def object)
       {
         return createDefAdapter();
@@ -244,6 +224,36 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseInputField(InputField object)
       {
         return createInputFieldAdapter();
+      }
+      @Override
+      public Adapter caseDisplayAs(DisplayAs object)
+      {
+        return createDisplayAsAdapter();
+      }
+      @Override
+      public Adapter caseNullable(Nullable object)
+      {
+        return createNullableAdapter();
+      }
+      @Override
+      public Adapter caseUnique(Unique object)
+      {
+        return createUniqueAdapter();
+      }
+      @Override
+      public Adapter caseNumType(NumType object)
+      {
+        return createNumTypeAdapter();
+      }
+      @Override
+      public Adapter caseStringType(StringType object)
+      {
+        return createStringTypeAdapter();
+      }
+      @Override
+      public Adapter caseBoolType(BoolType object)
+      {
+        return createBoolTypeAdapter();
       }
       @Override
       public Adapter caseInpMail(InpMail object)
@@ -513,6 +523,21 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation <em>Validation Check Location</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation
+   * @generated
+   */
+  public Adapter createValidationCheckLocationAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidatorUse <em>Validator Use</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -528,36 +553,6 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.CheckBlock <em>Check Block</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.CheckBlock
-   * @generated
-   */
-  public Adapter createCheckBlockAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.ValidationStatus <em>Validation Status</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.ValidationStatus
-   * @generated
-   */
-  public Adapter createValidationStatusAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.FieldProp <em>Field Prop</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -568,6 +563,21 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFieldPropAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.DefaultValue <em>Default Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.DefaultValue
+   * @generated
+   */
+  public Adapter createDefaultValueAdapter()
   {
     return null;
   }
@@ -708,21 +718,6 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Eval <em>Eval</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Eval
-   * @generated
-   */
-  public Adapter createEvalAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Lib <em>Lib</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -813,51 +808,6 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Err <em>Err</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Err
-   * @generated
-   */
-  public Adapter createErrAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Warn <em>Warn</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Warn
-   * @generated
-   */
-  public Adapter createWarnAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Succ <em>Succ</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jope015.mdsd2021.reexam.cMSdsl.Succ
-   * @generated
-   */
-  public Adapter createSuccAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Def <em>Def</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -898,6 +848,96 @@ public class CMSdslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createInputFieldAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.DisplayAs <em>Display As</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.DisplayAs
+   * @generated
+   */
+  public Adapter createDisplayAsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Nullable <em>Nullable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.Nullable
+   * @generated
+   */
+  public Adapter createNullableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.Unique <em>Unique</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.Unique
+   * @generated
+   */
+  public Adapter createUniqueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.NumType <em>Num Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.NumType
+   * @generated
+   */
+  public Adapter createNumTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.StringType <em>String Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.StringType
+   * @generated
+   */
+  public Adapter createStringTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jope015.mdsd2021.reexam.cMSdsl.BoolType <em>Bool Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jope015.mdsd2021.reexam.cMSdsl.BoolType
+   * @generated
+   */
+  public Adapter createBoolTypeAdapter()
   {
     return null;
   }

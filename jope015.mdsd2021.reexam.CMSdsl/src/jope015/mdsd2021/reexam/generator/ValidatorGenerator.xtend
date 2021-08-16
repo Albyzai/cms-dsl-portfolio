@@ -2,24 +2,26 @@ package jope015.mdsd2021.reexam.generator
 
 import jope015.mdsd2021.reexam.cMSdsl.Entity
 import org.eclipse.xtext.generator.IFileSystemAccess2
-import jope015.mdsd2021.reexam.cMSdsl.ValidationCheck
 import javax.inject.Inject
+import jope015.mdsd2021.reexam.util.CMSdslUtil
 
 class ValidatorGenerator {
 	
 	@Inject extension ExpressionsGenerator
+	@Inject extension CMSdslUtil
 	
 	val path = 'validators/'
 	val fileExtension = '.validator.js'
 	
 	def generateValidator(Entity e, String basePath, IFileSystemAccess2 fsa){
-		if(!e.members.filter(ValidationCheck).isEmpty) {
+		if(!e.getValidationChecksFor('server').isEmpty) {
 			fsa.generateFile(basePath + path + e.name.toFirstLower + fileExtension, e.compileValidator)
 		}
-	}
+	} 
 	
 	private def compileValidator(Entity e){
-		val validationChecks = e.members.filter(ValidationCheck)
+		val validationChecks = e.getValidationChecksFor('server')
+		
 		val validators = validationChecks.map[check | check.validator]
 		
 		'''

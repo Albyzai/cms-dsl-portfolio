@@ -75,13 +75,12 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final RuleCall cDBConfigParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cEntityParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cValidatorParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cEvalParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//PrimaryElement:
-		//	DBConfig | Entity | Validator | Eval;
+		//	DBConfig | Entity | Validator;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DBConfig | Entity | Validator | Eval
+		//DBConfig | Entity | Validator
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//DBConfig
@@ -92,9 +91,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//Validator
 		public RuleCall getValidatorParserRuleCall_2() { return cValidatorParserRuleCall_2; }
-		
-		//Eval
-		public RuleCall getEvalParserRuleCall_3() { return cEvalParserRuleCall_3; }
 	}
 	public class DBConfigElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.DBConfig");
@@ -494,39 +490,93 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.ValidationCheck");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCheckKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cValidatorAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValidatorValidatorUseParserRuleCall_1_0 = (RuleCall)cValidatorAssignment_1.eContents().get(0);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cErrrorMsgAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cErrrorMsgSTRINGTerminalRuleCall_3_0 = (RuleCall)cErrrorMsgAssignment_3.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cLocationsAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cLocationsValidationCheckLocationParserRuleCall_1_0_0 = (RuleCall)cLocationsAssignment_1_0.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
+		private final Keyword cAndKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cLocationsAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cLocationsValidationCheckLocationParserRuleCall_1_1_1_0 = (RuleCall)cLocationsAssignment_1_1_1.eContents().get(0);
+		private final Assignment cValidatorAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValidatorValidatorUseParserRuleCall_2_0 = (RuleCall)cValidatorAssignment_2.eContents().get(0);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cErrrorMsgAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cErrrorMsgSTRINGTerminalRuleCall_4_0 = (RuleCall)cErrrorMsgAssignment_4.eContents().get(0);
 		
-		////ValidationCheck:
-		////	'check' (Check | CheckBlock)
-		////;
 		//ValidationCheck:
-		//	'check' validator=ValidatorUse '=>' errrorMsg=STRING;
+		//	'check' (locations+=ValidationCheckLocation ('and' locations+=ValidationCheckLocation)?)? validator=ValidatorUse '=>'
+		//	errrorMsg=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'check' validator=ValidatorUse '=>' errrorMsg=STRING
+		//'check' (locations+=ValidationCheckLocation ('and' locations+=ValidationCheckLocation)?)? validator=ValidatorUse '=>'
+		//errrorMsg=STRING
 		public Group getGroup() { return cGroup; }
 		
 		//'check'
 		public Keyword getCheckKeyword_0() { return cCheckKeyword_0; }
 		
+		//(locations+=ValidationCheckLocation ('and' locations+=ValidationCheckLocation)?)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//locations+=ValidationCheckLocation
+		public Assignment getLocationsAssignment_1_0() { return cLocationsAssignment_1_0; }
+		
+		//ValidationCheckLocation
+		public RuleCall getLocationsValidationCheckLocationParserRuleCall_1_0_0() { return cLocationsValidationCheckLocationParserRuleCall_1_0_0; }
+		
+		//('and' locations+=ValidationCheckLocation)?
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//'and'
+		public Keyword getAndKeyword_1_1_0() { return cAndKeyword_1_1_0; }
+		
+		//locations+=ValidationCheckLocation
+		public Assignment getLocationsAssignment_1_1_1() { return cLocationsAssignment_1_1_1; }
+		
+		//ValidationCheckLocation
+		public RuleCall getLocationsValidationCheckLocationParserRuleCall_1_1_1_0() { return cLocationsValidationCheckLocationParserRuleCall_1_1_1_0; }
+		
 		//validator=ValidatorUse
-		public Assignment getValidatorAssignment_1() { return cValidatorAssignment_1; }
+		public Assignment getValidatorAssignment_2() { return cValidatorAssignment_2; }
 		
 		//ValidatorUse
-		public RuleCall getValidatorValidatorUseParserRuleCall_1_0() { return cValidatorValidatorUseParserRuleCall_1_0; }
+		public RuleCall getValidatorValidatorUseParserRuleCall_2_0() { return cValidatorValidatorUseParserRuleCall_2_0; }
 		
 		//'=>'
-		public Keyword getEqualsSignGreaterThanSignKeyword_2() { return cEqualsSignGreaterThanSignKeyword_2; }
+		public Keyword getEqualsSignGreaterThanSignKeyword_3() { return cEqualsSignGreaterThanSignKeyword_3; }
 		
 		//errrorMsg=STRING
-		public Assignment getErrrorMsgAssignment_3() { return cErrrorMsgAssignment_3; }
+		public Assignment getErrrorMsgAssignment_4() { return cErrrorMsgAssignment_4; }
 		
 		//STRING
-		public RuleCall getErrrorMsgSTRINGTerminalRuleCall_3_0() { return cErrrorMsgSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getErrrorMsgSTRINGTerminalRuleCall_4_0() { return cErrrorMsgSTRINGTerminalRuleCall_4_0; }
+	}
+	public class ValidationCheckLocationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.ValidationCheckLocation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cLocationAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cLocationClientKeyword_0_0 = (Keyword)cLocationAssignment_0.eContents().get(0);
+		private final Assignment cLocationAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cLocationServerKeyword_1_0 = (Keyword)cLocationAssignment_1.eContents().get(0);
+		
+		//ValidationCheckLocation:
+		//	location='client' | location='server';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//location='client' | location='server'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//location='client'
+		public Assignment getLocationAssignment_0() { return cLocationAssignment_0; }
+		
+		//'client'
+		public Keyword getLocationClientKeyword_0_0() { return cLocationClientKeyword_0_0; }
+		
+		//location='server'
+		public Assignment getLocationAssignment_1() { return cLocationAssignment_1; }
+		
+		//'server'
+		public Keyword getLocationServerKeyword_1_0() { return cLocationServerKeyword_1_0; }
 	}
 	public class ValidatorUseElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.ValidatorUse");
@@ -595,130 +645,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
-	public class CheckBlockElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.CheckBlock");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cValidatorAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cValidatorValidatorUseParserRuleCall_0_0 = (RuleCall)cValidatorAssignment_0.eContents().get(0);
-		private final Keyword cEqualsSignGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cBEGINTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Assignment cStatusCondAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cStatusCondValidationStatusParserRuleCall_3_0 = (RuleCall)cStatusCondAssignment_3.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
-		
-		//CheckBlock:
-		//	validator=ValidatorUse '=>' BEGIN
-		//	statusCond+=ValidationStatus*
-		//	END;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//validator=ValidatorUse '=>' BEGIN statusCond+=ValidationStatus* END
-		public Group getGroup() { return cGroup; }
-		
-		//validator=ValidatorUse
-		public Assignment getValidatorAssignment_0() { return cValidatorAssignment_0; }
-		
-		//ValidatorUse
-		public RuleCall getValidatorValidatorUseParserRuleCall_0_0() { return cValidatorValidatorUseParserRuleCall_0_0; }
-		
-		//'=>'
-		public Keyword getEqualsSignGreaterThanSignKeyword_1() { return cEqualsSignGreaterThanSignKeyword_1; }
-		
-		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_2() { return cBEGINTerminalRuleCall_2; }
-		
-		//statusCond+=ValidationStatus*
-		public Assignment getStatusCondAssignment_3() { return cStatusCondAssignment_3; }
-		
-		//ValidationStatus
-		public RuleCall getStatusCondValidationStatusParserRuleCall_3_0() { return cStatusCondValidationStatusParserRuleCall_3_0; }
-		
-		//END
-		public RuleCall getENDTerminalRuleCall_4() { return cENDTerminalRuleCall_4; }
-	}
-	public class ValidationStatusElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.ValidationStatus");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cErrAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cErrorKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Keyword cColonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Assignment cMsgAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final RuleCall cMsgSTRINGTerminalRuleCall_0_3_0 = (RuleCall)cMsgAssignment_0_3.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cWarnAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cWarningKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Keyword cColonKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cMsgAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cMsgSTRINGTerminalRuleCall_1_3_0 = (RuleCall)cMsgAssignment_1_3.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cSuccAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cSuccessKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Keyword cColonKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
-		private final Assignment cMsgAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
-		private final RuleCall cMsgSTRINGTerminalRuleCall_2_3_0 = (RuleCall)cMsgAssignment_2_3.eContents().get(0);
-		
-		//ValidationStatus:
-		//	{Err} 'error' ':' msg=STRING | {Warn} 'warning' ':' msg=STRING | {Succ} 'success' ':' msg=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Err} 'error' ':' msg=STRING | {Warn} 'warning' ':' msg=STRING | {Succ} 'success' ':' msg=STRING
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//{Err} 'error' ':' msg=STRING
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//{Err}
-		public Action getErrAction_0_0() { return cErrAction_0_0; }
-		
-		//'error'
-		public Keyword getErrorKeyword_0_1() { return cErrorKeyword_0_1; }
-		
-		//':'
-		public Keyword getColonKeyword_0_2() { return cColonKeyword_0_2; }
-		
-		//msg=STRING
-		public Assignment getMsgAssignment_0_3() { return cMsgAssignment_0_3; }
-		
-		//STRING
-		public RuleCall getMsgSTRINGTerminalRuleCall_0_3_0() { return cMsgSTRINGTerminalRuleCall_0_3_0; }
-		
-		//{Warn} 'warning' ':' msg=STRING
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{Warn}
-		public Action getWarnAction_1_0() { return cWarnAction_1_0; }
-		
-		//'warning'
-		public Keyword getWarningKeyword_1_1() { return cWarningKeyword_1_1; }
-		
-		//':'
-		public Keyword getColonKeyword_1_2() { return cColonKeyword_1_2; }
-		
-		//msg=STRING
-		public Assignment getMsgAssignment_1_3() { return cMsgAssignment_1_3; }
-		
-		//STRING
-		public RuleCall getMsgSTRINGTerminalRuleCall_1_3_0() { return cMsgSTRINGTerminalRuleCall_1_3_0; }
-		
-		//{Succ} 'success' ':' msg=STRING
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//{Succ}
-		public Action getSuccAction_2_0() { return cSuccAction_2_0; }
-		
-		//'success'
-		public Keyword getSuccessKeyword_2_1() { return cSuccessKeyword_2_1; }
-		
-		//':'
-		public Keyword getColonKeyword_2_2() { return cColonKeyword_2_2; }
-		
-		//msg=STRING
-		public Assignment getMsgAssignment_2_3() { return cMsgAssignment_2_3; }
-		
-		//STRING
-		public RuleCall getMsgSTRINGTerminalRuleCall_2_3_0() { return cMsgSTRINGTerminalRuleCall_2_3_0; }
-	}
 	public class FieldPropElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.FieldProp");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -728,7 +654,7 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final Keyword cTypeDefaultKeyword_0_1_0 = (Keyword)cTypeAssignment_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final Assignment cValueAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final RuleCall cValueSTRINGTerminalRuleCall_0_3_0 = (RuleCall)cValueAssignment_0_3.eContents().get(0);
+		private final RuleCall cValueAtomicParserRuleCall_0_3_0 = (RuleCall)cValueAssignment_0_3.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cPropTestAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cTypeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
@@ -743,19 +669,40 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final Keyword cColonKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Assignment cValueAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
 		private final RuleCall cValueInputTypeParserRuleCall_2_3_0 = (RuleCall)cValueAssignment_2_3.eContents().get(0);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cDisplayAsAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Assignment cTypeAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final Keyword cTypeDisplayAsKeyword_3_1_0 = (Keyword)cTypeAssignment_3_1.eContents().get(0);
+		private final Keyword cColonKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Assignment cValueAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
+		private final RuleCall cValueSTRINGTerminalRuleCall_3_3_0 = (RuleCall)cValueAssignment_3_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cNullableAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Assignment cTypeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final Keyword cTypeNullableKeyword_4_1_0 = (Keyword)cTypeAssignment_4_1.eContents().get(0);
+		private final Keyword cColonKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Assignment cValueAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cValueBOOLEANTerminalRuleCall_4_3_0 = (RuleCall)cValueAssignment_4_3.eContents().get(0);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Action cUniqueAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Assignment cTypeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final Keyword cTypeUniqueKeyword_5_1_0 = (Keyword)cTypeAssignment_5_1.eContents().get(0);
+		private final Keyword cColonKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Assignment cValueAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
+		private final RuleCall cValueBOOLEANTerminalRuleCall_5_3_0 = (RuleCall)cValueAssignment_5_3.eContents().get(0);
 		
 		//FieldProp:
-		//	{Def} type='default' ':' value=STRING | {PropTest} type='test' ':' value=STRING | {InputField} type='inputType' ':'
-		//	value=InputType
-		//	//	{Check} type='check' value=ValidatorUse
-		//;
+		//	{Def} type='default' ':' value=Atomic | {PropTest} type='test' ':' value=STRING | {InputField} type='inputType' ':'
+		//	value=InputType | {DisplayAs} type='displayAs' ':' value=STRING | {Nullable} type='nullable' ':' value=BOOLEAN |
+		//	{Unique} type='unique' ':' value=BOOLEAN;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Def} type='default' ':' value=STRING | {PropTest} type='test' ':' value=STRING | {InputField} type='inputType' ':'
-		//value=InputType
+		//{Def} type='default' ':' value=Atomic | {PropTest} type='test' ':' value=STRING | {InputField} type='inputType' ':'
+		//value=InputType | {DisplayAs} type='displayAs' ':' value=STRING | {Nullable} type='nullable' ':' value=BOOLEAN |
+		//{Unique} type='unique' ':' value=BOOLEAN
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{Def} type='default' ':' value=STRING
+		//{Def} type='default' ':' value=Atomic
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{Def}
@@ -770,11 +717,11 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//':'
 		public Keyword getColonKeyword_0_2() { return cColonKeyword_0_2; }
 		
-		//value=STRING
+		//value=Atomic
 		public Assignment getValueAssignment_0_3() { return cValueAssignment_0_3; }
 		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_0_3_0() { return cValueSTRINGTerminalRuleCall_0_3_0; }
+		//Atomic
+		public RuleCall getValueAtomicParserRuleCall_0_3_0() { return cValueAtomicParserRuleCall_0_3_0; }
 		
 		//{PropTest} type='test' ':' value=STRING
 		public Group getGroup_1() { return cGroup_1; }
@@ -817,6 +764,116 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//InputType
 		public RuleCall getValueInputTypeParserRuleCall_2_3_0() { return cValueInputTypeParserRuleCall_2_3_0; }
+		
+		//{DisplayAs} type='displayAs' ':' value=STRING
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//{DisplayAs}
+		public Action getDisplayAsAction_3_0() { return cDisplayAsAction_3_0; }
+		
+		//type='displayAs'
+		public Assignment getTypeAssignment_3_1() { return cTypeAssignment_3_1; }
+		
+		//'displayAs'
+		public Keyword getTypeDisplayAsKeyword_3_1_0() { return cTypeDisplayAsKeyword_3_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_3_2() { return cColonKeyword_3_2; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_3_3() { return cValueAssignment_3_3; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_3_3_0() { return cValueSTRINGTerminalRuleCall_3_3_0; }
+		
+		//{Nullable} type='nullable' ':' value=BOOLEAN
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//{Nullable}
+		public Action getNullableAction_4_0() { return cNullableAction_4_0; }
+		
+		//type='nullable'
+		public Assignment getTypeAssignment_4_1() { return cTypeAssignment_4_1; }
+		
+		//'nullable'
+		public Keyword getTypeNullableKeyword_4_1_0() { return cTypeNullableKeyword_4_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_4_2() { return cColonKeyword_4_2; }
+		
+		//value=BOOLEAN
+		public Assignment getValueAssignment_4_3() { return cValueAssignment_4_3; }
+		
+		//BOOLEAN
+		public RuleCall getValueBOOLEANTerminalRuleCall_4_3_0() { return cValueBOOLEANTerminalRuleCall_4_3_0; }
+		
+		//{Unique} type='unique' ':' value=BOOLEAN
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//{Unique}
+		public Action getUniqueAction_5_0() { return cUniqueAction_5_0; }
+		
+		//type='unique'
+		public Assignment getTypeAssignment_5_1() { return cTypeAssignment_5_1; }
+		
+		//'unique'
+		public Keyword getTypeUniqueKeyword_5_1_0() { return cTypeUniqueKeyword_5_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_5_2() { return cColonKeyword_5_2; }
+		
+		//value=BOOLEAN
+		public Assignment getValueAssignment_5_3() { return cValueAssignment_5_3; }
+		
+		//BOOLEAN
+		public RuleCall getValueBOOLEANTerminalRuleCall_5_3_0() { return cValueBOOLEANTerminalRuleCall_5_3_0; }
+	}
+	public class DefaultValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.DefaultValue");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cNumTypeAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cStringTypeAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final RuleCall cSTRINGTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Action cBoolTypeAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final RuleCall cBOOLEANTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		
+		//DefaultValue:
+		//	{NumType} INT | {StringType} STRING | {BoolType} BOOLEAN;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{NumType} INT | {StringType} STRING | {BoolType} BOOLEAN
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//{NumType} INT
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//{NumType}
+		public Action getNumTypeAction_0_0() { return cNumTypeAction_0_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_0_1() { return cINTTerminalRuleCall_0_1; }
+		
+		//{StringType} STRING
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{StringType}
+		public Action getStringTypeAction_1_0() { return cStringTypeAction_1_0; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_1_1() { return cSTRINGTerminalRuleCall_1_1; }
+		
+		//{BoolType} BOOLEAN
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//{BoolType}
+		public Action getBoolTypeAction_2_0() { return cBoolTypeAction_2_0; }
+		
+		//BOOLEAN
+		public RuleCall getBOOLEANTerminalRuleCall_2_1() { return cBOOLEANTerminalRuleCall_2_1; }
 	}
 	public class InputTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.InputType");
@@ -1191,15 +1248,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final CrossReference cEntityEntityCrossReference_1_0 = (CrossReference)cEntityAssignment_1.eContents().get(0);
 		private final RuleCall cEntityEntityIDTerminalRuleCall_1_0_1 = (RuleCall)cEntityEntityCrossReference_1_0.eContents().get(1);
 		
-		////ParameterUse:
-		////	{ParameterUse} ref=[Parameter|Field]
-		////;
-		////
-		////
-		////
-		////ArgumentUse:
-		////	ref=[Field]
-		////;
 		//Relationship:
 		//	relationType=RelationshipType entity=[Entity];
 		@Override public ParserRule getRule() { return rule; }
@@ -1312,33 +1360,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//Or
 		public RuleCall getOrParserRuleCall() { return cOrParserRuleCall; }
-	}
-	public class EvalElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.Eval");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cEvalAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cEvalKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpressionExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
-		
-		//Eval:
-		//	{Eval} 'eval' expression=Expression;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Eval} 'eval' expression=Expression
-		public Group getGroup() { return cGroup; }
-		
-		//{Eval}
-		public Action getEvalAction_0() { return cEvalAction_0; }
-		
-		//'eval'
-		public Keyword getEvalKeyword_1() { return cEvalKeyword_1; }
-		
-		//expression=Expression
-		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
-		
-		//Expression
-		public RuleCall getExpressionExpressionParserRuleCall_2_0() { return cExpressionExpressionParserRuleCall_2_0; }
 	}
 	public class OrElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.Or");
@@ -1667,16 +1688,14 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cBoolAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final Alternatives cValueAlternatives_2_1_0 = (Alternatives)cValueAssignment_2_1.eContents().get(0);
-		private final Keyword cValueTrueKeyword_2_1_0_0 = (Keyword)cValueAlternatives_2_1_0.eContents().get(0);
-		private final Keyword cValueFalseKeyword_2_1_0_1 = (Keyword)cValueAlternatives_2_1_0.eContents().get(1);
+		private final RuleCall cValueBOOLEANTerminalRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
 		private final RuleCall cParamOrArgUseParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Atomic Expression:
-		//	{Num} value=INT | {Str} value=STRING | {Bool} value=('true' | 'false') | ParamOrArgUse;
+		//	{Num} value=INT | {Str} value=STRING | {Bool} value=BOOLEAN | ParamOrArgUse;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Num} value=INT | {Str} value=STRING | {Bool} value=('true' | 'false') | ParamOrArgUse
+		//{Num} value=INT | {Str} value=STRING | {Bool} value=BOOLEAN | ParamOrArgUse
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{Num} value=INT
@@ -1703,23 +1722,17 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//STRING
 		public RuleCall getValueSTRINGTerminalRuleCall_1_1_0() { return cValueSTRINGTerminalRuleCall_1_1_0; }
 		
-		//{Bool} value=('true' | 'false')
+		//{Bool} value=BOOLEAN
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//{Bool}
 		public Action getBoolAction_2_0() { return cBoolAction_2_0; }
 		
-		//value=('true' | 'false')
+		//value=BOOLEAN
 		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
 		
-		//('true' | 'false')
-		public Alternatives getValueAlternatives_2_1_0() { return cValueAlternatives_2_1_0; }
-		
-		//'true'
-		public Keyword getValueTrueKeyword_2_1_0_0() { return cValueTrueKeyword_2_1_0_0; }
-		
-		//'false'
-		public Keyword getValueFalseKeyword_2_1_0_1() { return cValueFalseKeyword_2_1_0_1; }
+		//BOOLEAN
+		public RuleCall getValueBOOLEANTerminalRuleCall_2_1_0() { return cValueBOOLEANTerminalRuleCall_2_1_0; }
 		
 		//ParamOrArgUse
 		public RuleCall getParamOrArgUseParserRuleCall_3() { return cParamOrArgUseParserRuleCall_3; }
@@ -1734,10 +1747,10 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	private final EntityDeclElements pEntityDecl;
 	private final FieldElements pField;
 	private final ValidationCheckElements pValidationCheck;
+	private final ValidationCheckLocationElements pValidationCheckLocation;
 	private final ValidatorUseElements pValidatorUse;
-	private final CheckBlockElements pCheckBlock;
-	private final ValidationStatusElements pValidationStatus;
 	private final FieldPropElements pFieldProp;
+	private final DefaultValueElements pDefaultValue;
 	private final InputTypeElements pInputType;
 	private final DataTypeElements pDataType;
 	private final ValidatorElements pValidator;
@@ -1747,7 +1760,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	private final RelationshipElements pRelationship;
 	private final RelationshipTypeElements pRelationshipType;
 	private final ExpressionElements pExpression;
-	private final EvalElements pEval;
 	private final OrElements pOr;
 	private final AndElements pAnd;
 	private final EqualityElements pEquality;
@@ -1756,6 +1768,7 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	private final MulDivElements pMulDiv;
 	private final PrimaryElements pPrimary;
 	private final AtomicElements pAtomic;
+	private final TerminalRule tBOOLEAN;
 	private final TerminalRule tBEGIN;
 	private final TerminalRule tEND;
 	
@@ -1776,10 +1789,10 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		this.pEntityDecl = new EntityDeclElements();
 		this.pField = new FieldElements();
 		this.pValidationCheck = new ValidationCheckElements();
+		this.pValidationCheckLocation = new ValidationCheckLocationElements();
 		this.pValidatorUse = new ValidatorUseElements();
-		this.pCheckBlock = new CheckBlockElements();
-		this.pValidationStatus = new ValidationStatusElements();
 		this.pFieldProp = new FieldPropElements();
+		this.pDefaultValue = new DefaultValueElements();
 		this.pInputType = new InputTypeElements();
 		this.pDataType = new DataTypeElements();
 		this.pValidator = new ValidatorElements();
@@ -1789,7 +1802,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		this.pRelationship = new RelationshipElements();
 		this.pRelationshipType = new RelationshipTypeElements();
 		this.pExpression = new ExpressionElements();
-		this.pEval = new EvalElements();
 		this.pOr = new OrElements();
 		this.pAnd = new AndElements();
 		this.pEquality = new EqualityElements();
@@ -1798,6 +1810,7 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		this.pMulDiv = new MulDivElements();
 		this.pPrimary = new PrimaryElements();
 		this.pAtomic = new AtomicElements();
+		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.BOOLEAN");
 		this.tBEGIN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.BEGIN");
 		this.tEND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "jope015.mdsd2021.reexam.CMSdsl.END");
 	}
@@ -1842,7 +1855,7 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//PrimaryElement:
-	//	DBConfig | Entity | Validator | Eval;
+	//	DBConfig | Entity | Validator;
 	public PrimaryElementElements getPrimaryElementAccess() {
 		return pPrimaryElement;
 	}
@@ -1910,17 +1923,25 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		return getFieldAccess().getRule();
 	}
 	
-	////ValidationCheck:
-	////	'check' (Check | CheckBlock)
-	////;
 	//ValidationCheck:
-	//	'check' validator=ValidatorUse '=>' errrorMsg=STRING;
+	//	'check' (locations+=ValidationCheckLocation ('and' locations+=ValidationCheckLocation)?)? validator=ValidatorUse '=>'
+	//	errrorMsg=STRING;
 	public ValidationCheckElements getValidationCheckAccess() {
 		return pValidationCheck;
 	}
 	
 	public ParserRule getValidationCheckRule() {
 		return getValidationCheckAccess().getRule();
+	}
+	
+	//ValidationCheckLocation:
+	//	location='client' | location='server';
+	public ValidationCheckLocationElements getValidationCheckLocationAccess() {
+		return pValidationCheckLocation;
+	}
+	
+	public ParserRule getValidationCheckLocationRule() {
+		return getValidationCheckLocationAccess().getRule();
 	}
 	
 	//ValidatorUse:
@@ -1933,39 +1954,26 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		return getValidatorUseAccess().getRule();
 	}
 	
-	//CheckBlock:
-	//	validator=ValidatorUse '=>' BEGIN
-	//	statusCond+=ValidationStatus*
-	//	END;
-	public CheckBlockElements getCheckBlockAccess() {
-		return pCheckBlock;
-	}
-	
-	public ParserRule getCheckBlockRule() {
-		return getCheckBlockAccess().getRule();
-	}
-	
-	//ValidationStatus:
-	//	{Err} 'error' ':' msg=STRING | {Warn} 'warning' ':' msg=STRING | {Succ} 'success' ':' msg=STRING;
-	public ValidationStatusElements getValidationStatusAccess() {
-		return pValidationStatus;
-	}
-	
-	public ParserRule getValidationStatusRule() {
-		return getValidationStatusAccess().getRule();
-	}
-	
 	//FieldProp:
-	//	{Def} type='default' ':' value=STRING | {PropTest} type='test' ':' value=STRING | {InputField} type='inputType' ':'
-	//	value=InputType
-	//	//	{Check} type='check' value=ValidatorUse
-	//;
+	//	{Def} type='default' ':' value=Atomic | {PropTest} type='test' ':' value=STRING | {InputField} type='inputType' ':'
+	//	value=InputType | {DisplayAs} type='displayAs' ':' value=STRING | {Nullable} type='nullable' ':' value=BOOLEAN |
+	//	{Unique} type='unique' ':' value=BOOLEAN;
 	public FieldPropElements getFieldPropAccess() {
 		return pFieldProp;
 	}
 	
 	public ParserRule getFieldPropRule() {
 		return getFieldPropAccess().getRule();
+	}
+	
+	//DefaultValue:
+	//	{NumType} INT | {StringType} STRING | {BoolType} BOOLEAN;
+	public DefaultValueElements getDefaultValueAccess() {
+		return pDefaultValue;
+	}
+	
+	public ParserRule getDefaultValueRule() {
+		return getDefaultValueAccess().getRule();
 	}
 	
 	//InputType:
@@ -2032,15 +2040,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		return getParamOrArgUseAccess().getRule();
 	}
 	
-	////ParameterUse:
-	////	{ParameterUse} ref=[Parameter|Field]
-	////;
-	////
-	////
-	////
-	////ArgumentUse:
-	////	ref=[Field]
-	////;
 	//Relationship:
 	//	relationType=RelationshipType entity=[Entity];
 	public RelationshipElements getRelationshipAccess() {
@@ -2070,16 +2069,6 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	
 	public ParserRule getExpressionRule() {
 		return getExpressionAccess().getRule();
-	}
-	
-	//Eval:
-	//	{Eval} 'eval' expression=Expression;
-	public EvalElements getEvalAccess() {
-		return pEval;
-	}
-	
-	public ParserRule getEvalRule() {
-		return getEvalAccess().getRule();
 	}
 	
 	//Or Expression:
@@ -2153,13 +2142,19 @@ public class CMSdslGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//Atomic Expression:
-	//	{Num} value=INT | {Str} value=STRING | {Bool} value=('true' | 'false') | ParamOrArgUse;
+	//	{Num} value=INT | {Str} value=STRING | {Bool} value=BOOLEAN | ParamOrArgUse;
 	public AtomicElements getAtomicAccess() {
 		return pAtomic;
 	}
 	
 	public ParserRule getAtomicRule() {
 		return getAtomicAccess().getRule();
+	}
+	
+	//terminal BOOLEAN:
+	//	'true' | 'false';
+	public TerminalRule getBOOLEANRule() {
+		return tBOOLEAN;
 	}
 	
 	//terminal BEGIN:

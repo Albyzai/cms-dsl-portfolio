@@ -29,23 +29,21 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//Field/properties"/>
     </genClasses>
     <genClasses ecoreClass="CMSdsl.ecore#//ValidationCheck">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//ValidationCheck/locations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//ValidationCheck/validator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//ValidationCheck/errrorMsg"/>
+    </genClasses>
+    <genClasses ecoreClass="CMSdsl.ecore#//ValidationCheckLocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//ValidationCheckLocation/location"/>
     </genClasses>
     <genClasses ecoreClass="CMSdsl.ecore#//ValidatorUse">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//ValidatorUse/validator"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//ValidatorUse/args"/>
     </genClasses>
-    <genClasses ecoreClass="CMSdsl.ecore#//CheckBlock">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//CheckBlock/validator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//CheckBlock/statusCond"/>
-    </genClasses>
-    <genClasses ecoreClass="CMSdsl.ecore#//ValidationStatus">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//ValidationStatus/msg"/>
-    </genClasses>
     <genClasses ecoreClass="CMSdsl.ecore#//FieldProp">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//FieldProp/type"/>
     </genClasses>
+    <genClasses ecoreClass="CMSdsl.ecore#//DefaultValue"/>
     <genClasses ecoreClass="CMSdsl.ecore#//InputType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//InputType/type"/>
     </genClasses>
@@ -71,9 +69,6 @@
     </genClasses>
     <genClasses ecoreClass="CMSdsl.ecore#//RelationshipType"/>
     <genClasses ecoreClass="CMSdsl.ecore#//Expression"/>
-    <genClasses ecoreClass="CMSdsl.ecore#//Eval">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//Eval/expression"/>
-    </genClasses>
     <genClasses ecoreClass="CMSdsl.ecore#//Lib">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//Lib/value"/>
     </genClasses>
@@ -92,11 +87,8 @@
     <genClasses ecoreClass="CMSdsl.ecore#//Pass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//Pass/value"/>
     </genClasses>
-    <genClasses ecoreClass="CMSdsl.ecore#//Err"/>
-    <genClasses ecoreClass="CMSdsl.ecore#//Warn"/>
-    <genClasses ecoreClass="CMSdsl.ecore#//Succ"/>
     <genClasses ecoreClass="CMSdsl.ecore#//Def">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//Def/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//Def/value"/>
     </genClasses>
     <genClasses ecoreClass="CMSdsl.ecore#//PropTest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//PropTest/value"/>
@@ -104,6 +96,18 @@
     <genClasses ecoreClass="CMSdsl.ecore#//InputField">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CMSdsl.ecore#//InputField/value"/>
     </genClasses>
+    <genClasses ecoreClass="CMSdsl.ecore#//DisplayAs">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//DisplayAs/value"/>
+    </genClasses>
+    <genClasses ecoreClass="CMSdsl.ecore#//Nullable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//Nullable/value"/>
+    </genClasses>
+    <genClasses ecoreClass="CMSdsl.ecore#//Unique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CMSdsl.ecore#//Unique/value"/>
+    </genClasses>
+    <genClasses ecoreClass="CMSdsl.ecore#//NumType"/>
+    <genClasses ecoreClass="CMSdsl.ecore#//StringType"/>
+    <genClasses ecoreClass="CMSdsl.ecore#//BoolType"/>
     <genClasses ecoreClass="CMSdsl.ecore#//InpMail"/>
     <genClasses ecoreClass="CMSdsl.ecore#//InpDate"/>
     <genClasses ecoreClass="CMSdsl.ecore#//InpNum"/>

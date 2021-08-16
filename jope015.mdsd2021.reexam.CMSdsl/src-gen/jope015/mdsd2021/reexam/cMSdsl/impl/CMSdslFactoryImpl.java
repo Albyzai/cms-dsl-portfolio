@@ -73,10 +73,10 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
       case CMSdslPackage.ENTITY_DECL: return createEntityDecl();
       case CMSdslPackage.FIELD: return createField();
       case CMSdslPackage.VALIDATION_CHECK: return createValidationCheck();
+      case CMSdslPackage.VALIDATION_CHECK_LOCATION: return createValidationCheckLocation();
       case CMSdslPackage.VALIDATOR_USE: return createValidatorUse();
-      case CMSdslPackage.CHECK_BLOCK: return createCheckBlock();
-      case CMSdslPackage.VALIDATION_STATUS: return createValidationStatus();
       case CMSdslPackage.FIELD_PROP: return createFieldProp();
+      case CMSdslPackage.DEFAULT_VALUE: return createDefaultValue();
       case CMSdslPackage.INPUT_TYPE: return createInputType();
       case CMSdslPackage.DATA_TYPE: return createDataType();
       case CMSdslPackage.VALIDATOR: return createValidator();
@@ -86,19 +86,21 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
       case CMSdslPackage.RELATIONSHIP: return createRelationship();
       case CMSdslPackage.RELATIONSHIP_TYPE: return createRelationshipType();
       case CMSdslPackage.EXPRESSION: return createExpression();
-      case CMSdslPackage.EVAL: return createEval();
       case CMSdslPackage.LIB: return createLib();
       case CMSdslPackage.HOST: return createHost();
       case CMSdslPackage.PORT: return createPort();
       case CMSdslPackage.DIALECT: return createDialect();
       case CMSdslPackage.USER: return createUser();
       case CMSdslPackage.PASS: return createPass();
-      case CMSdslPackage.ERR: return createErr();
-      case CMSdslPackage.WARN: return createWarn();
-      case CMSdslPackage.SUCC: return createSucc();
       case CMSdslPackage.DEF: return createDef();
       case CMSdslPackage.PROP_TEST: return createPropTest();
       case CMSdslPackage.INPUT_FIELD: return createInputField();
+      case CMSdslPackage.DISPLAY_AS: return createDisplayAs();
+      case CMSdslPackage.NULLABLE: return createNullable();
+      case CMSdslPackage.UNIQUE: return createUnique();
+      case CMSdslPackage.NUM_TYPE: return createNumType();
+      case CMSdslPackage.STRING_TYPE: return createStringType();
+      case CMSdslPackage.BOOL_TYPE: return createBoolType();
       case CMSdslPackage.INP_MAIL: return createInpMail();
       case CMSdslPackage.INP_DATE: return createInpDate();
       case CMSdslPackage.INP_NUM: return createInpNum();
@@ -231,6 +233,18 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
+  public ValidationCheckLocation createValidationCheckLocation()
+  {
+    ValidationCheckLocationImpl validationCheckLocation = new ValidationCheckLocationImpl();
+    return validationCheckLocation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public ValidatorUse createValidatorUse()
   {
     ValidatorUseImpl validatorUse = new ValidatorUseImpl();
@@ -243,34 +257,22 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
-  public CheckBlock createCheckBlock()
-  {
-    CheckBlockImpl checkBlock = new CheckBlockImpl();
-    return checkBlock;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ValidationStatus createValidationStatus()
-  {
-    ValidationStatusImpl validationStatus = new ValidationStatusImpl();
-    return validationStatus;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public FieldProp createFieldProp()
   {
     FieldPropImpl fieldProp = new FieldPropImpl();
     return fieldProp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DefaultValue createDefaultValue()
+  {
+    DefaultValueImpl defaultValue = new DefaultValueImpl();
+    return defaultValue;
   }
 
   /**
@@ -387,18 +389,6 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
-  public Eval createEval()
-  {
-    EvalImpl eval = new EvalImpl();
-    return eval;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Lib createLib()
   {
     LibImpl lib = new LibImpl();
@@ -471,42 +461,6 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
    * @generated
    */
   @Override
-  public Err createErr()
-  {
-    ErrImpl err = new ErrImpl();
-    return err;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Warn createWarn()
-  {
-    WarnImpl warn = new WarnImpl();
-    return warn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Succ createSucc()
-  {
-    SuccImpl succ = new SuccImpl();
-    return succ;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Def createDef()
   {
     DefImpl def = new DefImpl();
@@ -535,6 +489,78 @@ public class CMSdslFactoryImpl extends EFactoryImpl implements CMSdslFactory
   {
     InputFieldImpl inputField = new InputFieldImpl();
     return inputField;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DisplayAs createDisplayAs()
+  {
+    DisplayAsImpl displayAs = new DisplayAsImpl();
+    return displayAs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Nullable createNullable()
+  {
+    NullableImpl nullable = new NullableImpl();
+    return nullable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Unique createUnique()
+  {
+    UniqueImpl unique = new UniqueImpl();
+    return unique;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NumType createNumType()
+  {
+    NumTypeImpl numType = new NumTypeImpl();
+    return numType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StringType createStringType()
+  {
+    StringTypeImpl stringType = new StringTypeImpl();
+    return stringType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BoolType createBoolType()
+  {
+    BoolTypeImpl boolType = new BoolTypeImpl();
+    return boolType;
   }
 
   /**

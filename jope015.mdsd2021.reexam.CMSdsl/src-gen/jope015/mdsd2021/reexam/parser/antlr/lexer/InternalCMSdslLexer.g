@@ -11,6 +11,8 @@ package jope015.mdsd2021.reexam.parser.antlr.lexer;
 import org.eclipse.xtext.parser.antlr.Lexer;
 }
 
+DisplayAs : 'displayAs';
+
 InputType : 'inputType';
 
 Validator : 'validator';
@@ -18,6 +20,8 @@ Validator : 'validator';
 Database : 'database';
 
 Hostname : 'hostname';
+
+Nullable : 'nullable';
 
 Password : 'password';
 
@@ -35,23 +39,21 @@ Library : 'library';
 
 Project : 'project';
 
-Success : 'success';
-
-Warning : 'warning';
+Client : 'client';
 
 Entity : 'entity';
 
 Number : 'number';
 
+Server : 'server';
+
 String : 'string';
+
+Unique : 'unique';
 
 Check : 'check';
 
 Email : 'email';
-
-Error : 'error';
-
-False : 'false';
 
 Field : 'field';
 
@@ -60,8 +62,6 @@ Float : 'float';
 Bool : 'bool';
 
 Date : 'date';
-
-Eval : 'eval';
 
 Hide : 'hide';
 
@@ -74,8 +74,6 @@ Port : 'port';
 Test : 'test';
 
 Text : 'text';
-
-True : 'true';
 
 And : 'and';
 
@@ -120,6 +118,8 @@ Colon : ':';
 LessThanSign : '<';
 
 GreaterThanSign : '>';
+
+RULE_BOOLEAN : ('true'|'false');
 
 fragment RULE_BEGIN : ;
 

@@ -10,7 +10,7 @@ Project:
 ;
 
 PrimaryElement:
-	DBConfig | Entity | Validator | Eval
+	DBConfig | Entity | Validator 
 ;
 
 DBConfig:
@@ -19,7 +19,6 @@ DBConfig:
 		config+=DBDecl*
 	END
 ;
-
 
 
 DBDecl:
@@ -51,37 +50,29 @@ Field:
 ;
 
 
-//ValidationCheck:
-//	'check' (Check | CheckBlock)
-//;
-
 ValidationCheck:
-	'check' validator=ValidatorUse '=>' errrorMsg=STRING 
+	'check' (locations+=ValidationCheckLocation ('and' locations+=ValidationCheckLocation)? )?  validator=ValidatorUse '=>' errrorMsg=STRING 
+;
+
+ValidationCheckLocation:
+	location='client' | location='server'
 ;
 
 ValidatorUse:
 	{ValidatorUse} validator=[Validator]  '(' args+=[Field] (',' args+=[Field])* ')'
 ;
 
-CheckBlock:
-	validator=ValidatorUse '=>' BEGIN
-		statusCond+=ValidationStatus*
-	END
-;
-
-
-ValidationStatus:
-	{Err} 'error' ':' msg=STRING |
-	{Warn} 'warning' ':' msg=STRING |
-	{Succ} 'success' ':' msg=STRING
-;
 
 FieldProp:
-	{Def} type='default' ':' value=STRING |
+	{Def} type='default' ':' value=Atomic |
 	{PropTest} type='test' ':' value=STRING |
-	{InputField} type='inputType' ':' value=InputType
-//	{Check} type='check' value=ValidatorUse
+	{InputField} type='inputType' ':' value=InputType |
+	{DisplayAs} type='displayAs' ':' value=STRING |
+	{Nullable} type='nullable' ':' value=BOOLEAN |
+	{Unique} type='unique' ':' value=BOOLEAN
+	
 ;
+
 
 InputType:
 	{InpMail} type='email' |
@@ -120,21 +111,6 @@ ParamOrArgUse:
 	ref=[ParamOrArg]
 ;
 
-//ParameterUse:
-//	{ParameterUse} ref=[Parameter|Field]
-//;
-//
-//
-//
-//ArgumentUse:
-//	ref=[Field]
-//;
-
-
-
-
-
-
 
 Relationship:
 	relationType=RelationshipType entity=[Entity]
@@ -152,9 +128,6 @@ Expression:
 	Or
 ;
 
-Eval:
-	{Eval} 'eval' expression=Expression
-;
 
 Or returns Expression:
 	And ({Or.left=current} '||' right=And)*
@@ -189,10 +162,10 @@ Primary returns Expression:
 Atomic returns Expression:
 	{Num} value=INT |
 	{Str} value=STRING |
-	{Bool} value=('true'|'false') |
+	{Bool} value=BOOLEAN |
 	ParamOrArgUse
 ;
 
-
+terminal BOOLEAN: 'true' | 'false';
 terminal BEGIN: 'synthetic:BEGIN';
 terminal END: 'synthetic:END';

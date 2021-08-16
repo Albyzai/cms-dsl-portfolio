@@ -5,7 +5,6 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import jope015.mdsd2021.reexam.typing.ExpressionsType
 import jope015.mdsd2021.reexam.cMSdsl.Expression
 import org.junit.jupiter.api.Assertions
-import jope015.mdsd2021.reexam.typing.ExpressionsTypeComputer
 import jope015.mdsd2021.reexam.cMSdsl.Validator
 import jope015.mdsd2021.reexam.cMSdsl.Project
 import jope015.mdsd2021.reexam.cMSdsl.Eval
@@ -13,12 +12,13 @@ import org.junit.jupiter.api.^extension.ExtendWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.InjectWith
 import org.junit.jupiter.api.Test
+import jope015.mdsd2021.reexam.typing.TypeComputer
 
 @ExtendWith(InjectionExtension)
 @InjectWith(CMSdslInjectorProvider)
 class ExpressionsTypeComputerTest {
 	@Inject extension ParseHelper<Project>
-	@Inject extension ExpressionsTypeComputer
+	@Inject extension TypeComputer
 	
 	@Test
 	def testIntConstant() { 
@@ -33,7 +33,7 @@ class ExpressionsTypeComputerTest {
 				password: 'password'
 			eval 2
 			
-		'''.assertType(ExpressionsTypeComputer.NUMBER_TYPE)
+		'''.assertType(TypeComputer.NUMBER_TYPE)
 	
 //		model.assertType(ExpressionsTypeComputer.NUMBER_TYPE)
 	}

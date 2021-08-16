@@ -9,18 +9,17 @@ import jope015.mdsd2021.reexam.cMSdsl.And;
 import jope015.mdsd2021.reexam.cMSdsl.BelongsTo;
 import jope015.mdsd2021.reexam.cMSdsl.BelongsToMany;
 import jope015.mdsd2021.reexam.cMSdsl.Bool;
+import jope015.mdsd2021.reexam.cMSdsl.BoolType;
 import jope015.mdsd2021.reexam.cMSdsl.CMSdslPackage;
-import jope015.mdsd2021.reexam.cMSdsl.CheckBlock;
 import jope015.mdsd2021.reexam.cMSdsl.Comparison;
 import jope015.mdsd2021.reexam.cMSdsl.DBConfig;
 import jope015.mdsd2021.reexam.cMSdsl.Def;
 import jope015.mdsd2021.reexam.cMSdsl.Dialect;
+import jope015.mdsd2021.reexam.cMSdsl.DisplayAs;
 import jope015.mdsd2021.reexam.cMSdsl.Div;
 import jope015.mdsd2021.reexam.cMSdsl.Dt;
 import jope015.mdsd2021.reexam.cMSdsl.Entity;
 import jope015.mdsd2021.reexam.cMSdsl.Equality;
-import jope015.mdsd2021.reexam.cMSdsl.Err;
-import jope015.mdsd2021.reexam.cMSdsl.Eval;
 import jope015.mdsd2021.reexam.cMSdsl.Field;
 import jope015.mdsd2021.reexam.cMSdsl.Flt;
 import jope015.mdsd2021.reexam.cMSdsl.HasMany;
@@ -38,7 +37,9 @@ import jope015.mdsd2021.reexam.cMSdsl.Lib;
 import jope015.mdsd2021.reexam.cMSdsl.Lng;
 import jope015.mdsd2021.reexam.cMSdsl.Minus;
 import jope015.mdsd2021.reexam.cMSdsl.Mul;
+import jope015.mdsd2021.reexam.cMSdsl.Nullable;
 import jope015.mdsd2021.reexam.cMSdsl.Num;
+import jope015.mdsd2021.reexam.cMSdsl.NumType;
 import jope015.mdsd2021.reexam.cMSdsl.Or;
 import jope015.mdsd2021.reexam.cMSdsl.ParamOrArgUse;
 import jope015.mdsd2021.reexam.cMSdsl.Pass;
@@ -48,12 +49,13 @@ import jope015.mdsd2021.reexam.cMSdsl.Project;
 import jope015.mdsd2021.reexam.cMSdsl.PropTest;
 import jope015.mdsd2021.reexam.cMSdsl.Relationship;
 import jope015.mdsd2021.reexam.cMSdsl.Str;
-import jope015.mdsd2021.reexam.cMSdsl.Succ;
+import jope015.mdsd2021.reexam.cMSdsl.StringType;
+import jope015.mdsd2021.reexam.cMSdsl.Unique;
 import jope015.mdsd2021.reexam.cMSdsl.User;
 import jope015.mdsd2021.reexam.cMSdsl.ValidationCheck;
+import jope015.mdsd2021.reexam.cMSdsl.ValidationCheckLocation;
 import jope015.mdsd2021.reexam.cMSdsl.Validator;
 import jope015.mdsd2021.reexam.cMSdsl.ValidatorUse;
-import jope015.mdsd2021.reexam.cMSdsl.Warn;
 import jope015.mdsd2021.reexam.services.CMSdslGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -114,8 +116,8 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 					return; 
 				}
 				else break;
-			case CMSdslPackage.CHECK_BLOCK:
-				sequence_CheckBlock(context, (CheckBlock) semanticObject); 
+			case CMSdslPackage.BOOL_TYPE:
+				sequence_DefaultValue(context, (BoolType) semanticObject); 
 				return; 
 			case CMSdslPackage.COMPARISON:
 				sequence_Comparison(context, (Comparison) semanticObject); 
@@ -129,6 +131,9 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case CMSdslPackage.DIALECT:
 				sequence_DBDecl(context, (Dialect) semanticObject); 
 				return; 
+			case CMSdslPackage.DISPLAY_AS:
+				sequence_FieldProp(context, (DisplayAs) semanticObject); 
+				return; 
 			case CMSdslPackage.DIV:
 				sequence_MulDiv(context, (Div) semanticObject); 
 				return; 
@@ -140,12 +145,6 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case CMSdslPackage.EQUALITY:
 				sequence_Equality(context, (Equality) semanticObject); 
-				return; 
-			case CMSdslPackage.ERR:
-				sequence_ValidationStatus(context, (Err) semanticObject); 
-				return; 
-			case CMSdslPackage.EVAL:
-				sequence_Eval(context, (Eval) semanticObject); 
 				return; 
 			case CMSdslPackage.FIELD:
 				sequence_Field(context, (Field) semanticObject); 
@@ -198,8 +197,14 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case CMSdslPackage.MUL:
 				sequence_MulDiv(context, (Mul) semanticObject); 
 				return; 
+			case CMSdslPackage.NULLABLE:
+				sequence_FieldProp(context, (Nullable) semanticObject); 
+				return; 
 			case CMSdslPackage.NUM:
 				sequence_Atomic(context, (Num) semanticObject); 
+				return; 
+			case CMSdslPackage.NUM_TYPE:
+				sequence_DefaultValue(context, (NumType) semanticObject); 
 				return; 
 			case CMSdslPackage.OR:
 				sequence_Or(context, (Or) semanticObject); 
@@ -254,8 +259,11 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 					return; 
 				}
 				else break;
-			case CMSdslPackage.SUCC:
-				sequence_ValidationStatus(context, (Succ) semanticObject); 
+			case CMSdslPackage.STRING_TYPE:
+				sequence_DefaultValue(context, (StringType) semanticObject); 
+				return; 
+			case CMSdslPackage.UNIQUE:
+				sequence_FieldProp(context, (Unique) semanticObject); 
 				return; 
 			case CMSdslPackage.USER:
 				sequence_DBDecl(context, (User) semanticObject); 
@@ -263,14 +271,14 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case CMSdslPackage.VALIDATION_CHECK:
 				sequence_ValidationCheck(context, (ValidationCheck) semanticObject); 
 				return; 
+			case CMSdslPackage.VALIDATION_CHECK_LOCATION:
+				sequence_ValidationCheckLocation(context, (ValidationCheckLocation) semanticObject); 
+				return; 
 			case CMSdslPackage.VALIDATOR:
 				sequence_Validator(context, (Validator) semanticObject); 
 				return; 
 			case CMSdslPackage.VALIDATOR_USE:
 				sequence_ValidatorUse(context, (ValidatorUse) semanticObject); 
-				return; 
-			case CMSdslPackage.WARN:
-				sequence_ValidationStatus(context, (Warn) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -334,10 +342,16 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Atomic returns Bool
 	 *
 	 * Constraint:
-	 *     (value='true' | value='false')
+	 *     value=BOOLEAN
 	 */
 	protected void sequence_Atomic(ISerializationContext context, Bool semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.BOOL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.BOOL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueBOOLEANTerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -406,18 +420,6 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_1_1_0(), semanticObject.getValue());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     CheckBlock returns CheckBlock
-	 *
-	 * Constraint:
-	 *     (validator=ValidatorUse statusCond+=ValidationStatus*)
-	 */
-	protected void sequence_CheckBlock(ISerializationContext context, CheckBlock semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -697,6 +699,42 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     DefaultValue returns BoolType
+	 *
+	 * Constraint:
+	 *     {BoolType}
+	 */
+	protected void sequence_DefaultValue(ISerializationContext context, BoolType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DefaultValue returns NumType
+	 *
+	 * Constraint:
+	 *     {NumType}
+	 */
+	protected void sequence_DefaultValue(ISerializationContext context, NumType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DefaultValue returns StringType
+	 *
+	 * Constraint:
+	 *     {StringType}
+	 */
+	protected void sequence_DefaultValue(ISerializationContext context, StringType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     PrimaryElement returns Entity
 	 *     Entity returns Entity
 	 *
@@ -737,29 +775,10 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     PrimaryElement returns Eval
-	 *     Eval returns Eval
-	 *
-	 * Constraint:
-	 *     expression=Expression
-	 */
-	protected void sequence_Eval(ISerializationContext context, Eval semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.EVAL__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.EVAL__EXPRESSION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEvalAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     FieldProp returns Def
 	 *
 	 * Constraint:
-	 *     (type='default' value=STRING)
+	 *     (type='default' value=Atomic)
 	 */
 	protected void sequence_FieldProp(ISerializationContext context, Def semanticObject) {
 		if (errorAcceptor != null) {
@@ -770,7 +789,28 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFieldPropAccess().getTypeDefaultKeyword_0_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getFieldPropAccess().getValueSTRINGTerminalRuleCall_0_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getFieldPropAccess().getValueAtomicParserRuleCall_0_3_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FieldProp returns DisplayAs
+	 *
+	 * Constraint:
+	 *     (type='displayAs' value=STRING)
+	 */
+	protected void sequence_FieldProp(ISerializationContext context, DisplayAs semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.DISPLAY_AS__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.DISPLAY_AS__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFieldPropAccess().getTypeDisplayAsKeyword_3_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getFieldPropAccess().getValueSTRINGTerminalRuleCall_3_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -798,6 +838,27 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     FieldProp returns Nullable
+	 *
+	 * Constraint:
+	 *     (type='nullable' value=BOOLEAN)
+	 */
+	protected void sequence_FieldProp(ISerializationContext context, Nullable semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.NULLABLE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.NULLABLE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFieldPropAccess().getTypeNullableKeyword_4_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getFieldPropAccess().getValueBOOLEANTerminalRuleCall_4_3_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     FieldProp returns PropTest
 	 *
 	 * Constraint:
@@ -813,6 +874,27 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFieldPropAccess().getTypeTestKeyword_1_1_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getFieldPropAccess().getValueSTRINGTerminalRuleCall_1_3_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FieldProp returns Unique
+	 *
+	 * Constraint:
+	 *     (type='unique' value=BOOLEAN)
+	 */
+	protected void sequence_FieldProp(ISerializationContext context, Unique semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.FIELD_PROP__TYPE));
+			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.UNIQUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.UNIQUE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFieldPropAccess().getTypeUniqueKeyword_5_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getFieldPropAccess().getValueBOOLEANTerminalRuleCall_5_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -1259,77 +1341,26 @@ public class CMSdslSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     ValidationCheckLocation returns ValidationCheckLocation
+	 *
+	 * Constraint:
+	 *     (location='client' | location='server')
+	 */
+	protected void sequence_ValidationCheckLocation(ISerializationContext context, ValidationCheckLocation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EntityDecl returns ValidationCheck
 	 *     ValidationCheck returns ValidationCheck
 	 *
 	 * Constraint:
-	 *     (validator=ValidatorUse errrorMsg=STRING)
+	 *     ((locations+=ValidationCheckLocation locations+=ValidationCheckLocation?)? validator=ValidatorUse errrorMsg=STRING)
 	 */
 	protected void sequence_ValidationCheck(ISerializationContext context, ValidationCheck semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.VALIDATION_CHECK__VALIDATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.VALIDATION_CHECK__VALIDATOR));
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.VALIDATION_CHECK__ERRROR_MSG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.VALIDATION_CHECK__ERRROR_MSG));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getValidationCheckAccess().getValidatorValidatorUseParserRuleCall_1_0(), semanticObject.getValidator());
-		feeder.accept(grammarAccess.getValidationCheckAccess().getErrrorMsgSTRINGTerminalRuleCall_3_0(), semanticObject.getErrrorMsg());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ValidationStatus returns Err
-	 *
-	 * Constraint:
-	 *     msg=STRING
-	 */
-	protected void sequence_ValidationStatus(ISerializationContext context, Err semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.VALIDATION_STATUS__MSG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.VALIDATION_STATUS__MSG));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getValidationStatusAccess().getMsgSTRINGTerminalRuleCall_0_3_0(), semanticObject.getMsg());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ValidationStatus returns Succ
-	 *
-	 * Constraint:
-	 *     msg=STRING
-	 */
-	protected void sequence_ValidationStatus(ISerializationContext context, Succ semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.VALIDATION_STATUS__MSG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.VALIDATION_STATUS__MSG));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getValidationStatusAccess().getMsgSTRINGTerminalRuleCall_2_3_0(), semanticObject.getMsg());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ValidationStatus returns Warn
-	 *
-	 * Constraint:
-	 *     msg=STRING
-	 */
-	protected void sequence_ValidationStatus(ISerializationContext context, Warn semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CMSdslPackage.Literals.VALIDATION_STATUS__MSG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CMSdslPackage.Literals.VALIDATION_STATUS__MSG));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getValidationStatusAccess().getMsgSTRINGTerminalRuleCall_1_3_0(), semanticObject.getMsg());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

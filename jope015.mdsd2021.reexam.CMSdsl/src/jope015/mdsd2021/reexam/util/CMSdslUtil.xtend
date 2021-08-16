@@ -56,5 +56,15 @@ class CMSdslUtil {
 		}
 	}
 	
+	def getValidationChecksFor(Entity e, String location){
+		e.members.filter(ValidationCheck).filter[ check |
+			check.locations.isEmpty || !check.locations.filter[ l | l.location == location].isEmpty
+		]
+	}
+	
+	def validationLocationNotSpecified(Entity e){
+		return e.members.filter(ValidationCheck).filter[ check | ]
+	}
+	
 
 }
